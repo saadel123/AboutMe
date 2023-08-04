@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.master')
 
 @section('content')
     <div id="service-single-content" class="service-single-content SectionMargin">

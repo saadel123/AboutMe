@@ -52,13 +52,13 @@
                                     <span class="icon-bar middle-bar"></span>
                                     <span class="icon-bar bottom-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="/index"><img class="logo"
+                                <a class="navbar-brand" href="/"><img class="logo"
                                         src="assests/images/logo-color.png" alt="AboutMe"></a>
                             </div>
                             <!--End navbar-header -->
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="/index">Back To Home</a></li>
+                                    <li><a href="/">Back To Home</a></li>
                                 </ul>
                             </div>
                             <!--End navbar -->

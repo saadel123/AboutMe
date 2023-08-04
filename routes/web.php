@@ -5,12 +5,14 @@ use App\Http\Controllers\ExperienceController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\mycvController;
+use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Models\Award;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\project;
 use App\Models\Resume;
 use App\Models\Service;
 use App\Models\Skill;
@@ -33,13 +35,15 @@ Route::get('/', function () {
     $listskills = Skill::all();
     $listsawrds = Award::all();
     $listservs = Service::all();
+    $projects = project::all();
     return view('portfolio/index', [
         'listcvs' => $listcvs,
         'listexps' => $listexps,
         'listedcs' => $listedcs,
         'listskills' => $listskills,
         'listsawrds' => $listsawrds,
-        'listservs' => $listservs
+        'listservs' => $listservs,
+        'projects' => $projects,
     ]);
 });
 
@@ -70,6 +74,10 @@ Route::post('servs', 'ServiceController@store')->name('serv.add');
 Route::delete('servs/{id}', 'ServiceController@destroy')->name('serv.delete');
 Route::put('servs/{id}', 'ServiceController@update')->name('serv.update');
 
+Route::get('project', [projectcontroller::class, 'index']);
+Route::post('projects', 'projectcontroller@store')->name('project.add');
+Route::delete('projects/{id}', 'projectcontroller@destroy')->name('project.delete');
+Route::put('projects/{id}', 'projectcontroller@update')->name('project.update');
 
 //Route::resource('admin', ResumeController::class); 
 
@@ -84,6 +92,7 @@ Route::delete('cvs/{id}', 'CvController@destroy');
 
 
 Route::view('/single-service', '/portfolio/single-service');
+Route::get('single-project/{id}', [projectcontroller::class, 'singleproject']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

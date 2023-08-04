@@ -49,7 +49,7 @@
                                     <span class="icon-bar middle-bar"></span>
                                     <span class="icon-bar bottom-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="/index">
+                                <a class="navbar-brand" href="/">
                                     <img class="logo logo-white" src="assests/images/logo.png" alt="logo">
                                     <img class="logo logo-color" src="assests/images/logo-color.png" alt="logo">
                                 </a>
@@ -106,7 +106,7 @@
                                     <h3 class="wow slideInLeft">Hi, I'm</h3>
                                     <h1 class="header-title-text type-animate wow slideInRight">
                                         <a href="" class="typewrite" data-period="2000"
-                                            data-type='[ "Saad el ghanemy", "Web Developper", "Student", "From Morocco" ,"21 Years old" ]'>
+                                            data-type='[ "Abdelilah Ezzyraouy", "Web Developper", "Employee", "From Morocco" ,"22 Years old" ]'>
                                             <span class="wrap"></span>
                                         </a>&nbsp;
                                     </h1>
@@ -573,7 +573,36 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="isotopeContainer">
+                            @foreach ($projects as $project)
                             <div class="col-md-3 col-xs-6 no-space isotopeSelector websites">
+                                <div class="portfolio-wrapper">
+                                    <img src="{{asset('storage/'.$project->image)}}" alt="Portfolio Title">
+                                    <div class="portfolio-overlay">
+                                        <div class="portfolio-overlay-inner">
+                                            <div class="portfolio-overlay-content">
+                                                <div class="portfolio-link">
+                                                    <a title="Details" href="single-project/{{$project->id}}"><i
+                                                            class="fa fa-link"></i></a>
+                                                    <a data-lightbox="websites" data-title="Image Preview"
+                                                        href="{{asset('storage/'.$project->image)}}"><i
+                                                            class="fa fa-search-plus"></i></a>
+                                                </div>
+                                                <!--End portfolio-link -->
+                                                <div class="portfolio-caption">
+                                                    <h3><a href="single-portfolio.html">{{$project->title}}</a></h3>
+                                                </div>
+                                                <!--End portfolio-caption -->
+                                            </div>
+                                            <!--End portfolio-overlay-content -->
+                                        </div>
+                                        <!--End portfolio-overlay-inner -->
+                                    </div>
+                                    <!--End portfolio-overlay -->
+                                </div>
+                                <!--End portfolio-wrapper -->
+                            </div>
+                            @endforeach
+                           {{-- <div class="col-md-3 col-xs-6 no-space isotopeSelector websites">
                                 <div class="portfolio-wrapper">
                                     <img src="assests/images/portfolio/thumb/1.jpg" alt="Portfolio Title">
                                     <div class="portfolio-overlay">
@@ -600,7 +629,7 @@
                                 </div>
                                 <!--End portfolio-wrapper -->
                             </div>
-                            <div class="col-md-3 col-xs-6 no-space isotopeSelector photography">
+                             <div class="col-md-3 col-xs-6 no-space isotopeSelector photography">
                                 <div class="portfolio-wrapper">
                                     <img src="assests/images/portfolio/thumb/2.jpg" alt="Portfolio Title">
                                     <div class="portfolio-overlay">
@@ -788,7 +817,7 @@
                                     <!--End portfolio-overlay -->
                                 </div>
                                 <!--End portfolio-wrapper -->
-                            </div>
+                            </div> --}}
                         </div>
                         <!--End isotopeContainer -->
                     </div>
@@ -1669,7 +1698,11 @@
         var wow = new WOW({});
         wow.init();
     </script>
-
+    <style>
+        .isotopeSelector{
+            margin-right: 15px;
+        }
+    </style>
 </body>
 
 </html>

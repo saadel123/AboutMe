@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.master')
 @section('content')
         <div class="tab-content">
             <!-- start section title-wrap -->

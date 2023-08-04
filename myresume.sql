@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mar. 19 avr. 2022 à 12:27
--- Version du serveur :  10.4.19-MariaDB
--- Version de PHP : 8.0.6
+-- Host: localhost:3306
+-- Generation Time: Jul 26, 2023 at 04:39 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `myresume`
+-- Database: `myresume`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `abouts`
+-- Table structure for table `abouts`
 --
 
 CREATE TABLE `abouts` (
@@ -40,7 +40,7 @@ CREATE TABLE `abouts` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `awards`
+-- Table structure for table `awards`
 --
 
 CREATE TABLE `awards` (
@@ -55,7 +55,7 @@ CREATE TABLE `awards` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `awards`
+-- Dumping data for table `awards`
 --
 
 INSERT INTO `awards` (`id`, `resume_id`, `position`, `instit`, `body`, `year`, `created_at`, `updated_at`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `awards` (`id`, `resume_id`, `position`, `instit`, `body`, `year`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `education`
+-- Table structure for table `education`
 --
 
 CREATE TABLE `education` (
@@ -82,7 +82,7 @@ CREATE TABLE `education` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `education`
+-- Dumping data for table `education`
 --
 
 INSERT INTO `education` (`id`, `resume_id`, `positioned`, `titreed`, `bodyed`, `debuted`, `fined`, `created_at`, `updated_at`) VALUES
@@ -93,7 +93,7 @@ INSERT INTO `education` (`id`, `resume_id`, `positioned`, `titreed`, `bodyed`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `experiences`
+-- Table structure for table `experiences`
 --
 
 CREATE TABLE `experiences` (
@@ -110,7 +110,7 @@ CREATE TABLE `experiences` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `experiences`
+-- Dumping data for table `experiences`
 --
 
 INSERT INTO `experiences` (`id`, `resume_id`, `postion`, `slide`, `titre`, `body`, `debut`, `fin`, `created_at`, `updated_at`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `experiences` (`id`, `resume_id`, `postion`, `slide`, `titre`, `body
 -- --------------------------------------------------------
 
 --
--- Structure de la table `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -137,7 +137,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -147,7 +147,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -168,7 +168,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -180,7 +180,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -198,7 +198,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `resumes`
+-- Table structure for table `resumes`
 --
 
 CREATE TABLE `resumes` (
@@ -213,7 +213,7 @@ CREATE TABLE `resumes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `resumes`
+-- Dumping data for table `resumes`
 --
 
 INSERT INTO `resumes` (`id`, `titre`, `presentation`, `pic`, `deleted_at`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -222,7 +222,7 @@ INSERT INTO `resumes` (`id`, `titre`, `presentation`, `pic`, `deleted_at`, `user
 -- --------------------------------------------------------
 
 --
--- Structure de la table `services`
+-- Table structure for table `services`
 --
 
 CREATE TABLE `services` (
@@ -236,7 +236,7 @@ CREATE TABLE `services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `services`
+-- Dumping data for table `services`
 --
 
 INSERT INTO `services` (`id`, `resume_id`, `icon`, `category`, `body`, `created_at`, `updated_at`) VALUES
@@ -248,7 +248,7 @@ INSERT INTO `services` (`id`, `resume_id`, `icon`, `category`, `body`, `created_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -261,19 +261,22 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `sessions`
+-- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('9PJjHgEiposmtAZNNNYuMzWal9ttKklVXhLvfuD5', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.54', 'YTo2OntzOjM6Im1zZyI7czozNzoic3ZwIGNvbm5lY3RlciBwb3VyIGNvbnN1bHRlciBsZXMgY3YhISI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6ImcwTmpBTTF2eHJVRThLSkJrU0pLeGh1V21ycVFjcUZCbzd6b2U2NTIiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRWxPTTNMUElWcm1vcFdoVFNUQnkzZXVZMGg5YlpCNGgvOG1ONXVBZ2V1ajkyNGtmbDQvM0ciO30=', 1637945906),
 ('CQxCYoStSB34xkLkjOq4qKBMKS4cq44miZwQYH8p', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.44', 'YTo3OntzOjM6Im1zZyI7czozNzoic3ZwIGNvbm5lY3RlciBwb3VyIGNvbnN1bHRlciBsZXMgY3YhISI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IjlnZ3ExMFlybWltVDFUcUNzU2FicFVlYml5WnNPVWtOelBrT0phSGYiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZXhwIjt9czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQxZTZZcC8vOFVORDJ1VmdLaXBYc2R1NHprQXlaVVo3LmtDL1lDelBrV1E3LlJRWlBEQVk0QyI7fQ==', 1650363031),
 ('EDJbOp8HrlEEevXHy3R7zi5lMrZuVVLKMxfiremd', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.54', 'YTo3OntzOjM6Im1zZyI7czozNzoic3ZwIGNvbm5lY3RlciBwb3VyIGNvbnN1bHRlciBsZXMgY3YhISI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6InB1Z2lWWnNWZ0taR0RCeWJSMG1oS000Z1kwc3pRY2tJRmRsbEtSUkwiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJEVsT00zTFBJVnJtb3BXaFRTVEJ5M2V1WTBoOWJaQjRoLzhtTjV1QWdldWo5MjRrZmw0LzNHIjt9', 1637422020),
-('Kga8MyyxrZ8gXe1sqsfLMBmecrDq4HjfDh3a22qt', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.54', 'YTo2OntzOjM6Im1zZyI7czozNzoic3ZwIGNvbm5lY3RlciBwb3VyIGNvbnN1bHRlciBsZXMgY3YhISI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IktBZlllRzVRMnFKNTBOUmd5dnpBRXFPTzh1UDVFSFA2Zk11aW1rVGUiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZXhwIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJEVsT00zTFBJVnJtb3BXaFRTVEJ5M2V1WTBoOWJaQjRoLzhtTjV1QWdldWo5MjRrZmw0LzNHIjt9', 1640554718);
+('kdkmmbAbpDNEPyFN15DMB7K1NjW9Cgpw3X55TTko', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.58', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNHhwV21XTE5vNkRma1lHb1NYaUlJcTd3NUI2cURWNjE5bWRRQTZ5YyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWdpc3RlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1682257640),
+('Kga8MyyxrZ8gXe1sqsfLMBmecrDq4HjfDh3a22qt', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.54', 'YTo2OntzOjM6Im1zZyI7czozNzoic3ZwIGNvbm5lY3RlciBwb3VyIGNvbnN1bHRlciBsZXMgY3YhISI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IktBZlllRzVRMnFKNTBOUmd5dnpBRXFPTzh1UDVFSFA2Zk11aW1rVGUiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZXhwIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJEVsT00zTFBJVnJtb3BXaFRTVEJ5M2V1WTBoOWJaQjRoLzhtTjV1QWdldWo5MjRrZmw0LzNHIjt9', 1640554718),
+('RF8l65Mu4CZ69fWeLlHjhHxGZKeTd55GUS29y3lh', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaE1RcVQ4VFVNb1U0MUVJZHk2c0Z4bzAyZzZjRk9DS3k5bzZDdDIzciI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1690199834),
+('xiAUGWOLeLimLf22VQfaoOtmFvR5gmLJZi2VenJ9', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMkN6TlpoalZ6VW9tdzd1ZktDcVZGSDFsVktHbUNVVGpySDk0eFNHOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1690382262);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `skills`
+-- Table structure for table `skills`
 --
 
 CREATE TABLE `skills` (
@@ -286,7 +289,7 @@ CREATE TABLE `skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `skills`
+-- Dumping data for table `skills`
 --
 
 INSERT INTO `skills` (`id`, `resume_id`, `percent`, `langage`, `created_at`, `updated_at`) VALUES
@@ -300,7 +303,7 @@ INSERT INTO `skills` (`id`, `resume_id`, `percent`, `langage`, `created_at`, `up
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -319,7 +322,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
@@ -327,58 +330,58 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 (2, 'saad', 'saad.sabir.ss@gmail.com', NULL, '$2y$10$1e6Yp//8UND2uVgKipXsdu4zkAyZUZ7.kC/YCzPkWQ7.RQZPDAY4C', NULL, NULL, NULL, NULL, NULL, '2022-04-19 10:04:22', '2022-04-19 10:04:22');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `abouts`
+-- Indexes for table `abouts`
 --
 ALTER TABLE `abouts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `abouts_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `awards`
+-- Indexes for table `awards`
 --
 ALTER TABLE `awards`
   ADD PRIMARY KEY (`id`),
   ADD KEY `awards_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `education`
+-- Indexes for table `education`
 --
 ALTER TABLE `education`
   ADD PRIMARY KEY (`id`),
   ADD KEY `education_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `experiences`
+-- Indexes for table `experiences`
 --
 ALTER TABLE `experiences`
   ADD PRIMARY KEY (`id`),
   ADD KEY `experiences_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Index pour la table `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Index pour la table `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -386,21 +389,21 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Index pour la table `resumes`
+-- Indexes for table `resumes`
 --
 ALTER TABLE `resumes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `resumes_user_id_foreign` (`user_id`);
 
 --
--- Index pour la table `services`
+-- Indexes for table `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`),
   ADD KEY `services_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -408,131 +411,131 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Index pour la table `skills`
+-- Indexes for table `skills`
 --
 ALTER TABLE `skills`
   ADD PRIMARY KEY (`id`),
   ADD KEY `skills_resume_id_foreign` (`resume_id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `abouts`
+-- AUTO_INCREMENT for table `abouts`
 --
 ALTER TABLE `abouts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `awards`
+-- AUTO_INCREMENT for table `awards`
 --
 ALTER TABLE `awards`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `education`
+-- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `experiences`
+-- AUTO_INCREMENT for table `experiences`
 --
 ALTER TABLE `experiences`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT pour la table `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT pour la table `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `resumes`
+-- AUTO_INCREMENT for table `resumes`
 --
 ALTER TABLE `resumes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `services`
+-- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `skills`
+-- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `abouts`
+-- Constraints for table `abouts`
 --
 ALTER TABLE `abouts`
   ADD CONSTRAINT `abouts_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);
 
 --
--- Contraintes pour la table `awards`
+-- Constraints for table `awards`
 --
 ALTER TABLE `awards`
   ADD CONSTRAINT `awards_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);
 
 --
--- Contraintes pour la table `education`
+-- Constraints for table `education`
 --
 ALTER TABLE `education`
   ADD CONSTRAINT `education_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);
 
 --
--- Contraintes pour la table `experiences`
+-- Constraints for table `experiences`
 --
 ALTER TABLE `experiences`
   ADD CONSTRAINT `experiences_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);
 
 --
--- Contraintes pour la table `resumes`
+-- Constraints for table `resumes`
 --
 ALTER TABLE `resumes`
   ADD CONSTRAINT `resumes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `services`
+-- Constraints for table `services`
 --
 ALTER TABLE `services`
   ADD CONSTRAINT `services_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);
 
 --
--- Contraintes pour la table `skills`
+-- Constraints for table `skills`
 --
 ALTER TABLE `skills`
   ADD CONSTRAINT `skills_resume_id_foreign` FOREIGN KEY (`resume_id`) REFERENCES `resumes` (`id`);

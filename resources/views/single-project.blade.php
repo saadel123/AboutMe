@@ -63,11 +63,13 @@
                     </div>
                 </div>
             @endif
+            @if ($project->video)
             <div class="row d-flex justify-content-center" style="margin-top:60px">
                 <div class="col-md-10 d-flex justify-content-center">
                     <video src="{{ asset('storage/' . $project->video) }}" controls style="max-height: 450px;"></video>
                 </div>
             </div>
+            @endif
         </div>
     </section>
 @endsection

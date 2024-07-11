@@ -9,7 +9,9 @@
     <meta content="" name="keywords">
     <link href="assets1/img/favicon.png" rel="icon">
     <link href="assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
     <link href="{{ asset('assets1/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets1/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets1/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -25,54 +27,74 @@
     <header id="header" class="d-flex flex-column justify-content-center">
         <nav id="navbar" class="navbar nav-menu">
             <ul>
-                    
-                <li><a href="/#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+                @if (session()->get('locale') == 'fr' || session()->get('locale') == null)
+                    <li><a class="d-flex justify-content-center" href="{{ route('changeLang', ['lang' => 'en']) }}"><img
+                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
+                            <span>{!! __('home.menu.English') !!}</span> </a></li>
+                @else
+                    <li> <a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
+                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
+                            <span>{!! __('home.menu.French') !!}</span></a></li>
+                @endif
+                @if (session()->get('locale') == 'en' || session()->get('locale') == 'fr' || session()->get('locale') == null)
+                    <li> <a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => 'de']) }}"><img
+                                src="{{ asset('assets1/img/flags/german.png') }}" alt="">
+                            <span>{!! __('home.menu.German') !!}</span></a></li>
+                @else
+                    <li><a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => 'en']) }}"><img
+                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
+                            <span>{!! __('home.menu.English') !!}</span> </a></li>
+                @endif
+
+                <li><a href="/#hero" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                        <span>{!! __('home.menu.Home') !!}</span></a>
                 </li>
-                <li><a href="/#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+                <li><a href="/#about" class="nav-link scrollto"><i class="bx bx-user"></i>
+                        <span>{!! __('home.menu.About') !!}</span></a></li>
                 <li><a href="/#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
-                        <span>Resume</span></a>
+                        <span>{!! __('home.menu.Resume') !!}</span></a>
                 </li>
                 <li><a href="/#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                        <span>Portfolio</span></a></li>
-                <li><a href="/#services" class="nav-link scrollto"><i class="bx bx-server"></i>
+                        <span>{!! __('home.menu.Portfolio') !!}</span></a></li>
+                {{-- <li><a href="/#services" class="nav-link scrollto"><i class="bx bx-server"></i>
                         <span>Services</span></a>
-                </li>
+                </li> --}}
                 <li><a href="/#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i>
-                        <span>Contact</span></a>
+                        <span>{!! __('home.menu.Contact') !!}</span></a>
                 </li>
-                @if (session()->get('locale') == 'fr' || session()->get('locale') == null)
-                    <li><a href="{{ route('changeLang', ['lang' => 'en']) }}">English</a></li>
-                @else
-                    <li> <a href="{{ route('changeLang', ['lang' => 'fr']) }}">Francais</a></li>
-                @endif
-                <li> <a href="{{ route('changeLang', ['lang' => 'de']) }}">german</a></li>
             </ul>
         </nav>
     </header>
     @yield('content')
     <footer id="footer">
         <div class="container">
-            <h3>Abdelilah Ezzyraouy </h3>
+            <h3>Saad El ghanemy</h3>
             {{-- <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi
                 placeat.</p> --}}
             <div class="social-links">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/saadel123" target="_blank" class="github"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/saad-elghanemy/" target="_blank" class="linkedin"><i
+                        class="bx bxl-linkedin"></i></a>
+                <a href="https://www.xing.com/profile/Saad_Elghanemy" target="_blank" class="xing"><i
+                        class="bx bxl-xing"></i></a>
             </div>
             <div class="copyright">
-                Copyright <strong><span>Abdo</span></strong>. All Rights Reserved
+                <br>
+                {{-- Copyright <strong><span>Saad</span></strong>. All Rights Reserved --}}
             </div>
             <div class="credits">
+                <br>
 
-                Designed by <a href="#">Abdo</a>
+                {{-- Designed by <a href="#">Saad</a> --}}
             </div>
         </div>
     </footer>
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
     <script src="{{ asset('assets1/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('assets1/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

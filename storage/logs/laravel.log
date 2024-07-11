@@ -10449,3 +10449,24 @@ Did you mean one of these?
 #66 C:\\xampp\\htdocs\\portfolio2024\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #67 {main}
 "} 
+[2024-07-10 11:41:50] local.ERROR: Command "route:link" is not defined.
+
+Did you mean one of these?
+    route:cache
+    route:clear
+    route:list
+    storage:link {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"route:link\" is not defined.
+
+Did you mean one of these?
+    route:cache
+    route:clear
+    route:list
+    storage:link at C:\\xampp\\htdocs\\portfolioSaadElgh\\vendor\\symfony\\console\\Application.php:694)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\portfolioSaadElgh\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('route:link')
+#1 C:\\xampp\\htdocs\\portfolioSaadElgh\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\portfolioSaadElgh\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\portfolioSaadElgh\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\portfolioSaadElgh\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

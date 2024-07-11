@@ -1,11 +1,22 @@
 <?php
 return [
+    'menu' => [
+        'Home' => 'Home',
+        'About' => 'About',
+        'Resume' => 'Resume',
+        'Portfolio' => 'Portfolio',
+        'Contact' => 'Contact',
+        'English' => 'English',
+        'French' => 'French',
+        'German' => 'German',
+    ],
     'about' => [
         'title' => 'About Me',
-        'description'=>"< Hello World! /> 🌐🙋‍♂️ Saad here, a Software developer passionate about creating dynamic web experiences.
+        'address' => 'Casablanca, Morocco ',
+        'description' => "< Hello World! /> 🌐🙋‍♂️ Saad here, a Software developer passionate about creating dynamic web experiences.
 
         With 2+ years of experience, my skills include:
-        - 💻 PHP, JAVA, Laravel, APIs, MVC, SQL
+        - 💻 PHP, JAVA, Laravel, APIs, MVC, OOP, SQL
         - 🖥 HTML, CSS, JavaScript, Vue.js, Bootstrap, jQuery, Ajax, and various other technologies.
 
         I get a thrill out of taking projects from concept to launch. My specialty? Crafting user-friendly frontends and managing robust backends.
@@ -16,13 +27,17 @@ return [
         ",
         'dvweb' => 'Software Developer',
         'dte' => 'Date of Birth',
-        'tele'=>'Phone',
-        'vle'=>'City',
+        'tele' => 'Phone',
+        'vle' => 'City',
         'age' => 'Age',
         'dpl' => 'Degree',
-        'description2' => "I offer a comprehensive range of services focused on continuous improvement, technical problem-solving,
-        and the full development of web applications and software. My commitment to technical excellence and
-        innovation guides each of my services, ensuring high-quality solutions and optimal customer satisfaction."
+        'year' => 'years old',
+        'experience' => 'Experience',
+        'experiences' => '+2 years of experience as a software developer',
+        'dpls' => 'Professional university license web and mobile development (Bachelor) <br> Diploma as specialist technician in computer development <br> High school diploma',
+        // 'description2' => "I offer a comprehensive range of services focused on continuous improvement, technical problem-solving,
+        // and the full development of web applications and software. My commitment to technical excellence and
+        // innovation guides each of my services, ensuring high-quality solutions and optimal customer satisfaction."
     ],
     'skills' => 'Skills',
     'resume' => [
@@ -47,18 +62,18 @@ return [
         and the full development of web applications and software. My commitment to technical excellence and
         innovation guides each of my services, ensuring high-quality solutions and optimal customer satisfaction.",
     ],
-    'contact' => [
-        'name'=>'name',
-        'location' => 'Location',
+    'Contact' => [
+        'name' => 'Name',
+        'location' => 'Address',
         'email' => 'Email',
         'phone' => 'Phone',
-        'subject' => 'Subject',
+        'sub' => 'Subject',
         'message' => 'Message',
         'btn' => 'Send Message',
     ],
     'single-project' => [
-        'images'=>'Website Images',
-        'images_code'=>'Code Images',
+        'images' => 'Website Images',
+        'images_code' => 'Code Images',
     ],
-    'devweb'=>'Software Developer,+2 years of experience, Passionate about learning new technologies',
+    'devweb' => 'Software Developer,+2 years of experience, Passionate about learning new technologies',
 ];

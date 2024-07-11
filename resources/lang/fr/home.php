@@ -1,23 +1,44 @@
 <?php
 return [
+    'menu' => [
+        'Home' => 'Accueil',
+        'About' => 'À propos',
+        'Resume' => 'CV',
+        'Portfolio' => 'Portfolio',
+        'Contact' => 'Contact',
+        'English' => 'Anglais',
+        'French' => 'Français',
+        'German' => 'Allemand',
+    ],
     'about'=>[
         'title'=>'À propos de moi',
-        'description'=>"Je suis un Développeur Web Full Stack capable de concevoir et de mettre en œuvre des solutions web
-        complètes, de la gestion des bases de données avec Laravel/PHP à la création d'expériences
-        utilisateur interactives avec Vue.js, en passant par la mise en forme élégante avec HTML, CSS et
-        Bootstrap. Mon engagement envers les meilleures pratiques de développement et mon expérience dans
-        ces technologies font de moi un atout précieux pour la création et l'amélioration continue
-        d'applications web performantes et conviviales.",
-        'dvweb'=>'Développeur Web',
+        'address' => 'Casablanca, Maroc ',
+        'description'=>"< Hello World! /> 🌐🙋‍♂️ Saad ici, un développeur de logiciels passionné par la création d'expériences web dynamiques.
+
+        Avec plus de 2 ans d'expérience, mes compétences incluent :
+        - 💻 PHP, JAVA, Laravel, APIs, MVC, OOP, SQL
+        - 🖥 HTML, CSS, JavaScript, Vue.js, Bootstrap, jQuery, Ajax, et diverses autres technologies.
+
+        J'adore transformer des projets du concept au lancement. Ma spécialité ? Concevoir des interfaces conviviales et gérer des backends robustes.
+
+        Toujours en train d'apprendre, toujours en train de grandir 🌱 Que ce soit une nouvelle bibliothèque de code ou un langage de programmation, j'aime rester à jour avec les nouvelles technologies.
+
+        Codons l'avenir ensemble ! 👨‍💻✨
+        ",
+        'dvweb'=>'Développeur de logiciels',
         'dte'=>'Date de naissance',
         'tele'=>'Tél',
         'vle'=>'Ville',
         'age'=>'Âge',
         'dpl'=>'Diplôme',
-        'description2'=>"Je propose une gamme complète de services axés sur l'amélioration continue, la résolution de
-        problèmes techniques et le développement complet d'applications web et logiciels. Mon engagement
-        envers l'excellence technique et l'innovation guide chacun de mes services, assurant des
-        solutions de haute qualité et une satisfaction client optimale."
+        'year' => 'ans',
+        'experience' => 'Expérience',
+        'experiences' => '+2 ans d\'expérience en tant que développeur logiciel',
+        'dpls'=>'License universitaire professionnelle développement web et mobile <br> Diplôme de technicien spécialisé en développement informatique <br> Baccalauréat',
+        // 'description2'=>"Je propose une gamme complète de services axés sur l'amélioration continue, la résolution de
+        // problèmes techniques et le développement complet d'applications web et logiciels. Mon engagement
+        // envers l'excellence technique et l'innovation guide chacun de mes services, assurant des
+        // solutions de haute qualité et une satisfaction client optimale."
     ],
     'skills'=>'Compétences',
     'resume'=>[
@@ -46,7 +67,7 @@ return [
     ],
     'Contact'=>[
         'name'=>'Nom',
-        'place'=>'Emplacement',
+        'location'=>'Adresse',
         'email'=>"Email",
         'phone'=>"Tél",
         'sub'=>"Sujet",
@@ -57,5 +78,6 @@ return [
         'images'=>'Images de Site',
         'images_code'=>'Images de Code',
     ],
-    'devweb'=>'Dévelepement Web',
+    'devweb' => 'Développeur logiciel, +2 ans d\'expérience, Passionné par l\'apprentissage de nouvelles technologies',
+
 ];

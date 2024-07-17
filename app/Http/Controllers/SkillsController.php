@@ -17,7 +17,7 @@ class SkillsController extends Controller
      {
          return view('admin.skills.index',['skills'=>Skills::all()]);
      }
- 
+
      /**
       * Show the form for creating a new resource.
       *
@@ -27,7 +27,7 @@ class SkillsController extends Controller
      {
          return view('admin.skills.create');
      }
- 
+
      /**
       * Store a newly created resource in storage.
       *
@@ -39,7 +39,7 @@ class SkillsController extends Controller
          Skills::create($input);
          return redirect()->route('skills.index')->with('success', 'le contenu a été bien enregistré');
      }
- 
+
      /**
       * Display the specified resource.
       *
@@ -48,9 +48,9 @@ class SkillsController extends Controller
       */
      public function show()
      {
- 
+
      }
- 
+
      /**
       * Show the form for editing the specified resource.
       *
@@ -61,7 +61,7 @@ class SkillsController extends Controller
      {
          return view('admin.skills.edit',['skill'=>Skills::findOrFail($id)]);
      }
- 
+
      /**
       * Update the specified resource in storage.
       *
@@ -73,9 +73,9 @@ class SkillsController extends Controller
         //  $input = $request->all();
          $skill = Skills::findOrFail($id);
          $skill->update($request->all());
-         return redirect()->route('skills.index')->with('success', 'le contenu a été bien enregistré');
+         return redirect()->back()->with('success', 'le contenu a été bien enregistré');
      }
- 
+
      /**
       * Remove the specified resource from storage.
       *
@@ -86,6 +86,6 @@ class SkillsController extends Controller
      {
          $skill = Skills::findOrFail($id);
          $skill->delete();
-         return redirect()->route('skills.index')->with('success', 'le contenu a été bien enregistré');
+         return redirect()->back()->with('success', 'le contenu a été bien enregistré');
      }
 }

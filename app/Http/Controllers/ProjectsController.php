@@ -117,7 +117,7 @@ class ProjectsController extends Controller
                 ]);
             }
         }
-        return redirect()->route('projects.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 
     /**
@@ -131,6 +131,6 @@ class ProjectsController extends Controller
         $project = Projects::findOrFail($id);
         $project->images()->delete();
         $project->delete();
-        return redirect()->route('projects.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>MyResume Bootstrap Template - Index</title>
+    <title>MyResume Saad El ghanemy</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link href="assets1/img/favicon.png" rel="icon">
@@ -27,28 +27,32 @@
     <header id="header" class="d-flex flex-column justify-content-center">
         <nav id="navbar" class="navbar nav-menu">
             <ul>
-                @if (session()->get('locale') == 'fr' || session()->get('locale') == null)
-                    <li><a class="d-flex justify-content-center" href="{{ route('changeLang', ['lang' => 'en']) }}"><img
-                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
-                            <span>{!! __('home.menu.English') !!}</span> </a></li>
+                @if (session()->get('locale') == 'en' || session()->get('locale') == null)
+                    <li><a class="d-flex justify-content-center" href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
+                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
+                            <span>{!! __('home.menu.French') !!}</span> </a></li>
                 @else
                     <li> <a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
-                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
-                            <span>{!! __('home.menu.French') !!}</span></a></li>
+                            href="{{ route('changeLang', ['lang' => 'en']) }}"><img
+                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
+                            <span>{!! __('home.menu.English') !!}</span></a></li>
                 @endif
                 @if (session()->get('locale') == 'en' || session()->get('locale') == 'fr' || session()->get('locale') == null)
                     <li> <a class="d-flex justify-content-center"
                             href="{{ route('changeLang', ['lang' => 'de']) }}"><img
                                 src="{{ asset('assets1/img/flags/german.png') }}" alt="">
                             <span>{!! __('home.menu.German') !!}</span></a></li>
+                @elseif(session()->get('locale') == 'de')
+                    <li><a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
+                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
+                            <span>{!! __('home.menu.French') !!}</span> </a></li>
                 @else
                     <li><a class="d-flex justify-content-center"
                             href="{{ route('changeLang', ['lang' => 'en']) }}"><img
                                 src="{{ asset('assets1/img/flags/english.png') }}" alt="">
                             <span>{!! __('home.menu.English') !!}</span> </a></li>
                 @endif
-
                 <li><a href="/#hero" class="nav-link scrollto active"><i class="bx bx-home"></i>
                         <span>{!! __('home.menu.Home') !!}</span></a>
                 </li>

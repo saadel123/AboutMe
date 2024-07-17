@@ -17,7 +17,7 @@ class ExperiencesController extends Controller
      {
          return view('admin.experiences.index',['experiences'=>Experiences::all()]);
      }
- 
+
      /**
       * Show the form for creating a new resource.
       *
@@ -27,7 +27,7 @@ class ExperiencesController extends Controller
      {
          return view('admin.experiences.create');
      }
- 
+
      /**
       * Store a newly created resource in storage.
       *
@@ -39,7 +39,7 @@ class ExperiencesController extends Controller
          Experiences::create($input);
          return redirect()->route('experiences.index')->with('success', 'le contenu a été bien enregistré');
      }
- 
+
      /**
       * Display the specified resource.
       *
@@ -48,9 +48,9 @@ class ExperiencesController extends Controller
       */
      public function show()
      {
- 
+
      }
- 
+
      /**
       * Show the form for editing the specified resource.
       *
@@ -61,7 +61,7 @@ class ExperiencesController extends Controller
      {
          return view('admin.experiences.edit',['experience'=>Experiences::findOrFail($id)]);
      }
- 
+
      /**
       * Update the specified resource in storage.
       *
@@ -73,9 +73,9 @@ class ExperiencesController extends Controller
          $input = $request->all();
          $experience = Experiences::findOrFail($id);
          $experience->update($input);
-         return redirect()->route('experiences.index')->with('success', 'le contenu a été bien enregistré');
+         return redirect()->back()->with('success', 'le contenu a été bien enregistré');
      }
- 
+
      /**
       * Remove the specified resource from storage.
       *
@@ -86,6 +86,6 @@ class ExperiencesController extends Controller
      {
          $experience = Experiences::findOrFail($id);
          $experience->delete();
-         return redirect()->route('experiences.index')->with('success', 'le contenu a été bien enregistré');
+         return redirect()->back()->with('success', 'le contenu a été bien enregistré');
      }
 }

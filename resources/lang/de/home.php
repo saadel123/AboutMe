@@ -34,7 +34,8 @@ return [
         'year' => 'Jahre alt',
         'experience' => 'Erfahrung',
         'experiences' => '+2 Jahre Erfahrung als Softwareentwickler',
-        'dpls' => 'Berufsuniversitätlizenz Web- und Mobile-Entwicklung (Bachelor)  <br> Diplom als Fachtechniker in Informatikentwicklung <br> Abitur',
+        'dpls' => '- Berufsuniversitätlizenz Web- und Mobile-Entwicklung (Bachelor)  <br> - Diplom als Fachtechniker in Informatikentwicklung <br> - Abitur',
+        'date' => 'Bis jetzt'
         // 'description2'=>"Ich biete eine umfassende Palette von Dienstleistungen an, die auf kontinuierliche Verbesserung, Lösung technischer Probleme und die vollständige Entwicklung von Web- und Softwareanwendungen ausgerichtet sind. Mein Engagement für technische Exzellenz und Innovation leitet jede meiner Dienstleistungen und gewährleistet hochwertige Lösungen und maximale Kundenzufriedenheit."
     ],
     'skills' => 'Fähigkeiten',
@@ -42,7 +43,7 @@ return [
         'title' => 'Lebenslauf',
         'description' => 'Softwareentwickler',
         'resume' => 'Lebenslauf',
-        'education' => 'Bildung',
+        'education' => 'Ausbildung',
         'attestation' => 'Bescheinigung',
         'expprof' => 'Berufserfahrung',
     ],

@@ -73,7 +73,7 @@ class EducationsController extends Controller
         $input = $request->all();
         $education = Educations::findOrFail($id);
         $education->update($input);
-        return redirect()->route('educations.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 
     /**
@@ -86,6 +86,6 @@ class EducationsController extends Controller
     {
         $education = Educations::findOrFail($id);
         $education->delete();
-        return redirect()->route('educations.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 }

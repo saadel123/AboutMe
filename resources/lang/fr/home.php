@@ -34,7 +34,9 @@ return [
         'year' => 'ans',
         'experience' => 'Expérience',
         'experiences' => '+2 ans d\'expérience en tant que développeur logiciel',
-        'dpls'=>'License universitaire professionnelle développement web et mobile <br> Diplôme de technicien spécialisé en développement informatique <br> Baccalauréat',
+        'dpls'=>'- License universitaire professionnelle développement web et mobile <br> - Diplôme de technicien spécialisé en développement informatique <br> - Baccalauréat',
+        'date' => 'jusqu\'à maintenant'
+
         // 'description2'=>"Je propose une gamme complète de services axés sur l'amélioration continue, la résolution de
         // problèmes techniques et le développement complet d'applications web et logiciels. Mon engagement
         // envers l'excellence technique et l'innovation guide chacun de mes services, assurant des
@@ -45,7 +47,7 @@ return [
         'title'=>'CV',
         'description'=>'Développeur Web Full Stack disponible pour travailler',
         'resume'=>'Résumé',
-        'education'=>'Éducation',
+        'education'=>'Formation',
         'attestation'=>'Attestation',
         'expprof'=>'Expérience Professionnelle',
     ],

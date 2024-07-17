@@ -93,14 +93,20 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3 class="resume-title">{!! __('home.resume.resume') !!}</h3>
-                        <div class="resume-item pb-0">
-                            <h4>Saad El ghanemy</h4>
-                            <p><em>{!! __('home.resume.description') !!}</em></p>
-                            <ul>
-                                <li>{!! __('home.about.address') !!}</li>
-                            </ul>
-                        </div>
+                        <h3 class="resume-title">{!! __('home.resume.expprof') !!}</h3>
+                        <p><{!! __('home.about.address') !!} </em></p>
+                        @foreach ($experiences as $experience)
+                            <div class="resume-item">
+                                <h4>{{ $experience->{'title_' . app()->getLocale()} }}</h4>
+                                <h5>{{ $experience->datedebut }} - {{ $experience->datefin ??  __('home.about.date')  }}</h5>
+                                <p><em>{{ $experience->lieu }}</em></p>
+                                {{-- <ul> --}}
+                                    {!! $experience->{'description_' . app()->getLocale()} !!}
+                                {{-- </ul> --}}
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-lg-6">
                         <h3 class="resume-title">{!! __('home.resume.education') !!}</h3>
                         @foreach ($educations as $education)
                             <div class="resume-item">
@@ -114,19 +120,14 @@
                             <h4><a href=""
                                     target="_blanck">freeCodeCamp |Java Script</a></h4>
                         </div> --}}
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 class="resume-title">{!! __('home.resume.expprof') !!}</h3>
-                        @foreach ($experiences as $experience)
-                            <div class="resume-item">
-                                <h4>{{ $experience->{'title_' . app()->getLocale()} }}</h4>
-                                <h5>{{ $experience->datedebut }} - {{ $experience->datefin ?? "jusqu'à maintenant" }}</h5>
-                                <p><em>{{ $experience->lieu }}</em></p>
-                                <ul>
-                                    {{ $experience->{'description_' . app()->getLocale()} }}
-                                </ul>
-                            </div>
-                        @endforeach
+                        <h3 class="resume-title">{!! __('home.resume.resume') !!}</h3>
+                        <div class="resume-item pb-0">
+                            <h4>Saad El ghanemy</h4>
+                            <p><em>{!! __('home.resume.description') !!}</em></p>
+                            <ul>
+                                <li>{!! __('home.about.address') !!}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

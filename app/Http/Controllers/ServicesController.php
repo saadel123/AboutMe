@@ -78,7 +78,7 @@ class ServicesController extends Controller
             $input['icon'] = $request->icon->store('services/icon', 'public');
         }
         $service->update($input);
-        return redirect()->route('services.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 
     /**
@@ -91,6 +91,6 @@ class ServicesController extends Controller
     {
         $service = Services::findOrFail($id);
         $service->delete();
-        return redirect()->route('services.index')->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
 }

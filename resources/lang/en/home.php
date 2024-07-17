@@ -34,7 +34,9 @@ return [
         'year' => 'years old',
         'experience' => 'Experience',
         'experiences' => '+2 years of experience as a software developer',
-        'dpls' => 'Professional university license web and mobile development (Bachelor) <br> Diploma as specialist technician in computer development <br> High school diploma',
+        'dpls' => '- Professional university license web and mobile development (Bachelor) <br> - Diploma as specialist technician in computer development <br> - High school diploma',
+        'date' => 'Bis jetzt'
+
         // 'description2' => "I offer a comprehensive range of services focused on continuous improvement, technical problem-solving,
         // and the full development of web applications and software. My commitment to technical excellence and
         // innovation guides each of my services, ensuring high-quality solutions and optimal customer satisfaction."

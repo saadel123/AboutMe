@@ -21,15 +21,15 @@
 
 <div class="col-12">
     <label for="description_fr" class="form-label">Description</label>
-    <textarea name="description_fr" class="form-control" id="description_fr" rows="8"  >  {{ old('description_fr', $experience->description_fr ?? '') }}</textarea>
+    <textarea name="description_fr" class="form-control" id="description_fr"  rows="9" >{{ old('description_fr', $experience->description_fr ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="description_en" class="form-label">Description En</label>
-    <textarea name="description_en" class="form-control" id="description_en"  rows="8" >  {{ old('description_en', $experience->description_en ?? '') }}</textarea>
+    <textarea name="description_en" class="form-control" id="description_en"  rows="9" >{{ old('description_en', $experience->description_en ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="description_de" class="form-label">Description de</label>
-    <textarea name="description_de" class="form-control" id="description_de"  rows="8" >  {{ old('description_de', $experience->description_de ?? '') }}</textarea>
+    <textarea name="description_de" class="form-control" id="description_de"  rows="9" >{{ old('description_de', $experience->description_de ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="datedebut" class="form-label">Date debut</label>

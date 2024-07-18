@@ -25,8 +25,8 @@
                             @endforeach
                         @endif
                     </div>
-                    {{-- <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div> --}}
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                     <div class="swiper-pagination"></div>
                 </div>
                 <div class="row justify-content-between gy-4 mt-4">
@@ -108,7 +108,7 @@
         </section><!-- /Portfolio Details Section -->
         <script type="application/json" class="swiper-config">
             {
-              "loop": false,
+              "loop": true,
               "speed": 600,
               "autoplay": {
                 "delay": 5000

@@ -16,20 +16,36 @@
 
 <div class="col-12">
     <label for="description_fr" class="form-label">Description</label>
-    <textarea name="description_fr" class="form-control" id="description_fr" rows="8"  >  {{ old('description_fr', $project->description_fr ?? '') }}</textarea>
+    <textarea name="description_fr" class="form-control" id="description_fr" rows="9" >{{ old('description_fr', $project->description_fr ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="description_en" class="form-label">Description En</label>
-    <textarea name="description_en" class="form-control" id="description_en" rows="8"  >  {{ old('description_en', $project->description_en ?? '') }}</textarea>
+    <textarea name="description_en" class="form-control" id="description_en"  rows="9" >{{ old('description_en', $project->description_en ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="description_de" class="form-label">Description de</label>
-    <textarea name="description_de" class="form-control" id="description_de" rows="8" >  {{ old('description_de', $project->description_de ?? '') }}</textarea>
+    <textarea name="description_de" class="form-control" id="description_de"  rows="9" >{{ old('description_de', $project->description_de ?? '') }}</textarea>
 </div>
 <div class="col-12">
     <label for="link" class="form-label">Link</label>
     <input type="text" name="link" class="form-control" id="link"
         value="{{ old('link', $project->link ?? '') }}">
+</div>
+<div class="col-12">
+    <label for="github_link" class="form-label">Github link</label>
+    <input type="text" name="github_link" class="form-control" id="github_link"
+        value="{{ old('github_link', $project->github_link ?? '') }}">
+</div>
+<div class="col-12">
+    <label for="categorie" class="form-label">categorie</label>
+    <select name="categorie" class="form-control" id="categorie" >
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'C#') ? 'selected' : '' ?> value="C#">C#</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'PHP' )? 'selected' : '' ?> value="PHP">PHP</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'LARAVEL') ? 'selected' : '' ?> value="LARAVEL">LARAVEL</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'JAVA' )? 'selected' : '' ?> value="JAVA">JAVA</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'WOORDPERSS') ? 'selected' : '' ?> value="WOORDPERSS">WOORDPERSS</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'VUE JS' )? 'selected' : '' ?> value="VUE JS">VUE JS</option>
+    </select>
 </div>
 <div class="col-12">
     <label for="image" class="form-label">Image Principale</label>

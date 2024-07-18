@@ -53,12 +53,10 @@ return [
     ],
     'portfolio'=>[
         'title'=>'Portfolio',
-        'description'=>"En explorant mon portfolio, vous découvrirez la diversité de mes compétences, de la conception à la
-        mise en œuvre, en passant par l'optimisation des performances et la maintenance continue. Mon
-        objectif est de contribuer de manière significative au développement d'applications web innovantes
-        et de fournir des solutions qui dépassent les attentes. Mon portfolio est une invitation à explorer
-        mes réalisations, à comprendre mon approche du développement et à discuter de la manière dont je
-        peux apporter une valeur ajoutée à votre projet.",
+        'filters' => [
+            'title' => 'Tout'
+        ],
+        'description'=>"Ces projets mettent en valeur mes contributions où j'ai été impliqué de la conception au développement, collaborant étroitement avec des développeurs, des chefs de projet, des designers, des clients et des créateurs de contenu pour les construire de zéro. En explorant mon portfolio, vous découvrirez la diversité de mes compétences, de la conception à l'implémentation, en passant par l'optimisation des performances et la maintenance continue. Mon objectif est de contribuer de manière significative au développement d'applications web innovantes et de fournir des solutions qui dépassent les attentes. Mon portfolio est une invitation à explorer mes réalisations, comprendre mon approche de développement et discuter de la manière dont je peux ajouter de la valeur à votre projet.",
     ],
     'services'=>[
         'title'=>'Services',

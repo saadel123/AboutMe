@@ -49,7 +49,10 @@ return [
     ],
     'portfolio' => [
         'title' => 'Portfolio',
-        'description' => "Bei der Erkundung meines Portfolios entdecken Sie die Vielfalt meiner Fähigkeiten, vom Entwurf über die Umsetzung bis zur Optimierung der Leistung und kontinuierlichen Wartung. Mein Ziel ist es, einen bedeutenden Beitrag zur Entwicklung innovativer Webanwendungen zu leisten und Lösungen anzubieten, die die Erwartungen übertreffen. Mein Portfolio lädt Sie ein, meine Leistungen zu erkunden, meine Herangehensweise an die Entwicklung zu verstehen und darüber zu diskutieren, wie ich einen Mehrwert für Ihr Projekt schaffen kann.",
+        'filters' => [
+            'title' => 'Alle'
+        ],
+        'description' => "Diese Projekte zeigen meine Beiträge, bei denen ich von der Konzeption bis zur Entwicklung eng mit Entwicklern, Projektmanagern, Designern, Kunden und Inhalten zusammenarbeitete Ersteller, um sie von Grund auf aufzubauen. Durch die Erkundung meines Portfolios werden Sie die Vielfalt meiner Fähigkeiten entdecken, von Design über Implementierung, Leistungsoptimierung bis hin zur kontinuierlichen Wartung. Mein Ziel ist es, maßgeblich zur Entwicklung innovativer Webanwendungen beizutragen und Lösungen anzubieten, die die Erwartungen übertreffen. Mein Portfolio lädt Sie ein, meine Leistungen zu erkunden, meine Entwicklungsansätze zu verstehen und zu besprechen, wie ich einen Mehrwert für Ihr Projekt schaffen kann.        ",
     ],
     'services' => [
         'title' => 'Dienstleistungen',

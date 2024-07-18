@@ -52,11 +52,10 @@ return [
     ],
     'portfolio' => [
         'title' => 'Portfolio',
-        'description' => "By exploring my portfolio, you will discover the diversity of my skills, from design to
-        implementation, performance optimization, and continuous maintenance. My goal is to contribute significantly
-        to the development of innovative web applications and provide solutions that exceed expectations. My
-        portfolio is an invitation to explore my achievements, understand my development approach, and discuss how I
-        can add value to your project.",
+        'filters' => [
+            'title' => 'ALL'
+        ],
+        'description' => "These projects showcase my contributions where I've been involved from conception to development, collaborating closely with developers, project managers, designers, clients, and content creators to build them from scratch. By exploring my portfolio, you will discover the diversity of my skills, from design to implementation, performance optimization, and continuous maintenance. My goal is to contribute significantly to the development of innovative web applications and provide solutions that exceed expectations. My portfolio is an invitation to explore my achievements, understand my development approach, and discuss how I can add value to your project.",
     ],
     'services' => [
         'title' => 'Services',

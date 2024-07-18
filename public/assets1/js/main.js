@@ -1,4 +1,4 @@
-/**
+/**function
 * Template Name: MyResume
 * Updated: Nov 17 2023 with Bootstrap v5.3.2
 * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
@@ -35,7 +35,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -200,14 +200,49 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
+/**
+   * Init isotope layout and filters
+   */
+document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+  let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+  let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+  let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
+  let initIsotope;
+  imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+    initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+      itemSelector: '.isotope-item',
+      layoutMode: layout,
+      filter: filter,
+      sortBy: sort
+    });
+  });
+
+  isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
+    filters.addEventListener('click', function() {
+      isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+      this.classList.add('filter-active');
+      initIsotope.arrange({
+        filter: this.getAttribute('data-filter')
+      });
+      if (typeof aosInit === 'function') {
+        aosInit();
+      }
+    }, false);
+  });
+
+});
+
+/**
+ * Init swiper sliders
+ */
   /**
-   * Initiate portfolio details lightbox 
+   * Initiate portfolio details lightbox
    */
   const portfolioDetailsLightbox = GLightbox({
     selector: '.portfolio-details-lightbox',
@@ -229,7 +264,11 @@
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true
-    }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
 
   /**
@@ -247,12 +286,17 @@
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true
-    }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
 
   /**
    * Animation on scroll
    */
+
   window.addEventListener('load', () => {
     AOS.init({
       duration: 1000,
@@ -263,7 +307,7 @@
   });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
 

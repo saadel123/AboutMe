@@ -7,8 +7,12 @@
     <title>MyResume Saad El ghanemy</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <link href="assets1/img/favicon.png" rel="icon">
-    <link href="assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets1/img/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets1/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets1/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets1/img/favicon/site.webmanifest') }}">
+    <!--End Favicon-->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">

@@ -9,6 +9,9 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\EducationsController;
 use App\Http\Controllers\ChangerLangController;
 use App\Http\Controllers\ExperiencesController;
+use App\Http\Controllers\ContactController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,7 @@ use App\Http\Controllers\ExperiencesController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/single-project/{id}', [ProjectsController::class, 'show'])->name('single.project');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 
 Auth::routes();
 

@@ -67,5 +67,16 @@ return [
         'msg' => "Nachricht",
         'btn' => "Nachricht senden",
     ],
+    'single-project' => [
+        'images' => 'Website-Bilder',
+        'images_code' => 'Code-Bilder',
+    ],
+    'project' => [
+        'project_info' => 'Projektinformationen',
+        'category' => 'Kategorie',
+        'project_url' => 'Projekt-URL',
+        'github_url' => 'Github-URL',
+        'website' => 'Website besuchen'
+    ],
     'devweb' => 'Softwareentwickler, +2 Jahre Erfahrung, Leidenschaftlich daran interessiert, neue Technologien zu lernen',
 ];

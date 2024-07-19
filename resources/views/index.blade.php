@@ -176,7 +176,7 @@
                     <li data-filter=".WORDPRESS">WORDPRESS</li>
                 </ul><!-- End Portfolio Filters -->
 
-                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="100">
                     @foreach ($projects as $project)
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $project->categorie }}">
                         <img src="{{ 'storage/' . $project->image }}" class="img-fluid portfolio-wrap portfolio-img" alt="">
@@ -192,7 +192,7 @@
         </div>
     </section>
     <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
 
             <div class="section-title">
                 <h2>Contact</h2>
@@ -220,7 +220,8 @@
                     </div>
                 </div>
                 <div class="col-lg-8 mt-5 mt-lg-0">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form action="{{ route('contact.submit') }}" method="post" role="form" class="php-email-form">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="{!! __('home.Contact.name') !!}" required>
@@ -233,7 +234,7 @@
                             <input type="text" class="form-control" name="subject" id="subject" placeholder="{!! __('home.Contact.sub') !!}" required>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control" name="{!! __('home.Contact.msg') !!}" rows="5" placeholder="Message" required></textarea>
+                            <textarea class="form-control" name="message" rows="5" placeholder="{!! __('home.Contact.msg') !!}" required></textarea>
                         </div>
                         <div class="my-3">
                             <div class="loading">Chargement</div>

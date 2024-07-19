@@ -16,11 +16,14 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title_fr')->nullable();
-            $table->string('description_fr')->nullable();
             $table->string('title_en')->nullable();
+            $table->string('title_de')->nullable();
+            $table->string('description_fr')->nullable();
             $table->longText('description_en')->nullable();
+            $table->longText('description_de')->nullable();
             $table->string('image')->nullable();
             $table->string('link')->nullable();
+            $table->string('github_link')->nullable();
             $table->string('video')->nullable();
             $table->timestamps();
             $table->softDeletes();

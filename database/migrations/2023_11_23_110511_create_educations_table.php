@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title_fr')->nullable();
             $table->string('title_en')->nullable();
+            $table->string('title_de')->nullable();
             $table->string('lieu')->nullable();
             $table->date('datedebut')->nullable();
             $table->date('datefin')->nullable();

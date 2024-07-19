@@ -78,6 +78,13 @@ return [
         'images'=>'Images de Site',
         'images_code'=>'Images de Code',
     ],
+    'project' => [
+        'project_info' => 'Informations sur le projet',
+        'category' => 'Catégorie',
+        'project_url' => 'URL du projet',
+        'github_url' => 'URL Github',
+        'website' => 'Visiter le site web'
+    ],
     'devweb' => 'Développeur logiciel, +2 ans d\'expérience, Passionné par l\'apprentissage de nouvelles technologies',
 
 ];

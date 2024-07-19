@@ -76,5 +76,12 @@ return [
         'images' => 'Website Images',
         'images_code' => 'Code Images',
     ],
+    'project' => [
+        'project_info'=> 'Project information',
+        'category' => 'Category',
+        'project_url' => 'Project URL',
+        'github_url' => 'Github URL',
+        'website' => 'Visit Website'
+    ],
     'devweb' => 'Software Developer,+2 years of experience, Passionate about learning new technologies',
 ];

@@ -29,7 +29,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <div class="row justify-content-between gy-4 mt-4">
+                <div class="row justify-content-between gy-4 mt-4 mb-3">
                     <div class="col-lg-8" data-aos="fade-up">
                         <div class="portfolio-description">
                             <h2><a href="{{ $project->link }}"
@@ -41,20 +41,28 @@
                     </div>
                     <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
                         <div class="portfolio-info">
-                            <h3>Project information</h3>
+                            <h3>{!! __('home.project.project_info') !!} </h3>
                             <ul>
-                                <li><strong>Category</strong> Web design</li>
-                                <li><strong>Client</strong> ASU Company</li>
-                                <li><strong>Project date</strong> 01 March, 2020</li>
-                                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+                                <li><strong>{!! __('home.project.category') !!} </strong> {{ $project->categorie }}</li>
+                                {{-- <li><strong>Client</strong> </li> --}}
+                                {{-- <li><strong>Project date</strong> 01 June, 2024</li> --}}
+                                @if (!empty($project->link))
+                                    <li><strong>{!! __('home.project.project_url') !!} </strong> <a href="{{ $project->link }}"
+                                            target="_blank">{{ $project->link }}</a></li>
+                                @endif
+                                @if (!empty($project->github_link))
+                                    <li><strong>{!! __('home.project.github_url') !!} </strong> <a href="{{ $project->github_link }}"
+                                            target="_blank">{{ $project->github_link }}</a></li>
+                                @endif
+                                <li><a href="{{ $project->link }}" target="_blank"
+                                        class="btn-visit align-self-start">{!! __('home.project.website') !!} </a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 @if ($images->count() > 0)
                     <div class="row justify-content-center">
-                        <div class="col-12">
+                        <div class="col-12" data-aos="fade-up">
                             <h3>{!! __('home.single-project.images') !!}</h3>
                             <div class="row  mt-4">
                                 <div class="col-lg-3  cont-image col-md-6 mt-4">
@@ -78,7 +86,7 @@
                     </div>
                 @endif
                 @if ($images_code->count() > 0)
-                    <div class="row mt-4 justify-content-center">
+                    <div class="row mt-4 justify-content-center" data-aos="fade-up">
                         <div class="col-10">
                             <h3>{!! __('home.single-project.images_code') !!}</h3>
                             <div class="row  mt-4">
@@ -96,7 +104,7 @@
                     </div>
                 @endif
                 @if ($project->video)
-                    <div class="row d-flex justify-content-center" style="margin-top:60px">
+                    <div class="row d-flex justify-content-center" data-aos="fade-up" style="margin-top:60px;">
                         <div class="col-md-10 d-flex justify-content-center">
                             <video src="{{ asset('storage/' . $project->video) }}" controls
                                 style="max-height: 450px;"></video>

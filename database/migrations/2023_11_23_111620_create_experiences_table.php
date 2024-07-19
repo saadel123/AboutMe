@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->string('title_fr')->nullable();
-            $table->longText('description_fr')->nullable();
             $table->string('title_en')->nullable();
+            $table->string('title_de')->nullable();
+            $table->longText('description_fr')->nullable();
             $table->longText('description_en')->nullable();
+            $table->longText('description_de')->nullable();
             $table->string('lieu')->nullable();
             $table->date('datedebut')->nullable();
             $table->date('datefin')->nullable();

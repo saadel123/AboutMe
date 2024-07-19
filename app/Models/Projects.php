@@ -11,7 +11,7 @@ class Projects extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'title_fr','description_fr','categorie','image','video','link','link_github','title_en','title_de','description_en','description_de',
+        'title_fr','description_fr','categorie','image','video','link','github_link','title_en','title_de','description_en','description_de',
     ];
 
     public function images()

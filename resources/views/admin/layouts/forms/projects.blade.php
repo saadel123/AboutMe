@@ -43,7 +43,7 @@
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'PHP' )? 'selected' : '' ?> value="PHP">PHP</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'LARAVEL') ? 'selected' : '' ?> value="LARAVEL">LARAVEL</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'JAVA' )? 'selected' : '' ?> value="JAVA">JAVA</option>
-        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'WOORDPERSS') ? 'selected' : '' ?> value="WOORDPERSS">WOORDPERSS</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'WORDPRESS') ? 'selected' : '' ?> value="WOORDPERSS">WOORDPERSS</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'VUE JS' )? 'selected' : '' ?> value="VUE JS">VUE JS</option>
     </select>
 </div>

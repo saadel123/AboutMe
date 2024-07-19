@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8 mt-5 mt-lg-0">
-                    <form action="{{ route('contact.submit') }}" method="post" role="form" class="php-email-form">
+                    <form id="contact-form" role="form" class="php-email-form">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
@@ -234,14 +234,15 @@
                             <input type="text" class="form-control" name="subject" id="subject" placeholder="{!! __('home.Contact.sub') !!}" required>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="{!! __('home.Contact.msg') !!}" required></textarea>
+                            <textarea class="form-control" name="message" rows="5" placeholder="{!! __('home.Contact.message') !!}" required></textarea>
                         </div>
                         <div class="my-3">
-                            <div class="loading">Chargement</div>
+                            <div class="loading">{!! __('home.Contact.loading') !!}</div>
                             <div class="error-message"></div>
-                            <div class="sent-message">Votre message a été envoyé. Merci !</div>
+                            <div class="sent-message">{!! __('home.Contact.msg_success') !!}</div>
                         </div>
-                        <div class="text-center"><button type="submit">{!! __('home.Contact.btn') !!}</button></div>
+                        {{-- <button type="submit" id="submit-btn">{!! __('home.Contact.btn') !!}</button> --}}
+                        <div class="text-center"><button type="submit" id="submit-btn">{!! __('home.Contact.btn') !!}</button></div>
                     </form>
                 </div>
             </div>
@@ -255,6 +256,9 @@
         background-repeat: no-repeat;
         background-color: rgb(225 226 228);
         height: 285px;
+    }
+    .error-message{
+        display: none!important;
     }
 </style>
 @endsection

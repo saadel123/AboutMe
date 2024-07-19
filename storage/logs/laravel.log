@@ -13315,3 +13315,82 @@ Did you mean one of these?
 #60 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\xampp\\\\htdocs...')
 #61 {main}
 "} 
+[2024-07-19 11:24:55] local.ERROR: filemtime(): stat failed for C:\xampp\htdocs\portfolioSaadElghv2\.env {"exception":"[object] (ErrorException(code: 0): filemtime(): stat failed for C:\\xampp\\htdocs\\portfolioSaadElghv2\\.env at C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\ServeCommand.php:109)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'filemtime(): st...', 'C:\\\\xampp\\\\htdocs...', 109)
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'filemtime(): st...', 'C:\\\\xampp\\\\htdocs...', 109)
+#2 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\ServeCommand.php(109): filemtime('C:\\\\xampp\\\\htdocs...')
+#3 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Console\\ServeCommand->handle()
+#4 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#5 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#6 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#7 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#8 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#9 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#10 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(152): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#11 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\ServeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\xampp\\htdocs\\portfolioSaadElghv2\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 {main}
+"} 
+[2024-07-19 11:24:55] local.ERROR: include(C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer/../nunomaduro/collision/src/Adapters/Laravel/IgnitionSolutionsRepository.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer/../nunomaduro/collision/src/Adapters/Laravel/IgnitionSolutionsRepository.php): Failed to open stream: No such file or directory at C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php:576)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(C:\\\\xamp...', 'C:\\\\xampp\\\\htdocs...', 576)
+#1 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'include(C:\\\\xamp...', 'C:\\\\xampp\\\\htdocs...', 576)
+#2 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(576): include('C:\\\\xampp\\\\htdocs...')
+#3 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\xampp\\\\htdocs...')
+#4 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\nunomaduro\\collision\\src\\Adapters\\Laravel\\CollisionServiceProvider.php(54): Composer\\Autoload\\ClassLoader->loadClass('NunoMaduro\\\\Coll...')
+#5 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(885): NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider->NunoMaduro\\Collision\\Adapters\\Laravel\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#6 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(770): Illuminate\\Container\\Container->build(Object(Closure))
+#7 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(856): Illuminate\\Container\\Container->resolve('NunoMaduro\\\\Coll...', Array, true)
+#8 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(706): Illuminate\\Foundation\\Application->resolve('NunoMaduro\\\\Coll...', Array)
+#9 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(841): Illuminate\\Container\\Container->make('NunoMaduro\\\\Coll...', Array)
+#10 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\nunomaduro\\collision\\src\\Adapters\\Laravel\\ExceptionHandler.php(66): Illuminate\\Foundation\\Application->make('NunoMaduro\\\\Coll...')
+#11 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(466): NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler->renderForConsole(Object(Symfony\\Component\\Console\\Output\\ConsoleOutput), Object(ErrorException))
+#12 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(159): Illuminate\\Foundation\\Console\\Kernel->renderException(Object(Symfony\\Component\\Console\\Output\\ConsoleOutput), Object(ErrorException))
+#13 C:\\xampp\\htdocs\\portfolioSaadElghv2\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 {main}
+"} 
+[2024-07-19 11:24:55] local.ERROR: Uncaught ErrorException: include(C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer/../nunomaduro/collision/src/Adapters/Laravel/IgnitionSolutionsRepository.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer\ClassLoader.php:576
+Stack trace:
+#0 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(270): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(C:\\xamp...', 'C:\\xampp\\htdocs...', 576)
+#1 C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer\ClassLoader.php(576): Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(2, 'include(C:\\xamp...', 'C:\\xampp\\htdocs...', 576)
+#2 C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer\ClassLoader.php(576): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\portfolioSaadElghv2\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\portfolioSaadElghv2\vendor\nunomaduro\collision\src\Adapters\Laravel\CollisionServiceProvider.php(54): Composer\Autoload\ClassLoader->loadClass('NunoMaduro\\Coll...')
+#5 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Container\Container.php(885): NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider->NunoMaduro\Collision\Adapters\Laravel\{closure}(Object(Illuminate\Foundation\Application), Array)
+#6 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Container\Container.php(770): Illuminate\Container\Container->build(Object(Closure))
+#7 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(856): Illuminate\Container\Container->resolve('NunoMaduro\\Coll...', Array, true)
+#8 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Container\Container.php(706): Illuminate\Foundation\Application->resolve('NunoMaduro\\Coll...', Array)
+#9 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(841): Illuminate\Container\Container->make('NunoMaduro\\Coll...', Array)
+#10 C:\xampp\htdocs\portfolioSaadElghv2\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php(66): Illuminate\Foundation\Application->make('NunoMaduro\\Coll...')
+#11 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(222): NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler->renderForConsole(Object(Symfony\Component\Console\Output\ConsoleOutput), Object(ErrorException))
+#12 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(204): Illuminate\Foundation\Bootstrap\HandleExceptions->renderForConsole(Object(ErrorException))
+#13 C:\xampp\htdocs\portfolioSaadElghv2\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(270): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(ErrorException))
+#14 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(ErrorException))
+#15 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ErrorException: include(C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer/../nunomaduro/collision/src/Adapters/Laravel/IgnitionSolutionsRepository.php): Failed to open stream: No such file or directory in C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php:576
+Stack trace:
+#0 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(C:\\\\xamp...', 'C:\\\\xampp\\\\htdocs...', 576)
+#1 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'include(C:\\\\xamp...', 'C:\\\\xampp\\\\htdocs...', 576)
+#2 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(576): include('C:\\\\xampp\\\\htdocs...')
+#3 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\xampp\\\\htdocs...')
+#4 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\nunomaduro\\collision\\src\\Adapters\\Laravel\\CollisionServiceProvider.php(54): Composer\\Autoload\\ClassLoader->loadClass('NunoMaduro\\\\Coll...')
+#5 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(885): NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider->NunoMaduro\\Collision\\Adapters\\Laravel\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#6 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(770): Illuminate\\Container\\Container->build(Object(Closure))
+#7 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(856): Illuminate\\Container\\Container->resolve('NunoMaduro\\\\Coll...', Array, true)
+#8 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(706): Illuminate\\Foundation\\Application->resolve('NunoMaduro\\\\Coll...', Array)
+#9 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(841): Illuminate\\Container\\Container->make('NunoMaduro\\\\Coll...', Array)
+#10 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\nunomaduro\\collision\\src\\Adapters\\Laravel\\ExceptionHandler.php(66): Illuminate\\Foundation\\Application->make('NunoMaduro\\\\Coll...')
+#11 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(222): NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler->renderForConsole(Object(Symfony\\Component\\Console\\Output\\ConsoleOutput), Object(ErrorException))
+#12 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(204): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->renderForConsole(Object(ErrorException))
+#13 C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleException(Object(ErrorException))
+#14 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(Object(ErrorException))
+#15 {main}
+  thrown at C:\\xampp\\htdocs\\portfolioSaadElghv2\\vendor\\composer\\ClassLoader.php:576)
+[stacktrace]
+#0 {main}
+"} 

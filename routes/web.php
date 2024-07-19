@@ -30,7 +30,9 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.subm
 
 Auth::routes();
 
-Route::get('/changeLang', [ChangerLangController::class, 'lang_change'])->name('changeLang');
+// Route::get('/changeLang', [ChangerLangController::class, 'lang_change'])->name('changeLang');
+Route::get('/change-language/{lang}', [ChangerLangController::class, 'changeLang'])->name('changeLang');
+
 Route::get('/en', [ChangerLangController::class, 'index']);
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home');
@@ -44,5 +46,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('services', ServicesController::class);
     // Projects
     Route::resource('projects', ProjectsController::class);
+    Route::resource('contacts', ContactController::class);
 
 });

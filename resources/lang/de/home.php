@@ -66,6 +66,8 @@ return [
         'sub' => "Betreff",
         'msg' => "Nachricht",
         'btn' => "Nachricht senden",
+        'loading' => "Laden",
+        'msg_success' => "Ihre Nachricht wurde gesendet. Danke!",
     ],
     'single-project' => [
         'images' => 'Website-Bilder',

@@ -46,16 +46,16 @@
                                 <li><strong>{!! __('home.project.category') !!} </strong> {{ $project->categorie }}</li>
                                 {{-- <li><strong>Client</strong> </li> --}}
                                 {{-- <li><strong>Project date</strong> 01 June, 2024</li> --}}
-                                @if (!empty($project->link))
-                                    <li><strong>{!! __('home.project.project_url') !!} </strong> <a href="{{ $project->link }}"
-                                            target="_blank">{{ $project->link }}</a></li>
-                                @endif
                                 @if (!empty($project->github_link))
                                     <li><strong>{!! __('home.project.github_url') !!} </strong> <a href="{{ $project->github_link }}"
                                             target="_blank">{{ $project->github_link }}</a></li>
                                 @endif
+                                @if (!empty($project->link))
+                                <li><strong>{!! __('home.project.project_url') !!} </strong> <a href="{{ $project->link }}"
+                                        target="_blank">{{ $project->link }}</a></li>
                                 <li><a href="{{ $project->link }}" target="_blank"
                                         class="btn-visit align-self-start">{!! __('home.project.website') !!} </a></li>
+                            @endif
                             </ul>
                         </div>
                     </div>

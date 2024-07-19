@@ -71,13 +71,15 @@ return [
         'sub' => 'Subject',
         'message' => 'Message',
         'btn' => 'Send Message',
+        'loading' => "Loading",
+        'msg_success' => "Your message has been sent. Thank you!",
     ],
     'single-project' => [
         'images' => 'Website Images',
         'images_code' => 'Code Images',
     ],
     'project' => [
-        'project_info'=> 'Project information',
+        'project_info' => 'Project information',
         'category' => 'Category',
         'project_url' => 'Project URL',
         'github_url' => 'Github URL',

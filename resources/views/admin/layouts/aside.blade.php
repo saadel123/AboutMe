@@ -6,7 +6,7 @@
             <span>Home</span>
         </a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link  {{ Str::startsWith(request()->url(), route('educations.index')) ? '' : 'collapsed' }}" href="{{ route('educations.index') }}">
             <i class="ri-account-box-fill"></i><span>Educations</span>
@@ -30,6 +30,11 @@
     <li class="nav-item">
         <a class="nav-link  {{ Str::startsWith(request()->url(), route('projects.index')) ? '' : 'collapsed' }}" href="{{ route('projects.index') }}">
             <i class="ri-account-box-fill"></i><span>Projects</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link  {{ Str::startsWith(request()->url(), route('contacts.index')) ? '' : 'collapsed' }}" href="{{ route('contacts.index') }}">
+            <i class="ri-account-box-fill"></i><span>Contacts</span>
         </a>
     </li>
 

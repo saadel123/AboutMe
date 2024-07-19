@@ -32,8 +32,35 @@
     <header id="header" class="d-flex flex-column justify-content-center">
         <nav id="navbar" class="navbar nav-menu">
             <ul>
-                @if (session()->get('locale') == 'en' || session()->get('locale') == null)
-                    <li><a class="d-flex justify-content-center" href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
+                @php
+                    $languages = config('languages');
+                    $currentLocale = session()->get('locale', 'en');
+                    $defaultLocale = 'en';
+
+                    // Excluding the current locale from the list of available languages
+                    $availableLanguages = array_filter(
+                        $languages,
+                        function ($key) use ($currentLocale) {
+                            return $key !== $currentLocale;
+                        },
+                        ARRAY_FILTER_USE_KEY,
+                    );
+                @endphp
+
+                @foreach ($availableLanguages as $langCode => $lang)
+                    <li>
+                        <a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => $langCode]) }}">
+                            <img src="{{ asset($lang['flag']) }}" alt="">
+                            <span>{!! __('home.menu.' . $lang['name']) !!}</span>
+                        </a>
+                    </li>
+                @endforeach
+
+                <!--Old logique-->
+                {{-- @if (session()->get('locale') == 'en' || session()->get('locale') == null)
+                    <li><a class="d-flex justify-content-center"
+                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
                                 src="{{ asset('assets1/img/flags/french.png') }}" alt="">
                             <span>{!! __('home.menu.French') !!}</span> </a></li>
                 @else
@@ -57,8 +84,8 @@
                             href="{{ route('changeLang', ['lang' => 'en']) }}"><img
                                 src="{{ asset('assets1/img/flags/english.png') }}" alt="">
                             <span>{!! __('home.menu.English') !!}</span> </a></li>
-                @endif
-                <li><a href="/#hero" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                @endif --}}
+                <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i>
                         <span>{!! __('home.menu.Home') !!}</span></a>
                 </li>
                 <li><a href="/#about" class="nav-link scrollto"><i class="bx bx-user"></i>
@@ -96,7 +123,6 @@
             </div>
             <div class="credits">
                 <br>
-
                 {{-- Designed by <a href="#">Saad</a> --}}
             </div>
         </div>
@@ -105,6 +131,7 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('assets1/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('assets1/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets1/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -120,6 +147,49 @@
         document.addEventListener('DOMContentLoaded', () => {
             const glightbox = GLightbox({
                 selector: '.glightbox'
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.loading').hide();
+            $('.sent-message').hide();
+            $('.error-message').hide();
+            $('#contact-form').on('submit', function(event) {
+                event.preventDefault();
+                $('.loading').show();
+                $('#submit-btn').prop('disabled', true).html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span class="visually-hidden">Loading...</span>'
+                );
+                $.ajax({
+                    url: "{{ route('contact.submit') }}",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('.loading').hide();
+                        $('#submit-btn').prop('disabled', false).html(
+                            '{!! __('home.Contact.btn') !!}');
+                        if (response.success) {
+                            $('.sent-message').show();
+                            $('#contact-form')[0].reset();
+                        } else {
+                            $('.error-message').text(response.error).show();
+                        }
+                    },
+                    error: function(xhr) {
+                        $('.loading').hide();
+                        $('#submit-btn').prop('disabled', false).html(
+                            '{!! __('home.Contact.btn') !!}');
+                        let errors = xhr.responseJSON.errors;
+                        let errorMessage = '';
+                        for (let key in errors) {
+                            if (errors.hasOwnProperty(key)) {
+                                errorMessage += errors[key] + ' ';
+                            }
+                        }
+                        $('.error-message').text(errorMessage).show();
+                    }
+                });
             });
         });
     </script>

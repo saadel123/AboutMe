@@ -1,31 +1,20 @@
 <div class="col-12">
-    <label for="title_fr" class="form-label">Titre</label>
-    <input type="text" name="title_fr" class="form-control" id="title_fr" 
-        value="{{ old('title_fr', $education->title_fr ?? '') }}">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="name"
+        value="{{ old('name', $contact->name ?? '') }}" required>
 </div>
 <div class="col-12">
-    <label for="title_en" class="form-label">Titre En</label>
-    <input type="text" name="title_en" class="form-control" id="title_en" 
-        value="{{ old('title_en', $education->title_en ?? '') }}">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" name="email" class="form-control" id="email"
+        value="{{ old('email', $contact->email ?? '') }}" required>
 </div>
 <div class="col-12">
-    <label for="title_de" class="form-label">Titre de</label>
-    <input type="text" name="title_de" class="form-control" id="title_de" 
-        value="{{ old('title_de', $education->title_de ?? '') }}">
+    <label for="subject" class="form-label">Subject</label>
+    <input type="text" name="subject" class="form-control" id="subject"
+        value="{{ old('subject', $contact->subject ?? '') }}" required>
 </div>
 <div class="col-12">
-    <label for="lieu" class="form-label">Lieu</label>
-    <input type="text" name="lieu" class="form-control" id="lieu" 
-        value="{{ old('lieu', $education->lieu ?? '') }}">
+    <label for="message" class="form-label">Message</label>
+    <textarea name="message" class="form-control" id="message" rows="5"
+        required>{{ old('message', $contact->message ?? '') }}</textarea>
 </div>
-<div class="col-12">
-    <label for="datedebut" class="form-label">Date debut</label>
-    <input type="date" name="datedebut" class="form-control" id="datedebut" 
-        value="{{ old('datedebut', $education->datedebut ?? '') }}">
-</div>
-<div class="col-12">
-    <label for="datefin" class="form-label">Date Fin</label>
-    <input type="date" name="datefin" class="form-control" id="datefin" 
-        value="{{ old('datefin', $education->datefin ?? '') }}">
-</div>
-

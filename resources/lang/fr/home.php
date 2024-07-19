@@ -73,6 +73,8 @@ return [
         'sub'=>"Sujet",
         'msg'=>"Message",
         'btn'=>"Envoyer le message",
+        'loading' => "Chargement",
+        'msg_success' => "Votre message a été envoyé. Merci !",
     ],
     'single-project' => [
         'images'=>'Images de Site',

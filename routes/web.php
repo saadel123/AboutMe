@@ -47,5 +47,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Projects
     Route::resource('projects', ProjectsController::class);
     Route::resource('contacts', ContactController::class);
+    Route::get('images/destroy/{id}', [ProjectsController::class , 'DestroyImage'])->name('image.destroy');
 
 });

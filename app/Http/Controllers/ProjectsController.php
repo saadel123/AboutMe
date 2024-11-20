@@ -133,4 +133,10 @@ class ProjectsController extends Controller
         $project->delete();
         return redirect()->back()->with('success', 'le contenu a été bien enregistré');
     }
+    public function DestroyImage($id)
+    {
+        $image = Images::findOrFail($id);
+        $image->delete();
+        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+    }
 }

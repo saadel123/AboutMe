@@ -57,34 +57,6 @@
                     </li>
                 @endforeach
 
-                <!--Old logique-->
-                {{-- @if (session()->get('locale') == 'en' || session()->get('locale') == null)
-                    <li><a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
-                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
-                            <span>{!! __('home.menu.French') !!}</span> </a></li>
-                @else
-                    <li> <a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'en']) }}"><img
-                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
-                            <span>{!! __('home.menu.English') !!}</span></a></li>
-                @endif
-                @if (session()->get('locale') == 'en' || session()->get('locale') == 'fr' || session()->get('locale') == null)
-                    <li> <a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'de']) }}"><img
-                                src="{{ asset('assets1/img/flags/german.png') }}" alt="">
-                            <span>{!! __('home.menu.German') !!}</span></a></li>
-                @elseif(session()->get('locale') == 'de')
-                    <li><a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'fr']) }}"><img
-                                src="{{ asset('assets1/img/flags/french.png') }}" alt="">
-                            <span>{!! __('home.menu.French') !!}</span> </a></li>
-                @else
-                    <li><a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => 'en']) }}"><img
-                                src="{{ asset('assets1/img/flags/english.png') }}" alt="">
-                            <span>{!! __('home.menu.English') !!}</span> </a></li>
-                @endif --}}
                 <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i>
                         <span>{!! __('home.menu.Home') !!}</span></a>
                 </li>

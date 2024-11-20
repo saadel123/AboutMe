@@ -57,11 +57,24 @@
 </div>
 <div class="col-12">
     <label for="images" class="form-label">Images</label>
-    <input type="file" multiple name="images[]" class="form-control" id="images" >
+    <input type="file" multiple name="images[]" class="form-control" id="images">
+    <div class="upload-image mb-16 d-flex flex-wrap mt-4">
+        @if( isset($project) && $project->images->count() > 0)
+        @foreach($project->images as $image)
+        <div class="item m-2">
+            <div style="display: flex;justify-content: flex-start;">
+                <a href="{{ route('image.destroy', $image->id) }}" onclick="if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {window.location.href = url;} return false"
+                    style="color:red" class="bi bi-x-circle-fill"></a>
+            </div>
+            <img src="{{asset('storage/'.$image->url)}}" style="max-height: 100px;" alt="{{$image->url}}">
+        </div>
+        @endforeach
+        @endif
+    </div>
 </div>
 <div class="col-12">
     <label for="images_code" class="form-label">Images Code</label>
-    <input type="file" multiple name="images_code[]" class="form-control" id="images_code" >
+    <input type="file" multiple name="images_code[]" class="form-control" id="images_code">
 </div>
 
 

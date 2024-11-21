@@ -67,6 +67,8 @@
                 </li>
                 <li><a href="/#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
                         <span>{!! __('home.menu.Portfolio') !!}</span></a></li>
+                <li><a href="/#certificates" class="nav-link scrollto"><i class="bi bi-patch-check"></i>
+                        <span>{!! __('home.menu.certificates') !!}</span></a></li>
                 {{-- <li><a href="/#services" class="nav-link scrollto"><i class="bx bx-server"></i>
                         <span>Services</span></a>
                 </li> --}}

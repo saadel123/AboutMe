@@ -33,6 +33,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link  {{ Str::startsWith(request()->url(), route('certificates.index')) ? '' : 'collapsed' }}" href="{{ route('certificates.index') }}">
+            <i class="ri-account-box-fill"></i><span>certificates   </span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link  {{ Str::startsWith(request()->url(), route('contacts.index')) ? '' : 'collapsed' }}" href="{{ route('contacts.index') }}">
             <i class="ri-account-box-fill"></i><span>Contacts</span>
         </a>

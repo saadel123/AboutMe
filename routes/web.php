@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -46,7 +47,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('services', ServicesController::class);
     // Projects
     Route::resource('projects', ProjectsController::class);
+    // contacts
     Route::resource('contacts', ContactController::class);
+    // certificates
+    Route::resource('certificates', CertificateController::class);
     Route::get('images/destroy/{id}', [ProjectsController::class , 'DestroyImage'])->name('image.destroy');
 
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Educations;
 use App\Models\Experiences;
 use App\Models\Projects;
+use App\Models\Certificate;
 use App\Models\Services;
 use App\Models\Skills;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class HomeController extends Controller
             'skills' => Skills::all(),
             'services' => Services::all(),
             'projects' => Projects::all(),
+            'certificates' => Certificate::all(),
         ]);
     }
 }

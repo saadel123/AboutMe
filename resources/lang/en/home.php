@@ -5,6 +5,7 @@ return [
         'About' => 'About',
         'Resume' => 'Resume',
         'Portfolio' => 'Portfolio',
+        'certificates' => 'Certificates',
         'Contact' => 'Contact',
         'English' => 'English',
         'French' => 'French',
@@ -84,6 +85,15 @@ return [
         'project_url' => 'Project URL',
         'github_url' => 'Github URL',
         'website' => 'Visit Website'
+    ],
+    'certificates' => [
+        'title' => 'Certificate',
+        'description' => "Discover my certificates obtained to validate my skills and enrich my expertise.",
+        'certificates' => [
+            'web_development' => 'Certificate in Web Development',
+            'php_expert' => 'PHP Expert Certificate',
+            'vue_mastery' => 'Vue.js Mastery Certificate',
+        ],
     ],
     'devweb' => 'Software Developer,+2 years of experience, Passionate about learning new technologies',
 ];

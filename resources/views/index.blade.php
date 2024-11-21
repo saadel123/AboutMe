@@ -191,6 +191,31 @@
             </div>
         </div>
     </section>
+    <section id="certificates" class="portfolio section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>{!! __('home.certificates.title') !!}</h2>
+            <p>{!! __('home.certificates.description') !!}</p>
+        </div>
+
+        <div class="container">
+            <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="100">
+                    @foreach ($certificates as $certificate)
+
+                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
+                    <a href="{{ 'storage/' . $certificate->image }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><img src="{{ 'storage/' . $certificate->image }}" class="img-fluid portfolio-wrap portfolio-img" alt=""></a>
+                        <div class="portfolio-info">
+                            <p>{{ $certificate->{'title_' . app()->getLocale()} }}</p>
+                            <a href="{{ 'storage/' . $certificate->image }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                            <a href="{{ $certificate->link}}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div><!-- End Certificate Item -->
+                    @endforeach
+                </div><!-- End Certificates Container -->
+            </div>
+        </div>
+    </section>
     <section id="contact" class="contact">
         <div class="container">
 

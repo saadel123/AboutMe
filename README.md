@@ -88,5 +88,5 @@ Contributions are welcome! If you find a bug or have a suggestion for improvemen
 ## 📞 **Contact**
 
 If you have questions or need assistance, feel free to reach out:
-- **Email**: saad.elghanemy@example.com
+- **Email**: elghanemysaad@gmail.com
 - **LinkedIn**: [Saad Elghanemy](https://www.linkedin.com/in/saad-elghanemy)

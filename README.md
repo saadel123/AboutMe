@@ -1,5 +1,3 @@
-Here’s the corrected and refined version of your README:
-
 ---
 
 # 🛫 **Multilingual Dynamic Portfolio**

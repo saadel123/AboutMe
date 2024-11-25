@@ -11,6 +11,7 @@ use App\Http\Controllers\EducationsController;
 use App\Http\Controllers\ChangerLangController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Artisan;
 
 
 
@@ -24,6 +25,10 @@ use App\Http\Controllers\ContactController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link has been created successfully!';
+});
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/single-project/{id}', [ProjectsController::class, 'show'])->name('single.project');

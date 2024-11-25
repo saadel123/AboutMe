@@ -1,5 +1,3 @@
-Here’s the corrected and refined version of your README:
-
 ---
 
 # 🛫 **Multilingual Dynamic Portfolio**
@@ -64,7 +62,6 @@ I created this project to showcase my previous work, projects created from scrat
    composer install
    ```
 3. Set up the database:
-   - Import the provided SQL file into MySQL.
    - Configure your `.env` file with your database credentials.
 
 4. Run this command to migrate the database:
@@ -88,5 +85,5 @@ Contributions are welcome! If you find a bug or have a suggestion for improvemen
 ## 📞 **Contact**
 
 If you have questions or need assistance, feel free to reach out:
-- **Email**: saad.elghanemy@example.com
+- **Email**: elghanemysaad@gmail.com
 - **LinkedIn**: [Saad Elghanemy](https://www.linkedin.com/in/saad-elghanemy)

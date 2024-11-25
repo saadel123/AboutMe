@@ -43,8 +43,9 @@
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'PHP' )? 'selected' : '' ?> value="PHP">PHP</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'LARAVEL') ? 'selected' : '' ?> value="LARAVEL">LARAVEL</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'JAVA' )? 'selected' : '' ?> value="JAVA">JAVA</option>
-        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'WORDPRESS') ? 'selected' : '' ?> value="WOORDPERSS">WOORDPERSS</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'WORDPRESS') ? 'selected' : '' ?> value="WORDPRESS">WOORDPERSS</option>
         <option <?php echo (isset($project->categorie) &&  $project->categorie == 'VUE JS' )? 'selected' : '' ?> value="VUE JS">VUE JS</option>
+        <option <?php echo (isset($project->categorie) &&  $project->categorie == 'GRAPHIC-DESIGN' )? 'selected' : '' ?> value="GRAPHIC-DESIGN">GRAPHIC-DESIGN</option>
     </select>
 </div>
 <div class="col-12">

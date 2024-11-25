@@ -48,7 +48,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($request->all());
 
-        Mail::to('s.elghanemy@directinvest.ma')->send(new ContactMail($contact));
+        Mail::to('elghanemysaad@gmail.com')->send(new ContactMail($contact));
 
         return response()->json(['success' => 'Your message has been sent. Thank you!']);
     }

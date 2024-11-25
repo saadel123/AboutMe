@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="portfolio-info">
+                        <div class="portfolio-info text-break">
                             <h3>{!! __('home.project.project_info') !!} </h3>
                             <ul>
                                 <li><strong>{!! __('home.project.category') !!} </strong> {{ $project->categorie }}</li>

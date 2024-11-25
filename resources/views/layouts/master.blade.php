@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>MyResume Saad El ghanemy</title>
+    <title>My Resume Saad El ghanemy</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <!--Favicon-->
@@ -22,7 +22,7 @@
     <link href="{{ asset('assets1/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets1/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets1/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets1/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets1/css/style.css') }}?v=2" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets1/css/main.css') }}" rel="stylesheet">
 </head>
@@ -57,24 +57,24 @@
                     </li>
                 @endforeach
 
-                <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                <li><a href="{{ url('/') }}" class="nav-link scrollto active"><i class="bx bx-home"></i>
                         <span>{!! __('home.menu.Home') !!}</span></a>
                 </li>
-                <li><a href="/#about" class="nav-link scrollto"><i class="bx bx-user"></i>
+                <li><a href="{{ url('/#about') }}" class="nav-link scrollto"><i class="bx bx-user"></i>
                         <span>{!! __('home.menu.About') !!}</span></a></li>
                 <li><a href="/#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
                         <span>{!! __('home.menu.Resume') !!}</span></a>
                 </li>
-                <li><a href="/#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                <li><a href="{{ url('/#portfolio') }}" class="nav-link scrollto"><i class="bx bx-book-content"></i>
                         <span>{!! __('home.menu.Portfolio') !!}</span></a></li>
-                <li><a href="/#certificates" class="nav-link scrollto"><i class="bi bi-patch-check"></i>
+                <li><a href="{{ url('/#certificates') }}" class="nav-link scrollto"><i class="bi bi-patch-check"></i>
                         <span>{!! __('home.menu.certificates') !!}</span></a></li>
-                {{-- <li><a href="/#services" class="nav-link scrollto"><i class="bx bx-server"></i>
-                        <span>Services</span></a>
-                </li> --}}
-                <li><a href="/#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i>
+                <li><a href="{{ url('/#contact') }}" class="nav-link scrollto"><i class="bx bx-envelope"></i>
                         <span>{!! __('home.menu.Contact') !!}</span></a>
                 </li>
+                {{-- <li><a href="{{ url('/#services') }}" class="nav-link scrollto"><i class="bx bx-server"></i>
+                        <span>Services</span></a>
+                </li> --}}
             </ul>
         </nav>
     </header>
@@ -166,6 +166,19 @@
                 });
             });
         });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHE6079JDM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VHE6079JDM');
     </script>
 
 </body>

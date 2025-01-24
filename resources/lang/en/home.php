@@ -16,7 +16,7 @@ return [
         'address' => 'Casablanca, Morocco ',
         'description' => "< Hello World! /> 🌐🙋‍♂️ Saad here, a Software developer passionate about creating dynamic web experiences.
 
-        With 2+ years of experience, my skills include:
+        With 3+ years of experience, my skills include:
         - 💻 PHP, JAVA, Laravel, APIs, MVC, OOP, SQL
         - 🖥 HTML, CSS, JavaScript, Vue.js, Bootstrap, jQuery, Ajax, and various other technologies.
 
@@ -34,9 +34,9 @@ return [
         'dpl' => 'Degree',
         'year' => 'years old',
         'experience' => 'Experience',
-        'experiences' => '+2 years of experience as a software developer',
+        'experiences' => '+3 years of experience as a software developer',
         'dpls' => '- Professional university license web and mobile development (Bachelor) <br> - Diploma as specialist technician in computer development <br> - High school diploma',
-        'date' => 'Bis jetzt'
+        'date' => 'Until now'
 
         // 'description2' => "I offer a comprehensive range of services focused on continuous improvement, technical problem-solving,
         // and the full development of web applications and software. My commitment to technical excellence and
@@ -95,5 +95,5 @@ return [
             'vue_mastery' => 'Vue.js Mastery Certificate',
         ],
     ],
-    'devweb' => 'Software Developer,+2 years of experience, Passionate about learning new technologies',
+    'devweb' => 'Software Developer,+3 years of experience, Passionate about learning new technologies',
 ];

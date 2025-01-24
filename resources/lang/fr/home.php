@@ -16,7 +16,7 @@ return [
         'address' => 'Casablanca, Maroc ',
         'description'=>"< Hello World! /> 🌐🙋‍♂️ Saad ici, un développeur de logiciels passionné par la création d'expériences web dynamiques.
 
-        Avec plus de 2 ans d'expérience, mes compétences incluent :
+        Avec plus de 3 ans d'expérience, mes compétences incluent :
         - 💻 PHP, JAVA, Laravel, APIs, MVC, OOP, SQL
         - 🖥 HTML, CSS, JavaScript, Vue.js, Bootstrap, jQuery, Ajax, et diverses autres technologies.
 
@@ -34,7 +34,7 @@ return [
         'dpl'=>'Diplôme',
         'year' => 'ans',
         'experience' => 'Expérience',
-        'experiences' => '+2 ans d\'expérience en tant que développeur logiciel',
+        'experiences' => '+3 ans d\'expérience en tant que développeur logiciel',
         'dpls'=>'- License universitaire professionnelle développement web et mobile <br> - Diplôme de technicien spécialisé en développement informatique <br> - Baccalauréat',
         'date' => 'jusqu\'à maintenant'
 
@@ -97,6 +97,6 @@ return [
             'vue_mastery' => 'Certificat Vue.js Mastery',
         ],
     ],
-    'devweb' => 'Développeur logiciel, +2 ans d\'expérience, Passionné par l\'apprentissage de nouvelles technologies',
+    'devweb' => 'Développeur logiciel, +3 ans d\'expérience, Passionné par l\'apprentissage de nouvelles technologies',
 
 ];

@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>My Resume Saad El ghanemy</title>
-    <meta content="" name="description">
+    <title>Saad El Ghanemy</title>
+    <meta content="Saad EL Ghanemy: Aspiring software developer skilled in PHP, Laravel, Vue.js, and more, eager to build impactful and user-friendly digital solutions" name="description">
     <meta content="" name="keywords">
+    @yield('meta')
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets1/img/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets1/img/favicon/favicon-32x32.png') }}">
@@ -101,7 +102,7 @@
             </div>
         </div>
     </footer>
-    <div id="preloader"></div>
+    <!--<div id="preloader"></div>-->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
@@ -169,16 +170,13 @@
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHE6079JDM"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DP35YH6X6"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-VHE6079JDM');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-6DP35YH6X6');
     </script>
 
 </body>

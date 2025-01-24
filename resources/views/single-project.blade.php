@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('meta')
+<meta name="robots" content="noindex">
+@endsection
 @section('content')
     <style>
         #portfolio-details .cont-image {
@@ -6,6 +9,13 @@
             margin-right: unset;
             align-content: center;
             /* flex-wrap: wrap; */
+        }
+        
+        @media only screen and (min-width: 800px) {
+        .portfolio-details-slider{
+            width:80%;
+        }
+            
         }
     </style>
     <main class="main">

@@ -34,7 +34,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/single-project/{id}', [ProjectsController::class, 'show'])->name('single.project');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
 
 // Route::get('/changeLang', [ChangerLangController::class, 'lang_change'])->name('changeLang');
 Route::get('/change-language/{lang}', [ChangerLangController::class, 'changeLang'])->name('changeLang');

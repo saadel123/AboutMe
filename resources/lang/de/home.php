@@ -16,7 +16,7 @@ return [
         'title' => 'Über mich',
         'description' => "< Hello World! /> 🌐🙋‍♂️ Saad hier, ein Full-Stack-Webentwickler, der leidenschaftlich daran interessiert ist, dynamische Web-Erfahrungen zu schaffen.
 
-        Mit mehr als 2 Jahren Erfahrung umfassen meine Fähigkeiten:
+        Mit mehr als 3 Jahren Erfahrung umfassen meine Fähigkeiten:
         💻 PHP, JAVA, Laravel, APIs, MVC, OOP, SQL.
         🖥 HTML, CSS, JavaScript, Vue.js, Bootstrap, jQuery, Ajax und verschiedene andere Technologien.
 
@@ -34,7 +34,7 @@ return [
         'dpl' => 'Abschluss',
         'year' => 'Jahre alt',
         'experience' => 'Erfahrung',
-        'experiences' => '+2 Jahre Erfahrung als Softwareentwickler',
+        'experiences' => '+3 Jahre Erfahrung als Softwareentwickler',
         'dpls' => '- Berufsuniversitätlizenz Web- und Mobile-Entwicklung (Bachelor)  <br> - Diplom als Fachtechniker in Informatikentwicklung <br> - Abitur',
         'date' => 'Bis jetzt'
         // 'description2'=>"Ich biete eine umfassende Palette von Dienstleistungen an, die auf kontinuierliche Verbesserung, Lösung technischer Probleme und die vollständige Entwicklung von Web- und Softwareanwendungen ausgerichtet sind. Mein Engagement für technische Exzellenz und Innovation leitet jede meiner Dienstleistungen und gewährleistet hochwertige Lösungen und maximale Kundenzufriedenheit."
@@ -90,5 +90,5 @@ return [
             'vue_mastery' => 'Vue.js-Meisterzertifikat',
         ],
     ],
-    'devweb' => 'Softwareentwickler, +2 Jahre Erfahrung, Leidenschaftlich daran interessiert, neue Technologien zu lernen',
+    'devweb' => 'Softwareentwickler, +3 Jahre Erfahrung, Leidenschaftlich daran interessiert, neue Technologien zu lernen',
 ];

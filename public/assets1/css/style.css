@@ -33,6 +33,12 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+.bg-certificate {
+  width: 100% !important;
+  object-fit: contain !important;
+  background-color: rgb(205, 209, 209);
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -1206,7 +1212,8 @@ section {
 #footer .credits {
   font-size: 13px;
 }
-#portfolio-details .cont-image{
+
+#portfolio-details .cont-image {
   display: flex;
   background-color: #8080801a;
   margin-right: 20px;

@@ -45,7 +45,7 @@
                                         <th scope="col">Id</th>
                                         <th scope="col">Titre</th>
                                         <th scope="col">Description</th>
-                                        <th scope="col">Link</th>
+                                        {{-- <th scope="col">Link</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -55,7 +55,7 @@
                                             <th scope="row">{{ $certificate->id }}</th>
                                             <td>{{ $certificate->title_fr }}</td>
                                             <td>{{ $certificate->description_fr }}</td>
-                                            <td>{{ $certificate->link }}</td>
+                                            {{-- <td>{{ $certificate->link }}</td> --}}
                                             <td>
                                                 <a class="edit" href="{{ route('certificates.edit', $certificate->id) }}"
                                                     style="color:rgb(125, 125, 5)"><i

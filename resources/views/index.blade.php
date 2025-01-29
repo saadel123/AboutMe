@@ -1,8 +1,22 @@
 @extends('layouts.master')
+@section('stylesheet')
+    <style>
+        .portfolio-img {
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: rgb(225 226 228);
+            height: 285px;
+        }
+        .error-message {
+            display: none !important;
+        }
+    </style>
+@endsection
 @section('content')
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>Saad El Ghanemy</h1>
+            <h1>{{ $about->fullname }}</h1>
             <p><span class="typed" data-typed-items="{!! __('home.devweb') !!}"></span></p>
             <div class="social-links">
                 {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -15,48 +29,72 @@
                 <a href="https://www.xing.com/profile/Saad_Elghanemy" target="_blank" class="xing"><i
                         class="bx bxl-xing"></i></a>
             </div>
+            <div class="scroll-down mt-4" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="#hero">
+                <a href="#about" class="scroll-link" aria-label="Navigate to About section">
+                    <i class="bx bxs-chevron-down bx-tada-hover fs-2"></i>
+                </a>
+            </div>
         </div>
     </section>
     <main id="main">
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
-                    <h2> {!! __('home.about.title') !!}</h2>
-                    <p style="white-space: break-spaces;">{!! __('home.about.description') !!}</p>
+                    @if (!empty($about->{'description_' . app()->getLocale()}))
+                        <h2>{!! __('home.about.title') !!}</h2>
+                        <p style="white-space: break-spaces;">{!! $about->{'description_' . app()->getLocale()} !!}</p>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="col-lg-10 m-auto pt-4 pt-lg-0 content">
-                        <h3>{!! __('home.about.dvweb') !!}</h3>
+                        @if (!empty($about->{'title_' . app()->getLocale()}))
+                            <h3 class="mb-3">{!! $about->{'title_' . app()->getLocale()} !!}</h3>
+                        @endif
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
-                                    {{-- <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.about.dte') !!} :</strong>
-                                        <span>24</span></li> --}}
-                                    <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.about.experience') !!}:</strong>
-                                        <span>{!! __('home.about.experiences') !!}</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.about.dpl') !!}:</strong>
-                                        <span>{!! __('home.about.dpls') !!}</span>
-                                    </li>
+                                    @if (!empty($about->{'experince_' . app()->getLocale()}))
+                                        <li>
+                                            <i class="bi bi-chevron-right"></i>
+                                            <strong>{!! __('home.about.experience') !!}:</strong>
+                                            <span>{!! $about->{'experince_' . app()->getLocale()} !!}</span>
+                                        </li>
+                                    @endif
+                                    @if (!empty($about->{'diploma_' . app()->getLocale()}))
+                                        <li>
+                                            <i class="bi bi-chevron-right"></i>
+                                            <strong>{!! __('home.about.dpl') !!}:</strong>
+                                            <span>{!! $about->{'diploma_' . app()->getLocale()} !!}</span>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.about.age') !!} :</strong>
-                                        <span>25 {!! __('home.about.year') !!}</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.about.vle') !!} :</strong>
-                                        <span>{!! __('home.about.address') !!}</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>{!! __('home.Contact.email') !!} :</strong>
-                                        <span>s.elghanemy@saadelghanemy.com</span>
-                                    </li>
+                                    @if (!empty($about->age))
+                                        <li>
+                                            <i class="bi bi-chevron-right"></i>
+                                            <strong>{!! __('home.about.age') !!} :</strong>
+                                            <span>{{ $about->age }} {!! __('home.about.year') !!}</span>
+                                        </li>
+                                    @endif
+                                    @if (!empty($about->{'location_' . app()->getLocale()}))
+                                        <li>
+                                            <i class="bi bi-chevron-right"></i>
+                                            <strong>{!! __('home.about.vle') !!} :</strong>
+                                            <span>{!! $about->{'location_' . app()->getLocale()} !!}</span>
+                                        </li>
+                                    @endif
+                                    @if (!empty($about->email))
+                                        <li>
+                                            <i class="bi bi-chevron-right"></i>
+                                            <strong>{!! __('home.Contact.email') !!} :</strong>
+                                            <span>{{ $about->email }}</span>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
-                        {{-- <p>
-                            {!! __('home.about.description2') !!}
-                        </p> --}}
                     </div>
                 </div>
             </div>
@@ -97,11 +135,10 @@
                         @foreach ($experiences as $experience)
                             <div class="resume-item">
                                 <h4>{{ $experience->{'title_' . app()->getLocale()} }}</h4>
-                                <h5>{{ $experience->datedebut }} - {{ $experience->datefin ?? __('home.about.date') }}</h5>
+                                <h5>{{ $experience->datedebut }} - {{ $experience->datefin ?? __('home.about.date') }}
+                                </h5>
                                 <p><em>{{ $experience->lieu }}</em></p>
-                                {{-- <ul> --}}
                                 {!! $experience->{'description_' . app()->getLocale()} !!}
-                                {{-- </ul> --}}
                             </div>
                         @endforeach
                     </div>
@@ -114,60 +151,17 @@
                                 <p><em>{{ $education->lieu }}</em></p>
                             </div>
                         @endforeach
-                        {{-- <h3 class="resume-title">{!! __('home.resume.attestation') !!}</h3>
-                        <div class="resume-item">
-                            <h4><a href=""
-                                    target="_blanck">freeCodeCamp |Java Script</a></h4>
-                        </div> --}}
-                        {{-- <h3 class="resume-title">{!! __('home.resume.resume') !!}</h3>
-                    <div class="resume-item pb-0">
-                        <h4>Saad El ghanemy</h4>
-                        <p><em>{!! __('home.resume.description') !!}</em></p>
-                        <ul>
-                            <li>{!! __('home.about.address') !!}</li>
-                        </ul>
-                    </div> --}}
                     </div>
                 </div>
             </div>
         </section>
-        {{-- <section id="portfolio" class="portfolio section-bg">
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>{!! __('home.portfolio.title') !!}</h2>
-                <p>{!! __('home.portfolio.description') !!}</p>
-            </div>
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                @foreach ($projects as $project)
-                <div class="col-lg-4 col-md-6 portfolio-item">
-                    <div class="portfolio-wrap portfolio-img" style="background-image: url('{{ 'storage/' . $project->image }}')">
-                        <div class="portfolio-info">
-                            <p>{{ $project->{'title_' . app()->getLocale()} }}</p>
-                            <div class="portfolio-links">
-                                <a href="{{ 'storage/' . $project->image }}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                                <a href="{{ route('single.project', $project->id) }}"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section> --}}
-
         <section id="portfolio" class="portfolio section">
-
-
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.portfolio.title') !!}</h2>
                 <p>{!! __('home.portfolio.description') !!}</p>
             </div>
-
             <div class="container">
-
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                         <li data-filter="*" class="filter-active">{!! __('home.portfolio.filters.title') !!}</li>
                         <li data-filter=".LARAVEL">PHP-LARAVEL</li>
@@ -176,14 +170,13 @@
                         <!--<li data-filter=".JAVA">JAVA</li>-->
                         <li data-filter=".WORDPRESS">WORDPRESS</li>
                     </ul><!-- End Portfolio Filters -->
-
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="100">
                         @foreach ($projects as $project)
                             <div class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $project->categorie }}">
                                 <a href="{{ route('single.project', $project->id) }}" title="More Details"
                                     class="details-link">
                                     <img src="{{ 'storage/' . $project->image }}"
-                                        class="img-fluid portfolio-wrap portfolio-img" alt="">
+                                        class="img-fluid portfolio-wrap portfolio-img lazyload" alt="">
                                 </a>
                                 <div class="portfolio-info">
                                     <p>{{ $project->{'title_' . app()->getLocale()} }}</p>
@@ -198,7 +191,6 @@
                 </div>
             </div>
         </section>
-        
         <section id="certificates" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.certificates.title') !!}</h2>
@@ -212,7 +204,8 @@
                                 <a href="{{ 'storage/' . $certificate->image }}" data-gallery="certificate-gallery-app"
                                     class="glightbox preview-link">
                                     <img src="{{ 'storage/' . $certificate->image }}"
-                                        class="img-fluid portfolio-wrap portfolio-img bg-certificate" alt="">
+                                        class="img-fluid portfolio-wrap portfolio-img bg-certificate lazyload"
+                                        alt="">
                                 </a>
                                 <div class="portfolio-info">
                                     <p>{{ $certificate->{'title_' . app()->getLocale()} }}</p>
@@ -231,24 +224,21 @@
         </section>
         <section id="contact" class="contact">
             <div class="container">
-
                 <div class="section-title">
                     <h2>Contact</h2>
                 </div>
-
                 <div class="row mt-1">
-
                     <div class="col-lg-4">
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>{!! __('home.Contact.location') !!} :</h4>
-                                <p>{!! __('home.about.address') !!}</p>
+                                <p>{!! $about->{'location_' . app()->getLocale()} !!}</p>
                             </div>
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>{!! __('home.Contact.email') !!} :</h4>
-                                <p>s.elghanemy@saadelghanemy.com </p>
+                                <p> {{ $about->email }}</p>
                             </div>
                         </div>
                     </div>
@@ -265,7 +255,7 @@
                                         placeholder="{!! __('home.Contact.email') !!}" required>
                                 </div>
                             </div>
-                            <div class="form-group mt-3">   
+                            <div class="form-group mt-3">
                                 <input type="text" class="form-control" name="subject" id="subject"
                                     placeholder="{!! __('home.Contact.sub') !!}" required>
                             </div>
@@ -286,17 +276,4 @@
             </div>
         </section>
     </main>
-    <style>
-        .portfolio-img {
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-color: rgb(225 226 228);
-            height: 285px;
-        }
-
-        .error-message {
-            display: none !important;
-        }
-    </style>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Educations;
 use App\Models\Experiences;
 use App\Models\Projects;
@@ -37,6 +38,7 @@ class HomeController extends Controller
             'services' => Services::all(),
             'projects' => Projects::all(),
             'certificates' => Certificate::all(),
+            'about' => About::first(),
         ]);
     }
 }

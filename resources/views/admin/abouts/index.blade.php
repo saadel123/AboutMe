@@ -1,5 +1,4 @@
 @extends('admin.layouts.master')
-
 <style>
     th,
     td {
@@ -11,22 +10,25 @@
         padding-right: 20px !important;
     }
 
+    #imglist {
+        max-height: 70px;
+    }
+
     .delete {
         outline: none;
         border: none;
         background-color: transparent;
     }
 </style>
-
 @section('content')
     <div class="pagetitle">
-        <h1>Contact Messages</h1>
+        <h1>About</h1>
         <nav style="display: flex; justify-content: space-between;">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
-                <li class="breadcrumb-item active">Contact Messages</li>
+                <li class="breadcrumb-item active">About</li>
             </ol>
-            {{-- <a href="{{ route('contacts.create') }}" class="btn btn-primary">Add New</a> --}}
+            <a href="{{ route('abouts.create') }}" class="btn btn-primary">Ajouter</a>
         </nav>
     </div>
     <section class="section container">
@@ -43,34 +45,33 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Subject</th>
-                                        <th scope="col">Message</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($contacts as $contact)
+                                    @foreach ($abouts as $about)
                                         <tr>
-                                            <th scope="row">{{ $contact->id }}</th>
-                                            <td>{{ $contact->name }}</td>
-                                            <td>{{ $contact->email }}</td>
-                                            <td>{{ $contact->subject }}</td>
-                                            <td>{!! $contact->message !!}</td> <!-- Display a shortened version of the message -->
-                                            {{-- <td>
-                                                <a class="edit" href="{{ route('contacts.edit', $contact->id) }}" style="color:rgb(125, 125, 5)">
-                                                    <i class="material-icons"></i>Edit
-                                                </a>
-                                                <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display:inline;">
+                                            <th scope="row">{{ $about->id }}</th>
+                                            <td>{{ $about->title_en }}</td>
+                                            <td>{{ $about->location_en }}</td>
+                                            <td>{{ Str::limit($about->description_en, 200) }}</td>
+                                            <td>
+                                                <a class="edit" href="{{ route('abouts.edit', $about->id) }}"
+                                                    style="color:rgb(125, 125, 5)">Modifier</a>
+                                                <form action="{{ route('abouts.destroy', $about->id) }}" method="POST"
+                                                    style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="delete" style="color:red" onclick="return confirm('Are you sure you want to delete this item?');">
-                                                        Delete
+                                                    <button type="submit" class="delete" style="color:red"
+                                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                                        Supprimer
                                                     </button>
                                                 </form>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

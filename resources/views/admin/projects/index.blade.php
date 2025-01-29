@@ -54,7 +54,7 @@
                                         <tr>
                                             <th scope="row">{{ $project->id }}</th>
                                             <td>{{ $project->title_fr }}</td>
-                                            <td>{{ $project->description_fr }}</td>
+                                            <td>{{ Str::limit($project->description_fr, 150) }}</td>
                                             <td>{{ $project->link }}</td>
                                             <td>
                                                 <a class="edit" href="{{ route('projects.edit', $project->id) }}"

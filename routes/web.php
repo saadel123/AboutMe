@@ -12,6 +12,7 @@ use App\Http\Controllers\ChangerLangController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\AboutController;
 
 
 
@@ -55,8 +56,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('projects', ProjectsController::class);
     // contacts
     Route::resource('contacts', ContactController::class);
-    // certificates
+    // Certificates
     Route::resource('certificates', CertificateController::class);
-    Route::get('images/destroy/{id}', [ProjectsController::class , 'DestroyImage'])->name('image.destroy');
+    Route::get('images/destroy/{id}', [ProjectsController::class, 'DestroyImage'])->name('image.destroy');
+    //About
+    Route::resource('abouts', AboutController::class);
+
 
 });

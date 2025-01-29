@@ -4,7 +4,7 @@
 
 Welcome to the repository for my dynamic, multilingual portfolio! 🌍
 
-### 🔗 [View the Live Project Here](https://directveille.com/saadelghanemy/public/)
+### 🔗 [View the Live Project Here](https://saadelghanemy.com/)
 
 ---
 

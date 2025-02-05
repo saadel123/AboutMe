@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FlashMessage;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,13 @@ class CertificateController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $input = $request->all();
         if ($request->hasFile('image')) {
             $input['image'] = $request->image->store('certificates/images', 'public');
@@ -26,7 +34,7 @@ class CertificateController extends Controller
 
         Certificate::create($input);
 
-        return redirect()->route('certificates.index')->with('success', 'Certificate added successfully.');
+        return redirect()->route('certificates.index')->with('success', FlashMessage::success('Certificate', 'add'));
     }
 
     public function show($id)
@@ -41,6 +49,13 @@ class CertificateController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $input = $request->all();
         if ($request->hasFile('image')) {
             $input['image'] = $request->image->store('certificates/images', 'public');
@@ -49,7 +64,7 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
         $certificate->update($input);
 
-        return redirect()->back()->with('success', 'Certificate updated successfully.');
+        return redirect()->back()->with('success', FlashMessage::success('Certificate', 'update'));
     }
 
     public function destroy($id)
@@ -57,6 +72,6 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
         $certificate->delete();
 
-        return redirect()->back()->with('success', 'Certificate deleted successfully.');
+        return redirect()->back()->with('danger', FlashMessage::danger('Certificate', 'delete'));
     }
 }

@@ -1,22 +1,4 @@
 @extends('admin.layouts.master')
-<style>
-    th,
-    td {
-        padding: 5px;
-        padding-right: 15px;
-    }
-
-    .datatable-table th a {
-        padding-right: 20px !important;
-    }
-
-    #imglist {
-        max-height: 70px;
-    }
-    .delete{
-        outline: none;border: none;background-color: transparent;
-    }
-</style>
 @section('content')
     <div class="pagetitle">
         <h1>Services</h1>
@@ -34,11 +16,7 @@
                 <div class="row">
                     <div class="card p-3">
                         <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                            @include('components.alerts')
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -58,7 +36,8 @@
                                                 <a class="edit" href="{{ route('services.edit', $service->id) }}"
                                                     style="color:rgb(125, 125, 5)"><i
                                                         class="material-icons"></i>Modifier</a>
-                                                <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline;">
+                                                <form action="{{ route('services.destroy', $service->id) }}" method="POST"
+                                                    style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="delete" style="color:red"

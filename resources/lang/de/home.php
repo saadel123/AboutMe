@@ -36,7 +36,6 @@ return [
         'filters' => [
             'title' => 'Alle'
         ],
-        'description' => "Diese Projekte zeigen meine Beiträge, bei denen ich von der Konzeption bis zur Entwicklung eng mit Entwicklern, Projektmanagern, Designern, Kunden und Inhalten zusammenarbeitete Ersteller, um sie von Grund auf aufzubauen. Durch die Erkundung meines Portfolios werden Sie die Vielfalt meiner Fähigkeiten entdecken, von Design über Implementierung, Leistungsoptimierung bis hin zur kontinuierlichen Wartung.",
     ],
     'services' => [
         'title' => 'Dienstleistungen',
@@ -65,7 +64,5 @@ return [
     ],
     'certificates' => [
         'title' => 'Zertifikate',
-        'description' => "Entdecken Sie meine Zertifikate, die meine Fähigkeiten bestätigen und meine Expertise erweitern.",
     ],
-    'devweb' => 'Softwareentwickler, +3 Jahre Erfahrung, Leidenschaftlich daran interessiert, neue Technologien zu lernen',
 ];

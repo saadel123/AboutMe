@@ -4,13 +4,13 @@
 
     </style>
     <div class="pagetitle">
-        <h1>certificates</h1>
+        <h1>Certificates</h1>
         <nav style="display: flex;justify-content: space-between;">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
-                <li class="breadcrumb-item active">certificates</li>
+                <li class="breadcrumb-item active">Certificates</li>
             </ol>
-            <a href="{{ route('certificates.index') }}" class="btn btn-outline-primary">Retour</a>
+            <a href="{{ route('certificates.index') }}" class="btn btn-outline-primary">Back</a>
         </nav>
     </div>
     <section class="section dashboard">
@@ -24,19 +24,15 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center">Ajouter</h3>
-                                        @if (session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
+                                        <h3 class="text-center">Add</h3>
+                                        @include('components.alerts')
                                     </div>
                                 </div>
                             </div>
                             @include('admin.layouts.forms.certificates')
                             <div class="mt-5">
                                 <button type="submit" class="btn btn-primary rounded-0"> <i class="bi bi-save"></i>
-                                    Enregistrer</button>
+                                    Save</button>
                             </div>
                         </form>
                     </div>

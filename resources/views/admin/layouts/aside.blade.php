@@ -1,12 +1,12 @@
 <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-        <a class="nav-link" href="/admin/home">
+        <a class="nav-link {{ request()->is('admin/home') ? 'active' : 'collapsed' }}" href="/admin/home">
             <i class="bi bi-grid"></i>
             <span>Home</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Str::startsWith(request()->url(), route('abouts.index')) ? '' : 'collapsed' }}"
+        <a class="nav-link {{ Str::startsWith(request()->url(), route('abouts.index')) ? 'active' : 'collapsed' }}"
             href="{{ route('abouts.index') }}">
             <i class="ri-information-line"></i><span>About</span>
         </a>

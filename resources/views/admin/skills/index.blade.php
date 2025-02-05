@@ -1,22 +1,4 @@
 @extends('admin.layouts.master')
-<style>
-    th,
-    td {
-        padding: 5px;
-        padding-right: 15px;
-    }
-
-    .datatable-table th a {
-        padding-right: 20px !important;
-    }
-
-    #imglist {
-        max-height: 70px;
-    }
-    .delete{
-        outline: none;border: none;background-color: transparent;
-    }
-</style>
 @section('content')
     <div class="pagetitle">
         <h1>skills</h1>
@@ -34,16 +16,12 @@
                 <div class="row">
                     <div class="card p-3">
                         <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                            @include('components.alerts')
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th scope="col">Id</th>
-                                        <th scope="col">Langage</th>
+                                        <th scope="col">Language</th>
                                         <th scope="col">Percent</th>
                                         <th>Action</th>
                                     </tr>
@@ -52,7 +30,7 @@
                                     @foreach ($skills as $skill)
                                         <tr>
                                             <th scope="row">{{ $skill->id }}</th>
-                                            <td>{{ $skill->langage }}</td>
+                                            <td>{{ $skill->language }}</td>
                                             <td>{{ $skill->percent }}</td>
                                             <td>
                                                 <a class="edit" href="{{ route('skills.edit', $skill->id) }}"

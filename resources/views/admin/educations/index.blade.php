@@ -1,22 +1,4 @@
 @extends('admin.layouts.master')
-<style>
-    th,
-    td {
-        padding: 5px;
-        padding-right: 15px;
-    }
-
-    .datatable-table th a {
-        padding-right: 20px !important;
-    }
-
-    #imglist {
-        max-height: 70px;
-    }
-    .delete{
-        outline: none;border: none;background-color: transparent;
-    }
-</style>
 @section('content')
     <div class="pagetitle">
         <h1>Educations</h1>
@@ -34,11 +16,7 @@
                 <div class="row">
                     <div class="card p-3">
                         <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                            @include('components.alerts')
                             <table class="table datatable">
                                 <thead>
                                     <tr>

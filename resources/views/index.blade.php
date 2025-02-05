@@ -17,7 +17,7 @@
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
             <h1>{{ $about->fullname }}</h1>
-            <p><span class="typed" data-typed-items="{!! __('home.devweb') !!}"></span></p>
+            <p><span class="typed" data-typed-items="{!! $about->{'headline_' . app()->getLocale()} !!}"></span></p>
             <div class="social-links">
                 {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -108,7 +108,7 @@
                     @foreach ($skills as $skill)
                         <div class="col-lg-6">
                             <div class="progress">
-                                <span class="skill">{{ $skill->langage }} <i
+                                <span class="skill">{{ $skill->language }} <i
                                         class="val">{{ $skill->percent }}</i></span>
                                 <div class="progress-bar-wrap">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->percent }}"
@@ -124,7 +124,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>{!! __('home.resume.title') !!}</h2>
-                    <p>{!! __('home.resume.description') !!}</p>
+                    <p>{!! $about->{'title_' . app()->getLocale()} !!}</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -158,7 +158,7 @@
         <section id="portfolio" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.portfolio.title') !!}</h2>
-                <p>{!! __('home.portfolio.description') !!}</p>
+                <p>{!! $about->{'portfolio_description_' . app()->getLocale()} !!}</p>
             </div>
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -194,7 +194,7 @@
         <section id="certificates" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.certificates.title') !!}</h2>
-                <p>{!! __('home.certificates.description') !!}</p>
+                <p>{!! $about->{'certificate_description_' . app()->getLocale()} !!}</p>
             </div>
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">

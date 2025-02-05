@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('meta')
-<meta name="robots" content="noindex">
+    <meta name="robots" content="noindex">
 @endsection
 @section('content')
     <style>
@@ -10,12 +10,71 @@
             align-content: center;
             /* flex-wrap: wrap; */
         }
-        
+
         @media only screen and (min-width: 800px) {
-        .portfolio-details-slider{
-            width:80%;
+            .portfolio-details-slider {
+                width: 80%;
+            }
+
         }
-            
+
+
+        /* Add this to your main CSS file */
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .project-content ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .project-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-content ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        .project-content p {
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .shadow-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .shadow-hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0 30px rgba(69, 80, 91, 0.08)
+        }
+
+        .hover-primary:hover {
+            color: #3498db !important;
+        }
+
+        .video-wrapper {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+            position: sticky;
+            top: 20px;
         }
     </style>
     <main class="main">
@@ -40,13 +99,17 @@
                     <div class="swiper-pagination"></div>
                 </div>
                 <div class="row justify-content-between gy-4 mt-4 mb-3">
-                    <div class="col-lg-8" data-aos="fade-up">
-                        <div class="portfolio-description">
-                            <h2><a href="{{ $project->link }}"
-                                    target="_blanck">{{ $project->{'title_' . app()->getLocale()} }}</a></h2>
-                            <p>
-                                {!! $project->{'description_' . app()->getLocale()} !!}
-                            </p>
+                    <div class="col-lg-9" data-aos="fade-up">
+                        <div class="portfolio-description card shadow-hover border-0 p-4">
+                            <div class="card-body">
+                                <h2 class="mb-4"><a href="{{ $project->link }}" target="_blank"
+                                        class="text-decoration-none text-dark hover-primary">
+                                        {{ $project->{'title_' . app()->getLocale()} }}
+                                    </a></h2>
+                                <div class="project-content">
+                                    {!! $project->{'description_' . app()->getLocale()} !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -61,11 +124,11 @@
                                             target="_blank">{{ $project->github_link }}</a></li>
                                 @endif
                                 @if (!empty($project->link))
-                                <li><strong>{!! __('home.project.project_url') !!} </strong> <a href="{{ $project->link }}"
-                                        target="_blank">{{ $project->link }}</a></li>
-                                <li><a href="{{ $project->link }}" target="_blank"
-                                        class="btn-visit align-self-start">{!! __('home.project.website') !!} </a></li>
-                            @endif
+                                    <li><strong>{!! __('home.project.project_url') !!} </strong> <a href="{{ $project->link }}"
+                                            target="_blank">{{ $project->link }}</a></li>
+                                    <li><a href="{{ $project->link }}" target="_blank"
+                                            class="btn-visit align-self-start">{!! __('home.project.website') !!} </a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -113,11 +176,13 @@
                         </div>
                     </div>
                 @endif
+                <!-- Video Section -->
                 @if ($project->video)
-                    <div class="row d-flex justify-content-center" data-aos="fade-up" style="margin-top:60px;">
-                        <div class="col-md-10 d-flex justify-content-center">
-                            <video src="{{ asset('storage/' . $project->video) }}" controls
-                                style="max-height: 450px;"></video>
+                    <div class="row mt-5">
+                        <div class="col-12" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <video src="{{ asset('storage/' . $project->video) }}" controls class="w-100"></video>
+                            </div>
                         </div>
                     </div>
                 @endif

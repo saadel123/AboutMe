@@ -9,6 +9,30 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# My custom Style
+--------------------------------------------------------------*/
+.datatable-table th, .datatable-table td {
+  padding: 5px;
+  padding-right: 15px;
+}
+
+.datatable-table th a {
+  padding-right: 20px !important;
+}
+
+#imglist {
+  max-height: 70px;
+}
+
+form .delete {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+/*--------------------------------------------------------------
+# End My custom Style
+--------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
 }

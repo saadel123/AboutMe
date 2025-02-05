@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FlashMessage;
 use App\Models\Educations;
 use Illuminate\Http\Request;
 
 class EducationsController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -15,7 +16,7 @@ class EducationsController extends Controller
 
     public function index()
     {
-        return view('admin.educations.index',['educations'=>Educations::all()]);
+        return view('admin.educations.index', ['educations' => Educations::all()]);
     }
 
     /**
@@ -35,9 +36,21 @@ class EducationsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'lieu_fr' => 'nullable|max:255',
+            'lieu_en' => 'nullable|max:255',
+            'lieu_de' => 'nullable|max:255',
+            'datedebut' => 'required|date',
+            'datefin' => 'nullable|date|after_or_equal:datedebut',
+        ]);
+
         $input = $request->all();
         Educations::create($input);
-        return redirect()->route('educations.index')->with('success', 'le contenu a été bien enregistré');
+
+        return redirect()->route('educations.index')->with('success', FlashMessage::success('Education', 'add'));
     }
 
     /**
@@ -59,7 +72,7 @@ class EducationsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.educations.edit',['education'=>Educations::findOrFail($id)]);
+        return view('admin.educations.edit', ['education' => Educations::findOrFail($id)]);
     }
 
     /**
@@ -68,12 +81,24 @@ class EducationsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'lieu_fr' => 'nullable|max:255',
+            'lieu_en' => 'nullable|max:255',
+            'lieu_de' => 'nullable|max:255',
+            'datedebut' => 'required|date',
+            'datefin' => 'nullable|date|after_or_equal:datedebut',
+        ]);
+
         $input = $request->all();
         $education = Educations::findOrFail($id);
         $education->update($input);
-        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+
+        return redirect()->back()->with('success', FlashMessage::success('Education', 'update'));
     }
 
     /**
@@ -86,6 +111,6 @@ class EducationsController extends Controller
     {
         $education = Educations::findOrFail($id);
         $education->delete();
-        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('danger', FlashMessage::danger('Education', 'delete'));
     }
 }

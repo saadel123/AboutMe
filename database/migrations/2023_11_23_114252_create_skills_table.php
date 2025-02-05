@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('percent')->nullable();
-            $table->string('langage')->nullable();
+            $table->string('language')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

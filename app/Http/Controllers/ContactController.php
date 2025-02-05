@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use App\Models\Contact;
+use App\Helpers\FlashMessage;
 
 class ContactController extends Controller
 {
@@ -17,7 +18,7 @@ class ContactController extends Controller
     public function index()
     {
         //
-        return view('admin.contacts.index',['contacts'=>Contact::all()]);
+        return view('admin.contacts.index', ['contacts' => Contact::all()]);
 
     }
 
@@ -48,7 +49,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($request->all());
 
-        Mail::to('elghanemysaad@gmail.com')->send(new ContactMail($contact));
+        Mail::to('s.elghanemy@saadelghanemy.com')->send(new ContactMail($contact));
 
         return response()->json(['success' => 'Your message has been sent. Thank you!']);
     }
@@ -95,6 +96,9 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->back() ->with('danger', FlashMessage::danger('Message', 'delete'));
     }
 }

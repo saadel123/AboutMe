@@ -1,23 +1,4 @@
 @extends('admin.layouts.master')
-
-<style>
-    th,
-    td {
-        padding: 5px;
-        padding-right: 15px;
-    }
-
-    .datatable-table th a {
-        padding-right: 20px !important;
-    }
-
-    .delete {
-        outline: none;
-        border: none;
-        background-color: transparent;
-    }
-</style>
-
 @section('content')
     <div class="pagetitle">
         <h1>Contact Messages</h1>
@@ -35,11 +16,7 @@
                 <div class="row">
                     <div class="card p-3">
                         <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                            @include('components.alerts')
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -48,7 +25,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Subject</th>
                                         <th scope="col">Message</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,19 +35,22 @@
                                             <td>{{ $contact->name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->subject }}</td>
-                                            <td>{!! $contact->message !!}</td> <!-- Display a shortened version of the message -->
-                                            {{-- <td>
+                                            <td>{!! $contact->message !!}</td>
+                                            <!-- Display a shortened version of the message -->
+                                            <td>{{--
                                                 <a class="edit" href="{{ route('contacts.edit', $contact->id) }}" style="color:rgb(125, 125, 5)">
                                                     <i class="material-icons"></i>Edit
-                                                </a>
-                                                <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display:inline;">
+                                                </a> --}}
+                                                <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST"
+                                                    style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="delete" style="color:red" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                    <button type="submit" class="delete" style="color:red"
+                                                        onclick="return confirm('Are you sure you want to delete this item?');">
                                                         Delete
                                                     </button>
                                                 </form>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

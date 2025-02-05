@@ -26,11 +26,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="text-center">Modifier</h3>
-                                        @if (session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
+                                        @include('components.alerts')
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FlashMessage;
 use App\Models\Images;
 use App\Models\Projects;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index',['projects'=>Projects::orderBy('created_at','desc')->get()]);
+        return view('admin.projects.index', ['projects' => Projects::orderBy('created_at', 'desc')->get()]);
     }
 
     /**
@@ -35,31 +36,44 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'nullable|mimes:mp4,mov,avi,wmv|max:20480',
+            'categorie' => 'nullable|max:255',
+            'description_fr' => 'nullable',
+            'description_en' => 'nullable',
+            'description_de' => 'nullable',
+            'link' => 'nullable|url',
+            'github_link' => 'nullable|url',
+        ]);
+
         $input = $request->all();
-        if($request->hasFile('image')){
-            $input['image']=$request->image->store('projects/image', 'public');
+        $input['image'] = $request->file('image')->store('projects/image', 'public');
+
+        if ($request->hasFile('video')) {
+            $input['video'] = $request->file('video')->store('projects/video', 'public');
         }
-        if ($request->has('video')) {
-            $input['video'] = $request->video->store('projects/video', 'public');
-        }
+
         $project = Projects::create($input);
+
         if ($images = $request->file('images')) {
-            foreach ($images as  $item) {
+            foreach ($images as $item) {
                 $url = $item->store('images/project', 'public');
-                $project->images()->create([
-                    'url' => $url,
-                ]);
+                $project->images()->create(['url' => $url]);
             }
         }
+
         if ($images_code = $request->file('images_code')) {
-            foreach ($images_code as  $item) {
+            foreach ($images_code as $item) {
                 $url = $item->store('images/project', 'public');
-                $project->images()->create([
-                    'url_code' => $url,
-                ]);
+                $project->images()->create(['url_code' => $url]);
             }
         }
-        return redirect()->route('projects.index')->with('success', 'le contenu a été bien enregistré');
+
+        return redirect()->route('projects.index')->with('success', FlashMessage::success('Project', 'add'));
     }
 
     /**
@@ -70,7 +84,7 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        return view('single-project',['project'=>Projects::findOrFail($id),'images'=> Images::where('project_id',$id)->where('url','!=',null)->get(),'images_code'=> Images::where('project_id',$id)->where('url_code','!=',null)->get()]);
+        return view('single-project', ['project' => Projects::findOrFail($id), 'images' => Images::where('project_id', $id)->where('url', '!=', null)->get(), 'images_code' => Images::where('project_id', $id)->where('url_code', '!=', null)->get()]);
     }
 
     /**
@@ -81,7 +95,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.projects.edit',['project'=>Projects::findOrFail($id)]);
+        return view('admin.projects.edit', ['project' => Projects::findOrFail($id)]);
     }
 
     /**
@@ -90,34 +104,50 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'title_fr' => 'required|max:255',
+            'title_en' => 'required|max:255',
+            'title_de' => 'required|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'nullable|mimes:mp4,mov,avi,wmv|max:20480',
+            'categorie' => 'nullable|max:255',
+            'description_fr' => 'nullable',
+            'description_en' => 'nullable',
+            'description_de' => 'nullable',
+            'link' => 'nullable|url',
+            'github_link' => 'nullable|url',
+        ]);
+
         $input = $request->all();
-        if($request->hasFile('image')){
-            $input['image']=$request->image->store('projects/image', 'public');
-        }
-        if ($request->has('video')) {
-            $input['video'] = $request->video->store('projects/video', 'public');
-        }
         $project = Projects::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $input['image'] = $request->file('image')->store('projects/image', 'public');
+        }
+
+        if ($request->hasFile('video')) {
+            $input['video'] = $request->file('video')->store('projects/video', 'public');
+        }
+
         $project->update($input);
+
         if ($images = $request->file('images')) {
-            foreach ($images as  $item) {
+            foreach ($images as $item) {
                 $url = $item->store('images/project', 'public');
-                $project->images()->create([
-                    'url' => $url,
-                ]);
+                $project->images()->create(['url' => $url]);
             }
         }
+
         if ($images_code = $request->file('images_code')) {
-            foreach ($images_code as  $item) {
+            foreach ($images_code as $item) {
                 $url = $item->store('images/project', 'public');
-                $project->images()->create([
-                    'url_code' => $url,
-                ]);
+                $project->images()->create(['url_code' => $url]);
             }
         }
-        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+
+        return redirect()->back()->with('success', FlashMessage::success('Project', 'update'));
     }
 
     /**
@@ -131,12 +161,12 @@ class ProjectsController extends Controller
         $project = Projects::findOrFail($id);
         $project->images()->delete();
         $project->delete();
-        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('danger', FlashMessage::danger('Project', 'delete'));
     }
     public function DestroyImage($id)
     {
         $image = Images::findOrFail($id);
         $image->delete();
-        return redirect()->back()->with('success', 'le contenu a été bien enregistré');
+        return redirect()->back()->with('danger', FlashMessage::danger('Image', 'delete'));
     }
 }

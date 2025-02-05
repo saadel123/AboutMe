@@ -36,7 +36,6 @@ return [
         'filters' => [
             'title' => 'ALL'
         ],
-        'description' => "These projects showcase my contributions where I've been involved from conception to development, collaborating closely with developers, project managers, designers, clients, and content creators to build them from scratch. By exploring my portfolio, you will discover the diversity of my skills, from design to implementation, performance optimization, and continuous maintenance.",
     ],
     'services' => [
         'title' => 'Services',
@@ -65,7 +64,5 @@ return [
     ],
     'certificates' => [
         'title' => 'Certificate',
-        'description' => "Discover my certificates obtained to validate my skills and enrich my expertise.",
     ],
-    'devweb' => 'Software Developer,+3 years of experience, Passionate about learning new technologies',
 ];

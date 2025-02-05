@@ -36,7 +36,6 @@ return [
         'filters' => [
             'title' => 'Tout'
         ],
-        'description'=>"Ces projets mettent en valeur mes contributions où j'ai été impliqué de la conception au développement, collaborant étroitement avec des développeurs, des chefs de projet, des designers, des clients et des créateurs de contenu pour les construire de zéro. En explorant mon portfolio, vous découvrirez la diversité de mes compétences, de la conception à l'implémentation, en passant par l'optimisation des performances et la maintenance continue.",
     ],
     'services'=>[
         'title'=>'Services',
@@ -65,8 +64,5 @@ return [
     ],
     'certificates' => [
         'title' => 'Certificat',
-        'description' => "Découvrez mes certificats obtenus pour valider mes compétences et enrichir mon expertise.",
     ],
-    'devweb' => 'Développeur logiciel, +3 ans d\'expérience, Passionné par l\'apprentissage de nouvelles technologies',
-
 ];

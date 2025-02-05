@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
                 <li class="breadcrumb-item active">Experiences</li>
             </ol>
-            <a href="{{ route('experiences.index') }}" class="btn btn-outline-primary">Retour</a>
+            <a href="{{ route('experiences.index') }}" class="btn btn-outline-primary">Back</a>
         </nav>
     </div>
     <section class="section dashboard">
@@ -25,19 +25,15 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center">Modifier</h3>
-                                        @if (session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
+                                        <h3 class="text-center">Update</h3>
+                                        @include('components.alerts')
                                     </div>
                                 </div>
                             </div>
                             @include('admin.layouts.forms.experiences', ['experience' => $experience])
                             <div class="mt-5">
                                 <button type="submit" class="btn btn-primary rounded-0"> <i class="bi bi-save"></i>
-                                    Enregistrer</button>
+                                    Save</button>
                             </div>
                         </form>
                     </div>

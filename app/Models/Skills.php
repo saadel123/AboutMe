@@ -10,5 +10,5 @@ class Skills extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['percent', 'langage'];
+    protected $fillable = ['percent', 'language'];
 }

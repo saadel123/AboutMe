@@ -15,45 +15,29 @@
             .portfolio-details-slider {
                 width: 80%;
             }
-
         }
 
-
-        /* Add this to your main CSS file */
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+        .portfolio-details .portfolio-description .project-content strong {
             color: #2c3e50;
-            font-weight: 600;
         }
-
-        .project-content ul {
-            list-style: none;
-            padding-left: 1.5rem;
-        }
-
-        .project-content ul li {
-            margin-bottom: 0.5rem;
+        .portfolio-details .portfolio-description .project-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
             position: relative;
-            padding-left: 1.5rem;
+            border-bottom: 1px solid #eee;
         }
 
-        .project-content ul li::before {
-            content: "▹";
+        .portfolio-details .portfolio-description .project-content h3:after {
+            content: "";
             position: absolute;
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
             left: 0;
-            color: #3498db;
-        }
-
-        .project-content p {
-            line-height: 1.8;
-            color: #4a5568;
-            margin-bottom: 1.5rem;
-        }
-
-        .shadow-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            bottom: 0;
         }
 
         .shadow-hover {
@@ -102,10 +86,10 @@
                     <div class="col-lg-9" data-aos="fade-up">
                         <div class="portfolio-description card shadow-hover border-0 p-4">
                             <div class="card-body">
-                                <h2 class="mb-4"><a href="{{ $project->link }}" target="_blank"
-                                        class="text-decoration-none text-dark hover-primary">
+                                <h1 class="mb-4"><a href="{{ $project->link }}" target="_blank"
+                                        class="text-decoration-none hover-primary">
                                         {{ $project->{'title_' . app()->getLocale()} }}
-                                    </a></h2>
+                                    </a></h1>
                                 <div class="project-content">
                                     {!! $project->{'description_' . app()->getLocale()} !!}
                                 </div>

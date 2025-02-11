@@ -42,6 +42,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link {{ Str::startsWith(request()->url(), route('categories.index')) ? '' : 'collapsed' }}"
+            href="{{ route('categories.index') }}">
+            <i class="ri-price-tag-line"></i><span>categories</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link  {{ Str::startsWith(request()->url(), route('services.index')) ? '' : 'collapsed' }}"
             href="{{ route('services.index') }}">
             <i class="ri-customer-service-2-line"></i><span>Services</span>

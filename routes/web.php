@@ -13,8 +13,7 @@ use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AboutController;
-
-
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +60,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('images/destroy/{id}', [ProjectsController::class, 'DestroyImage'])->name('image.destroy');
     //About
     Route::resource('abouts', AboutController::class);
+    //About
+    Route::resource('categories', CategoryController::class);
 
 
 });

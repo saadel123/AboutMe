@@ -92,8 +92,9 @@ class ProjectsController extends Controller
         $project = Projects::findOrFail($id);
         $images = Images::where('project_id', $id)->where('url', '!=', null)->get();
         $images_code = Images::where('project_id', $id)->where('url_code', '!=', null)->get();
+        $categories = $project->categories;
 
-        return view('single-project', compact('project', 'images', 'images_code'));
+        return view('single-project', compact('project', 'images', 'images_code', 'categories'));
     }
 
     /**

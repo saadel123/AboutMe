@@ -100,7 +100,12 @@
                         <div class="portfolio-info text-break">
                             <h3>{!! __('home.project.project_info') !!} </h3>
                             <ul>
-                                <li><strong>{!! __('home.project.category') !!} </strong> {{ $project->categorie }}</li>
+                                <li>
+                                    <strong>{!! __('home.project.category') !!}</strong>
+                                    @foreach($project->categories as $category)
+                                        {{ $category->name }}{{ !$loop->last ? ', ' : '' }}
+                                    @endforeach
+                                </li>
                                 {{-- <li><strong>Client</strong> </li> --}}
                                 {{-- <li><strong>Project date</strong> 01 June, 2024</li> --}}
                                 @if (!empty($project->github_link))

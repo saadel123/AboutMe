@@ -166,7 +166,9 @@
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                         <li data-filter="*" class="filter-active">{!! __('home.portfolio.filters.title') !!}</li>
                         @foreach ($categories as $category)
+                            @if ($category->projects->count() > 0)
                             <li data-filter=".{{ $category->name }}">{{ $category->name }}</li>
+                            @endif
                         @endforeach
                     </ul><!-- End Portfolio Filters -->
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="100">

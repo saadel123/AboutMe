@@ -54,6 +54,8 @@ return [
     'single-project' => [
         'images' => 'Website Images',
         'images_code' => 'Code Images',
+        'video'=>'Website Videos',
+        'related_project'=>'Related Project',
     ],
     'project' => [
         'project_info' => 'Project information',

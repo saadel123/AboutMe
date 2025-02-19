@@ -54,6 +54,8 @@ return [
     'single-project' => [
         'images'=>'Images de Site',
         'images_code'=>'Images de Code',
+        'video'=>'Videos de Site',
+        'related_project'=>'Projet associé',
     ],
     'project' => [
         'project_info' => 'Informations sur le projet',

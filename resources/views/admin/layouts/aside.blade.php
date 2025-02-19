@@ -6,6 +6,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link {{ Str::startsWith(request()->url(), route('users.index')) ? 'active' : 'collapsed' }}"
+            href="{{ route('users.index') }}">
+            <i class="ri-user-line"></i><span>Users</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link {{ Str::startsWith(request()->url(), route('abouts.index')) ? 'active' : 'collapsed' }}"
             href="{{ route('abouts.index') }}">
             <i class="ri-information-line"></i><span>About</span>

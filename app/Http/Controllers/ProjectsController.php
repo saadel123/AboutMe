@@ -87,15 +87,31 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return Response
      */
+    // public function show($id)
+    // {
+    //     $project = Projects::findOrFail($id);
+    //     $images = Images::where('project_id', $id)->where('url', '!=', null)->get();
+    //     $images_code = Images::where('project_id', $id)->where('url_code', '!=', null)->get();
+    //     $categories = $project->categories;
+
+    //     return view('single-project', compact('project', 'images', 'images_code', 'categories'));
+    // }
     public function show($id)
     {
         $project = Projects::findOrFail($id);
-        $images = Images::where('project_id', $id)->where('url', '!=', null)->get();
-        $images_code = Images::where('project_id', $id)->where('url_code', '!=', null)->get();
-        $categories = $project->categories;
 
-        return view('single-project', compact('project', 'images', 'images_code', 'categories'));
+        $categoryIds = $project->categories()->pluck('categories.id');
+
+        $relatedprojects = Projects::whereHas('categories', function ($query) use ($categoryIds) {
+            $query->whereIn('categories.id', $categoryIds);
+        })->where('id', '!=', $id)->get();
+
+        $images = Images::where('project_id', $id)->whereNotNull('url')->get();
+        $images_code = Images::where('project_id', $id)->whereNotNull('url_code')->get();
+
+        return view('single-project', compact('project', 'relatedprojects', 'images', 'images_code'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

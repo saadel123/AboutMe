@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('abouts', AboutController::class);
     //About
     Route::resource('categories', CategoryController::class);
+    //User
+    Route::resource('users', UserController::class);
 
 
 });

@@ -1,3 +1,5 @@
+@section('stylesheet')
+@endsection
 <div class="col-4">
     <label for="title_fr" class="form-label">Titre</label>
     <input type="text" name="title_fr" class="form-control" id="title_fr"
@@ -26,27 +28,39 @@
 </div>
 
 <div class="col-4">
-    <label for="description_fr" class="form-label">Description</label>
-    <textarea name="description_fr" class="form-control" id="description_fr" rows="14">{{ old('description_fr', $project->description_fr ?? '') }}</textarea>
-    @error('description_fr')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Description (FR)</h5>
+            <textarea class="tinymce-editor" name="description_fr">{!! old('description_fr', $project->description_fr ?? '') !!}</textarea>
+            @error('description_fr')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 </div>
 
 <div class="col-4">
-    <label for="description_en" class="form-label">Description En</label>
-    <textarea name="description_en" class="form-control" id="description_en" rows="14">{{ old('description_en', $project->description_en ?? '') }}</textarea>
-    @error('description_en')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Description (EN)</h5>
+            <textarea class="tinymce-editor" name="description_en">{!! old('description_en', $project->description_en ?? '') !!}</textarea>
+            @error('description_en')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 </div>
 
 <div class="col-4">
-    <label for="description_de" class="form-label">Description de</label>
-    <textarea name="description_de" class="form-control" id="description_de" rows="14">{{ old('description_de', $project->description_de ?? '') }}</textarea>
-    @error('description_de')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Description (DE)</h5>
+            <textarea class="tinymce-editor" name="description_de">{!! old('description_de', $project->description_de ?? '') !!}</textarea>
+            @error('description_de')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 </div>
 
 <div class="col-4">
@@ -61,7 +75,7 @@
 </div>
 
 <div class="col-4">
-    <label for="link" class="form-label">Link</label>
+    <label for="link" class="form-label">Website Link</label>
     <input type="text" name="link" class="form-control" id="link"
         value="{{ old('link', $project->link ?? '') }}">
     @error('link')

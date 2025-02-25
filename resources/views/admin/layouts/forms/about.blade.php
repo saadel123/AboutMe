@@ -117,7 +117,7 @@
 
 <div class="col-4">
     <label for="description_fr" class="form-label">Description FR</label>
-    <textarea name="description_fr" class="form-control" id="description_fr" rows="12">{{ old('description_fr', $about->description_fr ?? '') }}</textarea>
+    <textarea name="description_fr" class="tinymce-editor">{{ old('description_fr', $about->description_fr ?? '') }}</textarea>
     @error('description_fr')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -125,7 +125,7 @@
 
 <div class="col-4">
     <label for="description_en" class="form-label">Description EN</label>
-    <textarea name="description_en" class="form-control" id="description_en" rows="12">{{ old('description_en', $about->description_en ?? '') }}</textarea>
+    <textarea name="description_en" class="tinymce-editor">{{ old('description_en', $about->description_en ?? '') }}</textarea>
     @error('description_en')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -133,11 +133,12 @@
 
 <div class="col-4">
     <label for="description_de" class="form-label">Description DE</label>
-    <textarea name="description_de" class="form-control" id="description_de" rows="12">{{ old('description_de', $about->description_de ?? '') }}</textarea>
+    <textarea name="description_de" class="tinymce-editor">{{ old('description_de', $about->description_de ?? '') }}</textarea>
     @error('description_de')
         <span class="text-danger">{{ $message }}</span>
     @enderror
 </div>
+
 
 <div class="col-4">
     <label for="diploma_fr" class="form-label">Diploma FR</label>

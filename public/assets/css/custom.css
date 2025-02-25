@@ -1,0 +1,42 @@
+/* Custom Styles - This file contains my personal custom CSS */
+
+/* TinyMCE Custom Styles - Adjustments for toolbar and branding */
+.tox-promotion {
+    display: none !important;
+}
+
+.tox-statusbar__branding {
+    display: none !important;
+}
+
+.tox-tinymce--toolbar-sticky-on {
+    position: static !important;
+}
+
+.tox-toolbar__primary {
+    position: static !important;
+}
+
+.tox-editor-header {
+    position: static !important;
+}
+
+.tox-editor-container {
+    padding-top: 0px !important;
+}
+
+/* Taginput for catgory*/
+.bootstrap-tagsinput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.bootstrap-tagsinput .tag {
+    margin-right: 2px;
+    color: white;
+    background-color: #007bff;
+    padding: 3px 6px;
+    border-radius: 3px;
+}

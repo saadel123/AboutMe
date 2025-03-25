@@ -12,6 +12,8 @@ use App\Models\Contact;
 use App\Models\Services;
 use App\Models\Skills;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
 
 class HomeController extends Controller
 {
@@ -42,17 +44,53 @@ class HomeController extends Controller
         ]);
     }
 
+
     public function index()
     {
-        return view('index', [
-            'educations' => Educations::all(),
-            'experiences' => Experiences::all(),
-            'skills' => Skills::all(),
-            'services' => Services::all(),
-            'projects' => Projects::all(),
-            'certificates' => Certificate::all(),
-            'about' => About::first(),
-            'categories' => Category::all(),
-        ]);
+        $locale = app()->getLocale();
+        $cacheKey = "portfolio_data_{$locale}_v1";
+
+        $data = Cache::remember($cacheKey, now()->addHours(12), function () use ($locale) {
+            return [
+                'educations' => Educations::select(['id', "title_$locale", 'datedebut', 'datefin'])
+                    ->orderBy('datedebut', 'desc')
+                    ->get(),
+
+                'experiences' => Experiences::select(['id', "title_$locale", 'datedebut', 'datefin', "description_$locale"])
+                    ->orderBy('datedebut', 'desc')
+                    ->get(),
+
+                'skills' => Skills::select(['language', 'percent'])
+                    ->orderBy('percent', 'desc')
+                    ->get(),
+
+                'projects' => Projects::with(['categories:id,name'])
+                    ->select(['id', 'image', "title_$locale"])
+                    ->get(),
+
+                'certificates' => Certificate::select(['id', 'image', "title_$locale", 'link'])
+                    ->get(),
+
+                'about' => About::select([
+                    'fullname',
+                    "headline_$locale",
+                    "description_$locale",
+                    "title_$locale",
+                    "experince_$locale",
+                    "diploma_$locale",
+                    'age',
+                    "location_$locale",
+                    'email',
+                    "portfolio_description_$locale",
+                    "certificate_description_$locale"
+                ])->first(),
+
+                'categories' => Category::has('projects')
+                    ->select(['id', 'name'])
+                    ->get(),
+            ];
+        });
+
+        return view('index', array_merge(['locale' => $locale], $data));
     }
 }

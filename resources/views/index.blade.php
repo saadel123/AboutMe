@@ -18,7 +18,7 @@
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
             <h1>{{ $about->fullname }}</h1>
-            <p><span class="typed" data-typed-items="{!! $about->{'headline_' . app()->getLocale()} !!}"></span></p>
+            <p><span class="typed" data-typed-items="{!! $about->{'headline_' . $locale} !!}"></span></p>
             <div class="social-links">
                 {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -41,31 +41,31 @@
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
-                    @if (!empty($about->{'description_' . app()->getLocale()}))
+                    @if (!empty($about->{'description_' . $locale}))
                         <h2>{!! __('home.about.title') !!}</h2>
-                        <p style="white-space: break-spaces;">{!! $about->{'description_' . app()->getLocale()} !!}</p>
+                        <p style="white-space: break-spaces;">{!! $about->{'description_' . $locale} !!}</p>
                     @endif
                 </div>
                 <div class="row">
                     <div class="col-lg-10 m-auto pt-4 pt-lg-0 content">
-                        @if (!empty($about->{'title_' . app()->getLocale()}))
-                            <h3 class="mb-3">{!! $about->{'title_' . app()->getLocale()} !!}</h3>
+                        @if (!empty($about->{'title_' . $locale}))
+                            <h3 class="mb-3">{!! $about->{'title_' . $locale} !!}</h3>
                         @endif
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
-                                    @if (!empty($about->{'experince_' . app()->getLocale()}))
+                                    @if (!empty($about->{'experince_' . $locale}))
                                         <li>
                                             <i class="bi bi-chevron-right"></i>
                                             <strong>{!! __('home.about.experience') !!}:</strong>
-                                            <span>{!! $about->{'experince_' . app()->getLocale()} !!}</span>
+                                            <span>{!! $about->{'experince_' . $locale} !!}</span>
                                         </li>
                                     @endif
-                                    @if (!empty($about->{'diploma_' . app()->getLocale()}))
+                                    @if (!empty($about->{'diploma_' . $locale}))
                                         <li>
                                             <i class="bi bi-chevron-right"></i>
                                             <strong>{!! __('home.about.dpl') !!}:</strong>
-                                            <span>{!! $about->{'diploma_' . app()->getLocale()} !!}</span>
+                                            <span>{!! $about->{'diploma_' . $locale} !!}</span>
                                         </li>
                                     @endif
                                 </ul>
@@ -79,11 +79,11 @@
                                             <span>{{ $about->age }} {!! __('home.about.year') !!}</span>
                                         </li>
                                     @endif
-                                    @if (!empty($about->{'location_' . app()->getLocale()}))
+                                    @if (!empty($about->{'location_' . $locale}))
                                         <li>
                                             <i class="bi bi-chevron-right"></i>
                                             <strong>{!! __('home.about.vle') !!} :</strong>
-                                            <span>{!! $about->{'location_' . app()->getLocale()} !!}</span>
+                                            <span>{!! $about->{'location_' . $locale} !!}</span>
                                         </li>
                                     @endif
                                     @if (!empty($about->email))
@@ -125,7 +125,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>{!! __('home.resume.title') !!}</h2>
-                    <p>{!! $about->{'title_' . app()->getLocale()} !!}</p>
+                    <p>{!! $about->{'title_' . $locale} !!}</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -135,11 +135,11 @@
                         </p>
                         @foreach ($experiences as $experience)
                             <div class="resume-item">
-                                <h4>{{ $experience->{'title_' . app()->getLocale()} }}</h4>
+                                <h4>{{ $experience->{'title_' . $locale} }}</h4>
                                 <h5>{{ $experience->datedebut }} - {{ $experience->datefin ?? __('home.about.date') }}
                                 </h5>
-                                <p><em>{{ $experience->lieu }}</em></p>
-                                {!! $experience->{'description_' . app()->getLocale()} !!}
+                                {{-- <p><em>{{ $experience->lieu }}</em></p> --}}
+                                {!! $experience->{'description_' . $locale} !!}
                             </div>
                         @endforeach
                     </div>
@@ -147,9 +147,9 @@
                         <h3 class="resume-title">{!! __('home.resume.education') !!}</h3>
                         @foreach ($educations as $education)
                             <div class="resume-item">
-                                <h4>{{ $education->{'title_' . app()->getLocale()} }}</h4>
+                                <h4>{{ $education->{'title_' . $locale} }}</h4>
                                 <h5>{{ $education->datedebut }} - {{ $education->datefin }}</h5>
-                                <p><em>{{ $education->lieu }}</em></p>
+                                {{-- <p><em>{{ $education->lieu }}</em></p> --}}
                             </div>
                         @endforeach
                     </div>
@@ -159,7 +159,7 @@
         <section id="portfolio" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.portfolio.title') !!}</h2>
-                <p>{!! $about->{'portfolio_description_' . app()->getLocale()} !!}</p>
+                <p>{!! $about->{'portfolio_description_' . $locale} !!}</p>
             </div>
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -179,10 +179,10 @@
                                     class="details-link">
                                     <img src="{{ asset('storage/' . $project->image) }}"
                                         class="img-fluid portfolio-wrap portfolio-img lazyload"
-                                        alt="{{ $project->{'title_' . app()->getLocale()} }}">
+                                        alt="{{ $project->{'title_' . $locale} }}">
                                 </a>
                                 <div class="portfolio-info">
-                                    <p>{{ $project->{'title_' . app()->getLocale()} }}</p>
+                                    <p>{{ $project->{'title_' . $locale} }}</p>
                                     <a href="{{ asset('storage/' . $project->image) }}"
                                         data-gallery="portfolio-gallery-app" class="glightbox preview-link">
                                         <i class="bi bi-zoom-in"></i>
@@ -200,7 +200,7 @@
         <section id="certificates" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.certificates.title') !!}</h2>
-                <p>{!! $about->{'certificate_description_' . app()->getLocale()} !!}</p>
+                <p>{!! $about->{'certificate_description_' . $locale} !!}</p>
             </div>
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -214,7 +214,7 @@
                                         alt="">
                                 </a>
                                 <div class="portfolio-info">
-                                    <p>{{ $certificate->{'title_' . app()->getLocale()} }}</p>
+                                    <p>{{ $certificate->{'title_' . $locale} }}</p>
                                     @if (!empty($certificate->link))
                                         <a href="{{ $certificate->link }}" target="_blank" title="More Details"
                                             class="details-link">
@@ -239,7 +239,7 @@
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>{!! __('home.Contact.location') !!} :</h4>
-                                <p>{!! $about->{'location_' . app()->getLocale()} !!}</p>
+                                <p>{!! $about->{'location_' . $locale} !!}</p>
                             </div>
                             <div class="email">
                                 <i class="bi bi-envelope"></i>

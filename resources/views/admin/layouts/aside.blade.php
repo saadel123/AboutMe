@@ -6,6 +6,13 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/statistics*') ? 'active' : 'collapsed' }}"
+            href="{{ route('statistic') }}">
+            <i class="ri-line-chart-line"></i>
+            <span>Statistics</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link {{ Str::startsWith(request()->url(), route('users.index')) ? 'active' : 'collapsed' }}"
             href="{{ route('users.index') }}">
             <i class="ri-user-line"></i><span>Users</span>

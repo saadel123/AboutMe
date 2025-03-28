@@ -6,6 +6,7 @@ use App\Helpers\FlashMessage;
 use App\Models\Category;
 use App\Models\Images;
 use App\Models\Projects;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -87,21 +88,11 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    // public function show($id)
-    // {
-    //     $project = Projects::findOrFail($id);
-    //     $images = Images::where('project_id', $id)->where('url', '!=', null)->get();
-    //     $images_code = Images::where('project_id', $id)->where('url_code', '!=', null)->get();
-    //     $categories = $project->categories;
 
-    //     return view('single-project', compact('project', 'images', 'images_code', 'categories'));
-    // }
     public function show($id)
     {
         $project = Projects::findOrFail($id);
-
         $categoryIds = $project->categories()->pluck('categories.id');
-
         $relatedprojects = Projects::whereHas('categories', function ($query) use ($categoryIds) {
             $query->whereIn('categories.id', $categoryIds);
         })->where('id', '!=', $id)->get();
@@ -109,7 +100,33 @@ class ProjectsController extends Controller
         $images = Images::where('project_id', $id)->whereNotNull('url')->get();
         $images_code = Images::where('project_id', $id)->whereNotNull('url_code')->get();
 
+        // Statistics tracking
+        $this->trackProjectView($project);
+
         return view('single-project', compact('project', 'relatedprojects', 'images', 'images_code'));
+    }
+
+    protected function trackProjectView($project)
+    {
+        $sessionId = session()->get('user_session_id');
+        $pageIdentifier = $project->title_en
+            ? "project:{$project->id}:{$project->title_en}"
+            : "project:{$project->id}";
+
+        if (!session()->has("viewed_page_{$pageIdentifier}")) {
+            try {
+                Statistic::create([
+                    'session_id' => $sessionId,
+                    'page_url' => '/single-project/' . $project->id,
+                    'page_title' => $project->title_en,
+                    'project_id' => $project->id,
+                    'clicked_at' => now()
+                ]);
+                session()->put("viewed_page_{$pageIdentifier}", true);
+            } catch (\Illuminate\Database\QueryException $e) {
+                \Log::warning("Duplicate tracking attempt - Session: {$sessionId}, Project: {$project->id}");
+            }
+        }
     }
 
 

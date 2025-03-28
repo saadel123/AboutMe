@@ -11,6 +11,7 @@ use App\Models\Certificate;
 use App\Models\Contact;
 use App\Models\Services;
 use App\Models\Skills;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -29,6 +30,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function home()
     {
         return view('home', [
@@ -47,6 +49,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        // Statistics tracking
+        $this->trackHomepageView();
+
+
         $locale = app()->getLocale();
         $cacheKey = "portfolio_data_{$locale}_v1";
 
@@ -92,5 +98,25 @@ class HomeController extends Controller
         });
 
         return view('index', array_merge(['locale' => $locale], $data));
+    }
+
+    protected function trackHomepageView()
+    {
+        $sessionId = session()->get('user_session_id');
+        $pageIdentifier = 'homepage';
+
+        if (!session()->has("viewed_page_{$pageIdentifier}")) {
+            try {
+                Statistic::create([
+                    'session_id' => $sessionId,
+                    'page_url' => '/',
+                    'page_title' => 'Homepage', // Consistent with project tracking
+                    'clicked_at' => now()
+                ]);
+                session()->put("viewed_page_{$pageIdentifier}", true);
+            } catch (\Illuminate\Database\QueryException $e) {
+                \Log::warning("Duplicate homepage tracking - Session: {$sessionId}");
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
@@ -65,6 +66,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('categories', CategoryController::class);
     //User
     Route::resource('users', UserController::class);
+    Route::get('statistic', [StatisticsController::class,'index'])->name( 'statistic');
 
 
 });

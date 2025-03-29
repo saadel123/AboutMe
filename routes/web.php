@@ -38,9 +38,18 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.subm
 
 Auth::routes(['register' => false]);
 
+// Language routes
+Route::get('/{lang}', [ChangerLangController::class, 'setLanguageFromUrl'])
+    ->where('lang', 'de|fr|en')
+    ->name('language.home');
 
-// Route::get('/changeLang', [ChangerLangController::class, 'lang_change'])->name('changeLang');
-Route::get('/change-language/{lang}', [ChangerLangController::class, 'changeLang'])->name('changeLang');
+// Track Resume clickes
+Route::get('/gm', [ChangerLangController::class, 'trackResumeAndSetGerman'])
+     ->name('resume.link');
+
+// Existing language change route
+Route::get('/change-language/{lang}', [ChangerLangController::class, 'changeLang'])
+    ->name('changeLang');
 
 Route::get('/en', [ChangerLangController::class, 'index']);
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -66,7 +75,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('categories', CategoryController::class);
     //User
     Route::resource('users', UserController::class);
-    Route::get('statistic', [StatisticsController::class,'index'])->name( 'statistic');
-
+    Route::get('statistic', [StatisticsController::class, 'index'])->name('statistic');
+    Route::delete('statistic/{sessionId}', [StatisticsController::class, 'destroy'])->name('statistic.destroy');
 
 });

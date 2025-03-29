@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
 @section('stylesheet')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         .journey-path {
             max-height: 200px;
             overflow-y: auto;
             padding-right: 10px;
         }
-
         .journey-step {
             margin-bottom: 8px;
             padding-bottom: 8px;
@@ -15,11 +15,9 @@
             display: flex;
             align-items: center;
         }
-
         .journey-step:last-child {
             border-bottom: none;
         }
-
         .journey-step a {
             color: #4154f1;
             text-decoration: none;
@@ -27,14 +25,19 @@
             display: inline-flex;
             align-items: center;
         }
-
         .journey-step a:hover {
             color: #2c3eaa;
             text-decoration: underline;
         }
-
         .journey-step i {
             font-size: 0.9rem;
+        }
+        .badge-language {
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+        .resume-click {
+            background-color: #fff3cd;
         }
     </style>
 @endsection
@@ -44,12 +47,16 @@
         <h1>User Statistics</h1>
         <nav style="display: flex; justify-content: space-between;">
             <ol class="breadcrumb">
-                {{-- <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li> --}}
                 <li class="breadcrumb-item active">User Statistics</li>
             </ol>
-            <button class="btn btn-sm btn-outline-primary" id="refresh-btn">
-                <i class="bi bi-arrow-clockwise"></i> Refresh
-            </button>
+            <div>
+                <a href="{{ route('statistic') }}?filter=resume" class="btn btn-sm btn-warning me-2">
+                    <i class="bi bi-file-earmark-person"></i> Resume Clicks
+                </a>
+                <button class="btn btn-sm btn-outline-primary" id="refresh-btn">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                </button>
+            </div>
         </nav>
     </div>
 
@@ -69,12 +76,20 @@
                                     <i class="bi bi-funnel"></i> Filter
                                 </button>
                             </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="language-filter">
+                                    <option value="">All Languages</option>
+                                    <option value="en" {{ request('language') == 'en' ? 'selected' : '' }}>English</option>
+                                    <option value="de" {{ request('language') == 'de' ? 'selected' : '' }}>German</option>
+                                    <option value="fr" {{ request('language') == 'fr' ? 'selected' : '' }}>French</option>
+                                </select>
+                            </div>
                             <div class="col-md-2 ms-auto">
                                 <select class="form-select" id="items-per-page">
-                                    <option value="10">10 per page</option>
-                                    <option value="25">25 per page</option>
-                                    <option value="50">50 per page</option>
-                                    <option value="100">100 per page</option>
+                                    <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10 per page</option>
+                                    <option value="25" {{ request('per_page', 10) == 25 ? 'selected' : '' }}>25 per page</option>
+                                    <option value="50" {{ request('per_page', 10) == 50 ? 'selected' : '' }}>50 per page</option>
+                                    <option value="100" {{ request('per_page', 10) == 100 ? 'selected' : '' }}>100 per page</option>
                                 </select>
                             </div>
                         </div>
@@ -88,6 +103,7 @@
                                         <th scope="col">Last Activity</th>
                                         <th scope="col">Pages</th>
                                         <th scope="col">Duration</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,36 +111,39 @@
                                         @php
                                             $firstView = $views->last();
                                             $lastView = $views->first();
-                                            $duration = $firstView->clicked_at->diffForHumans(
-                                                $lastView->clicked_at,
-                                                true,
-                                            );
+                                            $duration = $firstView->clicked_at->diffForHumans($lastView->clicked_at, true);
+                                            $isResumeClick = $views->contains('is_resume_click', true);
                                         @endphp
-                                        <tr>
+                                        <tr class="{{ $isResumeClick ? 'resume-click' : '' }}">
                                             <td>
                                                 <span class="badge bg-primary" title="{{ $sessionId }}">
                                                     {{ Str::limit($sessionId, 8) }}
+                                                    @if($isResumeClick)
+                                                        <span class="badge bg-warning badge-language" title="Resume Click">CV</span>
+                                                    @endif
                                                 </span>
                                             </td>
                                             <td>
                                                 <div class="journey-path">
                                                     @foreach ($views->sortBy('clicked_at') as $view)
                                                         <div class="journey-step">
-                                                            <small
-                                                                class="text-muted me-2">{{ $view->clicked_at->format('H:i') }}</small>
-                                                            @if ($view->project_id)
-                                                                <a href="{{ $view->page_url }}"
-                                                                    class="d-inline-flex align-items-center">
+                                                            <small class="text-muted me-2">{{ $view->clicked_at->format('H:i') }}</small>
+                                                            @if ($view->is_resume_click)
+                                                                <span class="d-inline-flex align-items-center text-warning">
+                                                                    <i class="bi bi-file-earmark-person me-1"></i>
+                                                                    <span>Resume Link ({{ strtoupper($view->language) }})</span>
+                                                                </span>
+                                                            @elseif ($view->project_id)
+                                                                <a href="{{ $view->page_url }}" class="d-inline-flex align-items-center">
                                                                     <i class="bi bi-box-seam me-1"></i>
-                                                                    <span>
-                                                                        {{ $view->page_title ?: 'Project #' . $view->project_id }}
-                                                                    </span>
+                                                                    <span>{{ $view->page_title ?: 'Project #'.$view->project_id }}</span>
+                                                                    <span class="badge bg-secondary badge-language">{{ strtoupper($view->language) }}</span>
                                                                 </a>
                                                             @else
-                                                                <a href="{{ $view->page_url }}"
-                                                                    class="d-inline-flex align-items-center">
+                                                                <a href="{{ $view->page_url }}" class="d-inline-flex align-items-center">
                                                                     <i class="bi bi-house me-1"></i>
                                                                     <span>Homepage</span>
+                                                                    <span class="badge bg-secondary badge-language">{{ strtoupper($view->language) }}</span>
                                                                 </a>
                                                             @endif
                                                         </div>
@@ -133,13 +152,11 @@
                                             </td>
                                             <td>
                                                 <span class="d-block">{{ $firstView->clicked_at->format('M j') }}</span>
-                                                <small
-                                                    class="text-muted">{{ $firstView->clicked_at->format('H:i') }}</small>
+                                                <small class="text-muted">{{ $firstView->clicked_at->format('H:i') }}</small>
                                             </td>
                                             <td>
                                                 <span class="d-block">{{ $lastView->clicked_at->format('M j') }}</span>
-                                                <small
-                                                    class="text-muted">{{ $lastView->clicked_at->format('H:i') }}</small>
+                                                <small class="text-muted">{{ $lastView->clicked_at->format('H:i') }}</small>
                                             </td>
                                             <td class="text-center">
                                                 <span class="badge rounded-pill bg-info">
@@ -147,6 +164,13 @@
                                                 </span>
                                             </td>
                                             <td>{{ $duration }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-danger delete-session"
+                                                    data-session-id="{{ $sessionId }}"
+                                                    title="Delete this session's statistics">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -157,15 +181,48 @@
             </div>
         </div>
     </section>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete all statistics for this session?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Date filter
             document.getElementById('apply-filter').addEventListener('click', function() {
-                const date = document.getElementById('filter-date').value;
-                window.location.href = "{{ route('statistic') }}" + (date ? `?date=${date}` : '');
+                applyFilters();
+            });
+
+            // Language filter
+            document.getElementById('language-filter').addEventListener('change', function() {
+                applyFilters();
+            });
+
+            // Items per page
+            document.getElementById('items-per-page').addEventListener('change', function() {
+                applyFilters();
             });
 
             // Refresh button
@@ -173,18 +230,33 @@
                 window.location.reload();
             });
 
-            // Items per page
-            document.getElementById('items-per-page').addEventListener('change', function() {
-                const url = new URL(window.location.href);
-                url.searchParams.set('per_page', this.value);
-                window.location.href = url.toString();
+            function applyFilters() {
+                const date = document.getElementById('filter-date').value;
+                const language = document.getElementById('language-filter').value;
+                const perPage = document.getElementById('items-per-page').value;
+
+                let url = "{{ route('statistic') }}?";
+                if (date) url += `date=${date}&`;
+                if (language) url += `language=${language}&`;
+                url += `per_page=${perPage}`;
+
+                window.location.href = url;
+            }
+
+            // Delete functionality
+            document.querySelectorAll('.delete-session').forEach(button => {
+                button.addEventListener('click', function() {
+                    const sessionId = this.getAttribute('data-session-id');
+                    const form = document.getElementById('deleteForm');
+                    form.action = "{{ route('statistic.destroy', '') }}/" + sessionId;
+                    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                    modal.show();
+                });
             });
 
             // Initialize DataTable
             $('.datatable').DataTable({
-                order: [
-                    [2, 'desc']
-                ],
+                order: [[2, 'desc']],
                 dom: '<"top"<"d-flex justify-content-between align-items-center"fl>>rt<"bottom"ip><"clear">',
                 language: {
                     search: "_INPUT_",
@@ -197,6 +269,11 @@
                     $('.dataTables_length select').addClass('form-select');
                 }
             });
+
+            // Success message handling
+            @if (session('success'))
+                toastr.success("{{ session('success') }}");
+            @endif
         });
     </script>
 @endsection

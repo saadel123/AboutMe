@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Saad El Ghanemy</title>
-    <meta content="Saad EL Ghanemy: Aspiring software developer skilled in PHP, Laravel, Vue.js, and more, eager to build impactful and user-friendly digital solutions" name="description">
+    <meta
+        content="Saad EL Ghanemy: Aspiring software developer skilled in PHP, Laravel, Vue.js, and more, eager to build impactful and user-friendly digital solutions"
+        name="description">
     <meta content="" name="keywords">
     @yield('meta')
     <!--Favicon-->
@@ -38,26 +40,18 @@
                 @php
                     $languages = config('languages');
                     $currentLocale = session()->get('locale', 'en');
-                    $defaultLocale = 'en';
-
-                    // Excluding the current locale from the list of available languages
-                    $availableLanguages = array_filter(
-                        $languages,
-                        function ($key) use ($currentLocale) {
-                            return $key !== $currentLocale;
-                        },
-                        ARRAY_FILTER_USE_KEY,
-                    );
                 @endphp
 
-                @foreach ($availableLanguages as $langCode => $lang)
-                    <li>
-                        <a class="d-flex justify-content-center"
-                            href="{{ route('changeLang', ['lang' => $langCode]) }}">
-                            <img src="{{ asset($lang['flag']) }}" alt="">
-                            <span>{!! __('home.menu.' . $lang['name']) !!}</span>
-                        </a>
-                    </li>
+                @foreach ($languages as $langCode => $lang)
+                    @if ($langCode !== $currentLocale)
+                        <li>
+                            <a class="d-flex justify-content-center" href="{{ url("/$langCode") }}">
+                                <!-- Changed to use direct URL -->
+                                <img src="{{ asset($lang['flag']) }}" alt="">
+                                <span>{!! __('home.menu.' . $lang['name']) !!}</span>
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
 
                 <li><a href="{{ url('/') }}" class="nav-link scrollto active"><i class="bx bx-home"></i>
@@ -174,11 +168,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DP35YH6X6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-6DP35YH6X6');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6DP35YH6X6');
     </script>
 
 </body>

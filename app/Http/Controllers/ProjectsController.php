@@ -100,7 +100,7 @@ class ProjectsController extends Controller
         $images = Images::where('project_id', $id)->whereNotNull('url')->get();
         $images_code = Images::where('project_id', $id)->whereNotNull('url_code')->get();
 
-        // Statistics tracking
+        // Statistics tracking with language
         $this->trackProjectView($project);
 
         return view('single-project', compact('project', 'relatedprojects', 'images', 'images_code'));
@@ -109,22 +109,24 @@ class ProjectsController extends Controller
     protected function trackProjectView($project)
     {
         $sessionId = session()->get('user_session_id');
+        $currentLanguage = app()->getLocale();
         $pageIdentifier = $project->title_en
-            ? "project:{$project->id}:{$project->title_en}"
-            : "project:{$project->id}";
+            ? "project:{$project->id}:{$project->title_en}:{$currentLanguage}"
+            : "project:{$project->id}:{$currentLanguage}";
 
         if (!session()->has("viewed_page_{$pageIdentifier}")) {
             try {
                 Statistic::create([
                     'session_id' => $sessionId,
                     'page_url' => '/single-project/' . $project->id,
-                    'page_title' => $project->title_en,
+                    'page_title' => $project->{"title_$currentLanguage"} ?? $project->title_en,
                     'project_id' => $project->id,
+                    'language' => $currentLanguage,
                     'clicked_at' => now()
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
             } catch (\Illuminate\Database\QueryException $e) {
-                \Log::warning("Duplicate tracking attempt - Session: {$sessionId}, Project: {$project->id}");
+                \Log::warning("Duplicate tracking attempt - Session: {$sessionId}, Project: {$project->id}, Language: {$currentLanguage}");
             }
         }
     }
@@ -169,28 +171,22 @@ class ProjectsController extends Controller
         $input = $request->all();
         $project = Projects::findOrFail($id);
 
-        // Check if categories were passed and update the pivot table
         if ($request->has('categories')) {
-            $project->categories()->sync($request->categories); // sync will add and remove categories as needed
+            $project->categories()->sync($request->categories);
         } else {
-            // If no categories are selected, ensure they are removed from the pivot table
-            $project->categories()->detach(); // Detach all categories if none are selected
+            $project->categories()->detach();
         }
 
-        // Handle image upload if provided
         if ($request->hasFile('image')) {
             $input['image'] = $request->file('image')->store('projects/image', 'public');
         }
 
-        // Handle video upload if provided
         if ($request->hasFile('video')) {
             $input['video'] = $request->file('video')->store('projects/video', 'public');
         }
 
-        // Update the project record
         $project->update($input);
 
-        // Handle additional images
         if ($images = $request->file('images')) {
             foreach ($images as $item) {
                 $url = $item->store('images/project', 'public');
@@ -198,7 +194,6 @@ class ProjectsController extends Controller
             }
         }
 
-        // Handle additional code images
         if ($images_code = $request->file('images_code')) {
             foreach ($images_code as $item) {
                 $url = $item->store('images/project', 'public');
@@ -206,7 +201,6 @@ class ProjectsController extends Controller
             }
         }
 
-        // Redirect back with success message
         return redirect()->back()->with('success', FlashMessage::success('Project', 'update'));
     }
 

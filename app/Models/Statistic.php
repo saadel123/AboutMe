@@ -16,7 +16,9 @@ class Statistic extends Model
         'page_url',
         'project_id',
         'clicked_at',
-        'page_title'
+        'page_title',
+        'language',
+        'is_resume_click'
     ];
 
     protected $dates = [

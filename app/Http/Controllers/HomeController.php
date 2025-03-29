@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function index()
     {
         // Statistics tracking
-        $this->trackHomepageView();
+        $this->trackHomepageView(app()->getLocale());
 
 
         $locale = app()->getLocale();
@@ -100,17 +100,18 @@ class HomeController extends Controller
         return view('index', array_merge(['locale' => $locale], $data));
     }
 
-    protected function trackHomepageView()
+    protected function trackHomepageView($lang = null)
     {
         $sessionId = session()->get('user_session_id');
-        $pageIdentifier = 'homepage';
+        $pageIdentifier = 'homepage_' . ($lang ?? 'default');
 
         if (!session()->has("viewed_page_{$pageIdentifier}")) {
             try {
                 Statistic::create([
                     'session_id' => $sessionId,
                     'page_url' => '/',
-                    'page_title' => 'Homepage', // Consistent with project tracking
+                    'page_title' => 'Homepage (' . strtoupper($lang ?? 'en') . ')',
+                    'language' => $lang ?? 'en',
                     'clicked_at' => now()
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
@@ -119,4 +120,5 @@ class HomeController extends Controller
             }
         }
     }
+
 }

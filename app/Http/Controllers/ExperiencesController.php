@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FlashMessage;
-use App\Models\Experiences;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
 class ExperiencesController extends Controller
@@ -16,7 +16,7 @@ class ExperiencesController extends Controller
 
     public function index()
     {
-        return view('admin.experiences.index', ['experiences' => Experiences::all()]);
+        return view('admin.experiences.index', ['experiences' => Experience::all()]);
     }
 
     /**
@@ -48,7 +48,7 @@ class ExperiencesController extends Controller
         ]);
 
         $input = $request->all();
-        Experiences::create($input);
+        Experience::create($input);
         return redirect()->route('experiences.index')->with('success', FlashMessage::success('Experience', 'add'));
     }
 
@@ -71,7 +71,7 @@ class ExperiencesController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.experiences.edit', ['experience' => Experiences::findOrFail($id)]);
+        return view('admin.experiences.edit', ['experience' => Experience::findOrFail($id)]);
     }
 
     /**
@@ -94,7 +94,7 @@ class ExperiencesController extends Controller
         ]);
 
         $input = $request->all();
-        $experience = Experiences::findOrFail($id);
+        $experience = Experience::findOrFail($id);
         $experience->update($input);
         return redirect()->back()->with('success', FlashMessage::success('Experience', 'update'));
     }
@@ -107,7 +107,7 @@ class ExperiencesController extends Controller
      */
     public function destroy($id)
     {
-        $experience = Experiences::findOrFail($id);
+        $experience = Experience::findOrFail($id);
         $experience->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Experience', 'delete'));
     }

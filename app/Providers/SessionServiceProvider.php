@@ -28,7 +28,7 @@ class SessionServiceProvider extends ServiceProvider
     {
         if (!session()->has('user_session_id')) {
             session()->put('user_session_id', Str::uuid());
-            session()->put('user_session_expires', now()->addHours(48));
+            session()->put('user_session_expires', now()->addDays(7));
         }
 
         // Clear session if expired

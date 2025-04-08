@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FlashMessage;
-use App\Models\Services;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -16,7 +16,7 @@ class ServicesController extends Controller
 
     public function index()
     {
-        return view('admin.services.index', ['services' => Services::all()]);
+        return view('admin.services.index', ['services' => Service::all()]);
     }
 
     /**
@@ -49,7 +49,7 @@ class ServicesController extends Controller
             $input['icon'] = $request->icon->store('services/icon', 'public');
         }
 
-        Services::create($input);
+        Service::create($input);
 
         return redirect()->route('services.index')->with('success', FlashMessage::success('Service', 'add'));
     }
@@ -72,7 +72,7 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.services.edit', ['service' => Services::findOrFail($id)]);
+        return view('admin.services.edit', ['service' => Service::findOrFail($id)]);
     }
 
     /**
@@ -91,7 +91,7 @@ class ServicesController extends Controller
         ]);
 
         $input = $request->all();
-        $service = Services::findOrFail($id);
+        $service = Service::findOrFail($id);
 
         if ($request->hasFile('icon')) {
             $input['icon'] = $request->icon->store('services/icon', 'public');
@@ -110,7 +110,7 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = Services::findOrFail($id);
+        $service = Service::findOrFail($id);
         $service->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Service', 'delete'));
     }

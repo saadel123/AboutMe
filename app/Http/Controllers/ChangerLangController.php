@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Statistic;
+use Illuminate\Support\Facades\Log;
 
 class ChangerLangController extends Controller
 {
@@ -44,7 +45,7 @@ class ChangerLangController extends Controller
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
             } catch (\Illuminate\Database\QueryException $e) {
-                \Log::warning("Duplicate homepage tracking - Session: {$sessionId}");
+                Log::warning("Duplicate homepage tracking - Session: {$sessionId}");
             }
         }
     }
@@ -77,7 +78,7 @@ class ChangerLangController extends Controller
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
             } catch (\Illuminate\Database\QueryException $e) {
-                \Log::warning("Duplicate resume link tracking - Session: {$sessionId}");
+                Log::warning("Duplicate resume link tracking - Session: {$sessionId}");
             }
         }
     }

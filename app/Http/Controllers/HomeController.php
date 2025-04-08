@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
-use App\Models\Educations;
-use App\Models\Experiences;
-use App\Models\Projects;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Project;
 use App\Models\Certificate;
 use App\Models\Contact;
-use App\Models\Services;
-use App\Models\Skills;
+use App\Models\Service;
+use App\Models\Skill;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -35,11 +35,11 @@ class HomeController extends Controller
     {
         return view('home', [
             'aboutCount' => About::count(),
-            'educationCount' => Educations::count(),
-            'experienceCount' => Experiences::count(),
-            'skillCount' => Skills::count(),
-            'serviceCount' => Services::count(),
-            'projectCount' => Projects::count(),
+            'educationCount' => Education::count(),
+            'experienceCount' => Experience::count(),
+            'skillCount' => Skill::count(),
+            'serviceCount' => Service::count(),
+            'projectCount' => Project::count(),
             'certificateCount' => Certificate::count(),
             'categoryCount' => Category::count(),
             'contactCount' => Contact::count(),
@@ -56,21 +56,21 @@ class HomeController extends Controller
         $locale = app()->getLocale();
         $cacheKey = "portfolio_data_{$locale}_v1";
 
-        $data = Cache::remember($cacheKey, now()->addHours(12), function () use ($locale) {
+        $data = Cache::remember($cacheKey, now()->addHours(24), function () use ($locale) {
             return [
-                'educations' => Educations::select(['id', "title_$locale", 'datedebut', 'datefin'])
+                'educations' => Education::select(['id', "title_$locale", 'datedebut', 'datefin'])
                     ->orderBy('datedebut', 'desc')
                     ->get(),
 
-                'experiences' => Experiences::select(['id', "title_$locale", 'datedebut', 'datefin', "description_$locale"])
+                'experiences' => Experience::select(['id', "title_$locale", 'datedebut', 'datefin', "description_$locale"])
                     ->orderBy('datedebut', 'desc')
                     ->get(),
 
-                'skills' => Skills::select(['language', 'percent'])
+                'skills' => Skill::select(['language', 'percent'])
                     ->orderBy('percent', 'desc')
                     ->get(),
 
-                'projects' => Projects::with(['categories:id,name'])
+                'projects' => Project::with(['categories:id,name'])
                     ->select(['id', 'image', "title_$locale"])
                     ->get(),
 
@@ -116,7 +116,7 @@ class HomeController extends Controller
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
             } catch (\Illuminate\Database\QueryException $e) {
-                \Log::warning("Duplicate homepage tracking - Session: {$sessionId}");
+                Log::warning("Duplicate homepage tracking - Session: {$sessionId}");
             }
         }
     }

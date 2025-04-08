@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helpers\FlashMessage;
 use App\Models\Category;
-use App\Models\Images;
-use App\Models\Projects;
+use App\Models\Image;
+use App\Models\Project;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProjectsController extends Controller
 {
@@ -18,7 +19,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index', ['projects' => Projects::orderBy('created_at', 'desc')->get()]);
+        return view('admin.projects.index', ['projects' => Project::orderBy('created_at', 'desc')->get()]);
     }
 
     /**
@@ -59,7 +60,7 @@ class ProjectsController extends Controller
             $input['video'] = $request->file('video')->store('projects/video', 'public');
         }
 
-        $project = Projects::create($input);
+        $project = Project::create($input);
 
         if ($request->has('categories')) {
             $project->categories()->sync($request->categories);
@@ -91,14 +92,14 @@ class ProjectsController extends Controller
 
     public function show($id)
     {
-        $project = Projects::findOrFail($id);
+        $project = Project::findOrFail($id);
         $categoryIds = $project->categories()->pluck('categories.id');
-        $relatedprojects = Projects::whereHas('categories', function ($query) use ($categoryIds) {
+        $relatedprojects = Project::whereHas('categories', function ($query) use ($categoryIds) {
             $query->whereIn('categories.id', $categoryIds);
         })->where('id', '!=', $id)->get();
 
-        $images = Images::where('project_id', $id)->whereNotNull('url')->get();
-        $images_code = Images::where('project_id', $id)->whereNotNull('url_code')->get();
+        $images = Image::where('project_id', $id)->whereNotNull('url')->get();
+        $images_code = Image::where('project_id', $id)->whereNotNull('url_code')->get();
 
         // Statistics tracking with language
         $this->trackProjectView($project);
@@ -126,7 +127,7 @@ class ProjectsController extends Controller
                 ]);
                 session()->put("viewed_page_{$pageIdentifier}", true);
             } catch (\Illuminate\Database\QueryException $e) {
-                \Log::warning("Duplicate tracking attempt - Session: {$sessionId}, Project: {$project->id}, Language: {$currentLanguage}");
+                Log::warning("Duplicate tracking attempt - Session: {$sessionId}, Project: {$project->id}, Language: {$currentLanguage}");
             }
         }
     }
@@ -140,7 +141,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $project = Projects::findOrFail($id);
+        $project = Project::findOrFail($id);
         $categories = Category::all();  // Retrieve all categories
 
         return view('admin.projects.edit', compact('project', 'categories'));
@@ -169,7 +170,7 @@ class ProjectsController extends Controller
         ]);
 
         $input = $request->all();
-        $project = Projects::findOrFail($id);
+        $project = Project::findOrFail($id);
 
         if ($request->has('categories')) {
             $project->categories()->sync($request->categories);
@@ -213,14 +214,14 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $project = Projects::findOrFail($id);
+        $project = Project::findOrFail($id);
         $project->images()->delete();
         $project->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Project', 'delete'));
     }
     public function DestroyImage($id)
     {
-        $image = Images::findOrFail($id);
+        $image = Image::findOrFail($id);
         $image->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Image', 'delete'));
     }

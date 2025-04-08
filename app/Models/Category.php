@@ -10,10 +10,12 @@ class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table = 'categories';
+
     protected $fillable = ['name', 'description'];
     public function projects()
     {
-        return $this->belongsToMany(Projects::class)
+        return $this->belongsToMany(Project::class)
                     ->using(CategoryProject::class)
                     ->withTimestamps();
     }

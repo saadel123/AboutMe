@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FlashMessage;
-use App\Models\Educations;
+use App\Models\Education;
 use Illuminate\Http\Request;
 
 class EducationsController extends Controller
@@ -16,7 +16,7 @@ class EducationsController extends Controller
 
     public function index()
     {
-        return view('admin.educations.index', ['educations' => Educations::all()]);
+        return view('admin.educations.index', ['educations' => Education::all()]);
     }
 
     /**
@@ -48,7 +48,7 @@ class EducationsController extends Controller
         ]);
 
         $input = $request->all();
-        Educations::create($input);
+        Education::create($input);
 
         return redirect()->route('educations.index')->with('success', FlashMessage::success('Education', 'add'));
     }
@@ -72,7 +72,7 @@ class EducationsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.educations.edit', ['education' => Educations::findOrFail($id)]);
+        return view('admin.educations.edit', ['education' => Education::findOrFail($id)]);
     }
 
     /**
@@ -95,7 +95,7 @@ class EducationsController extends Controller
         ]);
 
         $input = $request->all();
-        $education = Educations::findOrFail($id);
+        $education = Education::findOrFail($id);
         $education->update($input);
 
         return redirect()->back()->with('success', FlashMessage::success('Education', 'update'));
@@ -109,7 +109,7 @@ class EducationsController extends Controller
      */
     public function destroy($id)
     {
-        $education = Educations::findOrFail($id);
+        $education = Education::findOrFail($id);
         $education->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Education', 'delete'));
     }

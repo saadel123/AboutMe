@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FlashMessage;
-use App\Models\Skills;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillsController extends Controller
@@ -16,7 +16,7 @@ class SkillsController extends Controller
 
     public function index()
     {
-        return view('admin.skills.index', ['skills' => Skills::all()]);
+        return view('admin.skills.index', ['skills' => Skill::all()]);
     }
 
     /**
@@ -41,7 +41,7 @@ class SkillsController extends Controller
             'language' => 'required|string|max:100',
         ]);
 
-        Skills::create($request->all());
+        Skill::create($request->all());
 
         return redirect()->route('skills.index')->with('success', FlashMessage::success('Skill', 'add'));
     }
@@ -65,7 +65,7 @@ class SkillsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.skills.edit', ['skill' => Skills::findOrFail($id)]);
+        return view('admin.skills.edit', ['skill' => Skill::findOrFail($id)]);
     }
 
     /**
@@ -81,7 +81,7 @@ class SkillsController extends Controller
             'language' => 'required|string|max:100',
         ]);
 
-        $skill = Skills::findOrFail($id);
+        $skill = Skill::findOrFail($id);
         $skill->update($request->all());
 
         return redirect()->back()->with('success', FlashMessage::success('Skill', 'update'));
@@ -95,7 +95,7 @@ class SkillsController extends Controller
      */
     public function destroy($id)
     {
-        $skill = Skills::findOrFail($id);
+        $skill = Skill::findOrFail($id);
         $skill->delete();
         return redirect()->back()->with('danger', FlashMessage::danger('Skill', 'delete'));
     }

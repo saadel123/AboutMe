@@ -35,7 +35,7 @@
                                             <td>
                                                 <a class="edit" href="{{ route('users.edit', $user->id) }}"
                                                     style="color:rgb(125, 125, 5)">Modifier</a>
-                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                                {{-- <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                                     style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
@@ -43,7 +43,7 @@
                                                         onclick="return confirm('Are you sure you want to delete this item?');">
                                                         Supprimer
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

@@ -1,4 +1,4 @@
-@if (session('success') || session('danger'))
+﻿@if (session('success') || session('danger'))
     <div class="container mt-3">
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show d-flex align-items-center position-relative" role="alert">

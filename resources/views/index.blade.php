@@ -1,7 +1,35 @@
 @extends('layouts.master')
 @section('stylesheet')
     <style>
+        .error-message {
+            display: none !important;
+        }
+
+        /* Portfolio Section */
         .portfolio-img {
+            min-height: 280px;
+            background-color: rgb(225 226 228);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* prevent overflow if needed */
+            transition: all 0.3s ease;
+
+        }
+
+        .portfolio-img .img-project {
+            height: 285px;
+            /* max height to fit inside container */
+            width: auto;
+            /* keep aspect ratio */
+            border-radius: 8px;
+            object-fit: cover !important;
+            object-position: center center !important;
+        }
+
+        .certificate-img {
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -9,8 +37,21 @@
             height: 285px;
         }
 
-        .error-message {
-            display: none !important;
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.03);
+            border-radius: 14px;
+        }
+
+        .portfolio-info {
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
         }
     </style>
 @endsection
@@ -129,7 +170,10 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3 class="resume-title">{!! __('home.resume.expprof') !!}</h3>
+                        <h3 class="resume-title">
+                            <i class="bi bi-briefcase-fill me-2 text-primary"></i>
+                            {!! __('home.resume.expprof') !!}
+                        </h3>
                         <p>
                             <{!! __('home.about.address') !!} </em>
                         </p>
@@ -144,7 +188,10 @@
                         @endforeach
                     </div>
                     <div class="col-lg-6">
-                        <h3 class="resume-title">{!! __('home.resume.education') !!}</h3>
+                        <h3 class="resume-title">
+                            <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
+                            {!! __('home.resume.education') !!}
+                        </h3>
                         @foreach ($educations as $education)
                             <div class="resume-item">
                                 <h4>{{ $education->{'title_' . $locale} }}</h4>
@@ -167,7 +214,7 @@
                         <li data-filter="*" class="filter-active">{!! __('home.portfolio.filters.title') !!}</li>
                         @foreach ($categories as $category)
                             @if ($category->projects->count() > 0)
-                            <li data-filter=".{{ $category->name }}">{{ $category->name }}</li>
+                                <li data-filter=".{{ $category->name }}">{{ $category->name }}</li>
                             @endif
                         @endforeach
                     </ul><!-- End Portfolio Filters -->
@@ -177,9 +224,13 @@
                                 class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $project->categories->pluck('name')->implode(' ') }}">
                                 <a href="{{ route('single.project', $project->id) }}" title="More Details"
                                     class="details-link">
-                                    <img src="{{ asset('storage/' . $project->image) }}"
-                                        class="img-fluid portfolio-wrap portfolio-img lazyload"
-                                        alt="{{ $project->{'title_' . $locale} }}">
+                                    <div class="portfolio-img">
+
+                                        <img src="{{ asset('storage/' . $project->image) }}"
+                                            class="img-fluid portfolio-wrap lazyload img-project"
+                                            alt="{{ $project->{'title_' . $locale} }}">
+                                    </div>
+
                                 </a>
                                 <div class="portfolio-info">
                                     <p>{{ $project->{'title_' . $locale} }}</p>
@@ -209,9 +260,13 @@
                             <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
                                 <a href="{{ 'storage/' . $certificate->image }}" data-gallery="certificate-gallery-app"
                                     class="glightbox preview-link">
-                                    <img src="{{ 'storage/' . $certificate->image }}"
-                                        class="img-fluid portfolio-wrap portfolio-img bg-certificate lazyload"
-                                        alt="">
+                                    <div class="portfolio-img">
+
+                                        <img src="{{ 'storage/' . $certificate->image }}"
+                                            class="img-fluid portfolio-wrap certificate-img bg-certificate lazyload"
+                                            alt="">
+                                    </div>
+
                                 </a>
                                 <div class="portfolio-info">
                                     <p>{{ $certificate->{'title_' . $locale} }}</p>

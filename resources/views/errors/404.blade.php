@@ -17,7 +17,7 @@
         .error-code {
             font-size: 10rem;
             font-weight: 900;
-            color: #0563bb;
+            color: #0077b6;
             line-height: 1;
             margin-bottom: 1rem;
             text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
@@ -39,7 +39,7 @@
 
         .error-btn {
             color: #fff;
-            background: #0563bb;
+            background: #0077b6;
             border: 0;
             padding: 10px 30px;
             transition: 0.4s;

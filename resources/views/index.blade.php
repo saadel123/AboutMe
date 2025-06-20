@@ -5,56 +5,22 @@
             display: none !important;
         }
 
-        /* Portfolio Section */
-        .portfolio-img {
-            min-height: 280px;
-            background-color: rgb(225 226 228);
+        .img-fluid {
             border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            /* prevent overflow if needed */
-            transition: all 0.3s ease;
-
-        }
-
-        .portfolio-img .img-project {
-            height: 285px;
-            /* max height to fit inside container */
-            width: auto;
-            /* keep aspect ratio */
-            border-radius: 8px;
-            object-fit: cover !important;
-            object-position: center center !important;
         }
 
         .certificate-img {
+            aspect-ratio: 4/3;
+            height: auto;
+            border-radius: 8px;
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
             background-color: rgb(225 226 228);
-            height: 285px;
-        }
-
-
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.03);
-            border-radius: 14px;
-        }
-
-        .portfolio-info {
-            background: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .portfolio-item:hover .portfolio-info {
-            opacity: 1;
         }
     </style>
 @endsection
+
 @section('content')
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
@@ -208,6 +174,7 @@
                 <h2>{!! __('home.portfolio.title') !!}</h2>
                 <p>{!! $about->{'portfolio_description_' . $locale} !!}</p>
             </div>
+
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
@@ -217,7 +184,8 @@
                                 <li data-filter=".{{ $category->name }}">{{ $category->name }}</li>
                             @endif
                         @endforeach
-                    </ul><!-- End Portfolio Filters -->
+                    </ul>
+
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="100">
                         @foreach ($projects as $project)
                             <div
@@ -225,13 +193,12 @@
                                 <a href="{{ route('single.project', $project->id) }}" title="More Details"
                                     class="details-link">
                                     <div class="portfolio-img">
-
                                         <img src="{{ asset('storage/' . $project->image) }}"
-                                            class="img-fluid portfolio-wrap lazyload img-project"
-                                            alt="{{ $project->{'title_' . $locale} }}">
+                                            alt="{{ $project->{'title_' . $locale} }}"
+                                            class="img-fluid portfolio-wrap img-project" loading="lazy">
                                     </div>
-
                                 </a>
+
                                 <div class="portfolio-info">
                                     <p>{{ $project->{'title_' . $locale} }}</p>
                                     <a href="{{ asset('storage/' . $project->image) }}"
@@ -243,11 +210,13 @@
                                         <i class="bi bi-link-45deg"></i>
                                     </a>
                                 </div>
-                            </div><!-- End Portfolio Item -->
+                            </div>
                         @endforeach
-                    </div><!-- End Portfolio Container -->
+                    </div>
                 </div>
+            </div>
         </section>
+
         <section id="certificates" class="portfolio section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>{!! __('home.certificates.title') !!}</h2>
@@ -263,7 +232,7 @@
                                     <div class="portfolio-img">
 
                                         <img src="{{ 'storage/' . $certificate->image }}"
-                                            class="img-fluid portfolio-wrap certificate-img bg-certificate lazyload"
+                                            class="img-fluid portfolio-wrap certificate-img bg-certificate" loading="lazy"
                                             alt="">
                                     </div>
 

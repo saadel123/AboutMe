@@ -11,6 +11,13 @@ class Certificate extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title_fr', 'title_en', 'title_de', 'description_fr', 'description_en', 'description_de', 'image', 'link',
+        'title',
+        'description',
+        'image',
+        'link',
+    ];
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array',
     ];
 }

@@ -22,17 +22,6 @@ class MonitorCommand extends Command
                        {--max=1000 : The maximum number of jobs that can be on the queue before an event is dispatched}';
 
     /**
-     * The name of the console command.
-     *
-     * This name is used to identify the command during lazy loading.
-     *
-     * @var string|null
-     *
-     * @deprecated
-     */
-    protected static $defaultName = 'queue:monitor';
-
-    /**
      * The console command description.
      *
      * @var string
@@ -54,18 +43,10 @@ class MonitorCommand extends Command
     protected $events;
 
     /**
-     * The table headers for the command.
-     *
-     * @var string[]
-     */
-    protected $headers = ['Connection', 'Queue', 'Size', 'Status'];
-
-    /**
      * Create a new queue monitor command.
      *
      * @param  \Illuminate\Contracts\Queue\Factory  $manager
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-     * @return void
      */
     public function __construct(Factory $manager, Dispatcher $events)
     {
@@ -97,7 +78,7 @@ class MonitorCommand extends Command
      */
     protected function parseQueues($queues)
     {
-        return collect(explode(',', $queues))->map(function ($queue) {
+        return (new Collection(explode(',', $queues)))->map(function ($queue) {
             [$connection, $queue] = array_pad(explode(':', $queue, 2), 2, null);
 
             if (! isset($queue)) {
@@ -127,9 +108,10 @@ class MonitorCommand extends Command
         $this->components->twoColumnDetail('<fg=gray>Queue name</>', '<fg=gray>Size / Status</>');
 
         $queues->each(function ($queue) {
+            $name = '['.$queue['connection'].'] '.$queue['queue'];
             $status = '['.$queue['size'].'] '.$queue['status'];
 
-            $this->components->twoColumnDetail($queue['queue'], $status);
+            $this->components->twoColumnDetail($name, $status);
         });
 
         $this->newLine();

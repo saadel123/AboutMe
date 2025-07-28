@@ -1,0 +1,99 @@
+/* Custom Styles - This file contains my personal custom CSS */
+.datatable {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.datatable thead th {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.datatable tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.datatable tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .datatable thead {
+        display: none;
+    }
+
+    .datatable tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e9ecef;
+        border-radius: 0.25rem;
+    }
+
+    .datatable tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+    }
+
+    .datatable tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+
+    .action-buttons {
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+/* TinyMCE Custom Styles - Adjustments for toolbar and branding */
+.tox-promotion {
+    display: none !important;
+}
+
+.tox-statusbar__branding {
+    display: none !important;
+}
+
+.tox-tinymce--toolbar-sticky-on {
+    position: static !important;
+}
+
+.tox-toolbar__primary {
+    position: static !important;
+}
+
+.tox-editor-header {
+    position: static !important;
+}
+
+.tox-editor-container {
+    padding-top: 0px !important;
+}
+
+/* Taginput for catgory*/
+.bootstrap-tagsinput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.bootstrap-tagsinput .tag {
+    margin-right: 2px;
+    color: white;
+    background-color: #007bff;
+    padding: 3px 6px;
+    border-radius: 3px;
+}

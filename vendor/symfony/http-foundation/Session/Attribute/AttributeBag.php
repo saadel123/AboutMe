@@ -18,84 +18,59 @@ namespace Symfony\Component\HttpFoundation\Session\Attribute;
  */
 class AttributeBag implements AttributeBagInterface, \IteratorAggregate, \Countable
 {
-    private string $name = 'attributes';
-    private string $storageKey;
+    protected array $attributes = [];
 
-    protected $attributes = [];
+    private string $name = 'attributes';
 
     /**
      * @param string $storageKey The key used to store attributes in the session
      */
-    public function __construct(string $storageKey = '_sf2_attributes')
-    {
-        $this->storageKey = $storageKey;
+    public function __construct(
+        private string $storageKey = '_sf2_attributes',
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function initialize(array &$attributes)
+    public function initialize(array &$attributes): void
     {
         $this->attributes = &$attributes;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getStorageKey(): string
     {
         return $this->storageKey;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function has(string $name): bool
     {
         return \array_key_exists($name, $this->attributes);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(string $name, mixed $default = null): mixed
     {
         return \array_key_exists($name, $this->attributes) ? $this->attributes[$name] : $default;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function set(string $name, mixed $value)
+    public function set(string $name, mixed $value): void
     {
         $this->attributes[$name] = $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function all(): array
     {
         return $this->attributes;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function replace(array $attributes)
+    public function replace(array $attributes): void
     {
         $this->attributes = [];
         foreach ($attributes as $key => $value) {
@@ -103,9 +78,6 @@ class AttributeBag implements AttributeBagInterface, \IteratorAggregate, \Counta
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function remove(string $name): mixed
     {
         $retval = null;
@@ -117,9 +89,6 @@ class AttributeBag implements AttributeBagInterface, \IteratorAggregate, \Counta
         return $retval;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function clear(): mixed
     {
         $return = $this->attributes;

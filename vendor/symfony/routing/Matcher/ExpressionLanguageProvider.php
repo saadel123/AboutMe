@@ -22,16 +22,11 @@ use Symfony\Contracts\Service\ServiceProviderInterface;
  */
 class ExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
-    private $functions;
-
-    public function __construct(ServiceProviderInterface $functions)
-    {
-        $this->functions = $functions;
+    public function __construct(
+        private ServiceProviderInterface $functions,
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         $functions = [];
@@ -39,12 +34,8 @@ class ExpressionLanguageProvider implements ExpressionFunctionProviderInterface
         foreach ($this->functions->getProvidedServices() as $function => $type) {
             $functions[] = new ExpressionFunction(
                 $function,
-                static function (...$args) use ($function) {
-                    return sprintf('($context->getParameter(\'_functions\')->get(%s)(%s))', var_export($function, true), implode(', ', $args));
-                },
-                function ($values, ...$args) use ($function) {
-                    return $values['context']->getParameter('_functions')->get($function)(...$args);
-                }
+                static fn (...$args) => \sprintf('($context->getParameter(\'_functions\')->get(%s)(%s))', var_export($function, true), implode(', ', $args)),
+                fn ($values, ...$args) => $values['context']->getParameter('_functions')->get($function)(...$args)
             );
         }
 

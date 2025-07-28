@@ -22,21 +22,17 @@ class_exists(PhpBridgeSessionStorage::class);
  */
 class PhpBridgeSessionStorageFactory implements SessionStorageFactoryInterface
 {
-    private $handler;
-    private $metaBag;
-    private bool $secure;
-
-    public function __construct(AbstractProxy|\SessionHandlerInterface $handler = null, MetadataBag $metaBag = null, bool $secure = false)
-    {
-        $this->handler = $handler;
-        $this->metaBag = $metaBag;
-        $this->secure = $secure;
+    public function __construct(
+        private AbstractProxy|\SessionHandlerInterface|null $handler = null,
+        private ?MetadataBag $metaBag = null,
+        private bool $secure = false,
+    ) {
     }
 
     public function createStorage(?Request $request): SessionStorageInterface
     {
         $storage = new PhpBridgeSessionStorage($this->handler, $this->metaBag);
-        if ($this->secure && $request && $request->isSecure()) {
+        if ($this->secure && $request?->isSecure()) {
             $storage->setOptions(['cookie_secure' => true]);
         }
 

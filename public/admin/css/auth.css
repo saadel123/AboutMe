@@ -1,0 +1,73 @@
+@media (min-width: 1200px) {
+
+    #main,
+    #footer {
+        margin-left: 0;
+    }
+}
+
+#main {
+    margin-top: 0 !important;
+}
+
+.login-card {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #012970;
+}
+
+.form-control:focus {
+    border-color: #4154f1;
+    box-shadow: 0 0 0 0.2rem rgba(65, 84, 241, 0.25);
+}
+
+.btn-primary {
+    background-color: #4154f1;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3a47d5;
+}
+
+.invalid-feedback {
+    font-size: 0.875rem;
+}
+
+.small a {
+    text-decoration: none;
+    color: #4154f1;
+}
+
+.small a:hover {
+    text-decoration: underline;
+}
+
+.auth-card {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+}
+
+.auth-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.auth-access-text {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #012970;
+}

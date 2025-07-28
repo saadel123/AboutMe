@@ -13,6 +13,7 @@ namespace Symfony\Component\HttpKernel\DataCollector;
 
 use Symfony\Component\VarDumper\Caster\CutStub;
 use Symfony\Component\VarDumper\Caster\ReflectionCaster;
+use Symfony\Component\VarDumper\Cloner\ClonerInterface;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\VarDumper\Cloner\Stub;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
@@ -27,12 +28,9 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
  */
 abstract class DataCollector implements DataCollectorInterface
 {
-    /**
-     * @var array|Data
-     */
-    protected $data = [];
+    protected array|Data $data = [];
 
-    private $cloner;
+    private ClonerInterface $cloner;
 
     /**
      * Converts the variable into a serializable Data instance.
@@ -57,14 +55,26 @@ abstract class DataCollector implements DataCollectorInterface
     /**
      * @return callable[] The casters to add to the cloner
      */
-    protected function getCasters()
+    protected function getCasters(): array
     {
-        $casters = [
+        return [
             '*' => function ($v, array $a, Stub $s, $isNested) {
                 if (!$v instanceof Stub) {
+                    $b = $a;
                     foreach ($a as $k => $v) {
-                        if (\is_object($v) && !$v instanceof \DateTimeInterface && !$v instanceof Stub) {
-                            $a[$k] = new CutStub($v);
+                        if (!\is_object($v) || $v instanceof \DateTimeInterface || $v instanceof Stub) {
+                            continue;
+                        }
+
+                        try {
+                            $a[$k] = $s = new CutStub($v);
+
+                            if ($b[$k] === $s) {
+                                // we've hit a non-typed reference
+                                $a[$k] = $v;
+                            }
+                        } catch (\TypeError $e) {
+                            // we've hit a typed reference
                         }
                     }
                 }
@@ -72,8 +82,6 @@ abstract class DataCollector implements DataCollectorInterface
                 return $a;
             },
         ] + ReflectionCaster::UNSET_CLOSURE_FILE_INFO;
-
-        return $casters;
     }
 
     public function __sleep(): array
@@ -81,21 +89,29 @@ abstract class DataCollector implements DataCollectorInterface
         return ['data'];
     }
 
-    public function __wakeup()
+    public function __wakeup(): void
     {
     }
 
     /**
      * @internal to prevent implementing \Serializable
      */
-    final protected function serialize()
+    final protected function serialize(): void
     {
     }
 
     /**
      * @internal to prevent implementing \Serializable
      */
-    final protected function unserialize(string $data)
+    final protected function unserialize(string $data): void
     {
+    }
+
+    /**
+     * @return void
+     */
+    public function reset()
+    {
+        $this->data = [];
     }
 }

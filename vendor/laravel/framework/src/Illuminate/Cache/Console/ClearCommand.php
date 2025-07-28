@@ -20,17 +20,6 @@ class ClearCommand extends Command
     protected $name = 'cache:clear';
 
     /**
-     * The name of the console command.
-     *
-     * This name is used to identify the command during lazy loading.
-     *
-     * @var string|null
-     *
-     * @deprecated
-     */
-    protected static $defaultName = 'cache:clear';
-
-    /**
      * The console command description.
      *
      * @var string
@@ -56,7 +45,6 @@ class ClearCommand extends Command
      *
      * @param  \Illuminate\Cache\CacheManager  $cache
      * @param  \Illuminate\Filesystem\Filesystem  $files
-     * @return void
      */
     public function __construct(CacheManager $cache, Filesystem $files)
     {

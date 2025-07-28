@@ -32,7 +32,6 @@ class Signals
      * Create a new signal registrar instance.
      *
      * @param  \Symfony\Component\Console\SignalRegistry\SignalRegistry  $registry
-     * @return void
      */
     public function __construct($registry)
     {
@@ -72,7 +71,7 @@ class Signals
     /**
      * Gets the signal's existing handler in array format.
      *
-     * @return array<int, callable(int $signal): void>
+     * @return array<int, callable(int $signal): void>|null
      */
     protected function initializeSignal($signal)
     {
@@ -84,7 +83,7 @@ class Signals
     /**
      * Unregister the current signal handlers.
      *
-     * @return array<int, array<int, callable(int $signal): void>>
+     * @return void
      */
     public function unregister()
     {
@@ -142,7 +141,7 @@ class Signals
     /**
      * Set the availability resolver.
      *
-     * @param  callable(): bool
+     * @param  (callable(): bool)  $resolver
      * @return void
      */
     public static function resolveAvailabilityUsing($resolver)

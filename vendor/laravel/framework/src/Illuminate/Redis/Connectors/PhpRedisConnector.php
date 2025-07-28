@@ -15,7 +15,7 @@ use RedisCluster;
 class PhpRedisConnector implements Connector
 {
     /**
-     * Create a new clustered PhpRedis connection.
+     * Create a new connection.
      *
      * @param  array  $config
      * @param  array  $options
@@ -51,7 +51,7 @@ class PhpRedisConnector implements Connector
         $options = array_merge($options, $clusterOptions, Arr::pull($config, 'options', []));
 
         return new PhpRedisClusterConnection($this->createRedisClusterInstance(
-            array_map([$this, 'buildClusterConnectionString'], $config), $options
+            array_map($this->buildClusterConnectionString(...), $config), $options
         ));
     }
 
@@ -63,9 +63,7 @@ class PhpRedisConnector implements Connector
      */
     protected function buildClusterConnectionString(array $server)
     {
-        return $this->formatHost($server).':'.$server['port'].'?'.Arr::query(Arr::only($server, [
-            'database', 'password', 'prefix', 'read_timeout',
-        ]));
+        return $this->formatHost($server).':'.$server['port'];
     }
 
     /**
@@ -88,6 +86,22 @@ class PhpRedisConnector implements Connector
             }
 
             $this->establishConnection($client, $config);
+
+            if (array_key_exists('max_retries', $config)) {
+                $client->setOption(Redis::OPT_MAX_RETRIES, $config['max_retries']);
+            }
+
+            if (array_key_exists('backoff_algorithm', $config)) {
+                $client->setOption(Redis::OPT_BACKOFF_ALGORITHM, $config['backoff_algorithm']);
+            }
+
+            if (array_key_exists('backoff_base', $config)) {
+                $client->setOption(Redis::OPT_BACKOFF_BASE, $config['backoff_base']);
+            }
+
+            if (array_key_exists('backoff_cap', $config)) {
+                $client->setOption(Redis::OPT_BACKOFF_CAP, $config['backoff_cap']);
+            }
 
             if (! empty($config['password'])) {
                 if (isset($config['username']) && $config['username'] !== '' && is_string($config['password'])) {
@@ -197,10 +211,6 @@ class PhpRedisConnector implements Connector
 
             if (! empty($options['failover'])) {
                 $client->setOption(RedisCluster::OPT_SLAVE_FAILOVER, $options['failover']);
-            }
-
-            if (! empty($options['name'])) {
-                $client->client('SETNAME', $options['name']);
             }
 
             if (array_key_exists('serializer', $options)) {

@@ -25,7 +25,6 @@ class ApcStore extends TaggableStore
      *
      * @param  \Illuminate\Cache\ApcWrapper  $apc
      * @param  string  $prefix
-     * @return void
      */
     public function __construct(ApcWrapper $apc, $prefix = '')
     {
@@ -36,16 +35,12 @@ class ApcStore extends TaggableStore
     /**
      * Retrieve an item from the cache by key.
      *
-     * @param  string|array  $key
+     * @param  string  $key
      * @return mixed
      */
     public function get($key)
     {
-        $value = $this->apc->get($this->prefix.$key);
-
-        if ($value !== false) {
-            return $value;
-        }
+        return $this->apc->get($this->prefix.$key);
     }
 
     /**
@@ -126,5 +121,16 @@ class ApcStore extends TaggableStore
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * Set the cache key prefix.
+     *
+     * @param  string  $prefix
+     * @return void
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
     }
 }

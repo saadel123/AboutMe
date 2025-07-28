@@ -19,16 +19,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Uid\MaxUuid;
+use Symfony\Component\Uid\NilUuid;
+use Symfony\Component\Uid\TimeBasedUidInterface;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Component\Uid\UuidV1;
-use Symfony\Component\Uid\UuidV6;
 
 #[AsCommand(name: 'uuid:inspect', description: 'Inspect a UUID')]
 class InspectUuidCommand extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -46,15 +44,11 @@ EOF
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output);
 
         try {
-            /** @var Uuid $uuid */
             $uuid = Uuid::fromString($input->getArgument('uuid'));
         } catch (\InvalidArgumentException $e) {
             $io->error($e->getMessage());
@@ -62,10 +56,12 @@ EOF
             return 1;
         }
 
-        if (-1 === $version = uuid_type($uuid)) {
+        if (new NilUuid() == $uuid) {
             $version = 'nil';
-        } elseif (0 === $version || 2 === $version || 6 < $version) {
-            $version = 'unknown';
+        } elseif (new MaxUuid() == $uuid) {
+            $version = 'max';
+        } else {
+            $version = hexdec($uuid->toRfc4122()[14]);
         }
 
         $rows = [
@@ -73,9 +69,10 @@ EOF
             ['toRfc4122 (canonical)', (string) $uuid],
             ['toBase58', $uuid->toBase58()],
             ['toBase32', $uuid->toBase32()],
+            ['toHex', $uuid->toHex()],
         ];
 
-        if ($uuid instanceof UuidV1 || $uuid instanceof UuidV6) {
+        if ($uuid instanceof TimeBasedUidInterface) {
             $rows[] = new TableSeparator();
             $rows[] = ['Time', $uuid->getDateTime()->format('Y-m-d H:i:s.u \U\T\C')];
         }

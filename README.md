@@ -1,89 +1,66 @@
----
+## Installation Guide
 
-# 🛫 **Multilingual Dynamic Portfolio**
+### Prerequisites
 
-Welcome to the repository for my dynamic, multilingual portfolio! 🌍
+| Software         | Version | Installation Guide                                              |
+|------------------|---------|-----------------------------------------------------------------|
+| PHP              | ≥ 8.2   | [php.net](https://www.php.net/download)                         |
+| Composer         | Latest  | [getcomposer.org](https://getcomposer.org/download/)            |
+| MySQL/PostgreSQL | ≥ 5.7   | [mysql.com](https://dev.mysql.com/downloads/)                    |
 
-### 🔗 [View the Live Project Here](https://directveille.com/saadelghanemy/public/)
+### 1. Clone Repository
 
----
+```bash
+git clone https://github.com/ezzyraouy/AboutMe.git
+```
 
-## 🌟 **Features**
+### 2. Environment Setup
 
-### 🎨 **Dynamic Content Management**
-- Fully dynamic and customizable content managed through a secure **Admin Dashboard**.
-- Update, add, or remove information in real-time without touching any code!
+```bash
+cp .env.example .env
+```
 
-### 🌍 **Multilingual Support**
-- Supports **German**, **English**, and **French**.
-- Language preferences can be easily toggled, providing seamless international usability.
+Configure these key variables in `.env`:
 
-### 💼 **Functionalities**
-- **User-friendly Interface**: Responsive Bootstrap design that is easy to customize and extend.
-- **Admin Dashboard**: Built-in admin tools for seamless management of portfolio content.
-- **Database-Driven**: Data is managed and stored using **MySQL**.
-- **Dynamic Content Rendering**: All pages adapt dynamically to updates, ensuring real-time content reflection.
+```ini
+APP_URL=http://localhost:8000
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_db_name
+DB_USERNAME=root
+DB_PASSWORD=
 
----
+```
 
-## 🛠️ **Technologies Used**
+### 3. Install Dependencies
 
-- **Frontend**:
-  - HTML5
-  - CSS3
-  - JavaScript
-  - jQuery
-  - AJAX
-  - Bootstrap
-- **Backend**:
-  - PHP
-  - Laravel Framework
-- **Database**:
-  - MySQL
-- **Version Control**:
-  - Git
+```bash
+composer install
+```
 
----
+### 4. Application Setup
 
-## 📈 **Why This Project Stands Out**
+```bash
+# Generate app key
+php artisan key:generate
 
-I created this project to showcase my previous work, projects created from scratch, and contributions. It also highlights my academic background, certifications, and a means for potential collaborators or employers to connect with me.
+# Run migrations with seed
+php artisan migrate --seed
 
----
+# Clear the configuration and cache:
+php artisan config:clear
+php artisan cache:clear
+```
 
-## 🚀 **How to Get Started**
+_Default test user created:_
+- **Email:** admin@admin.com
+- **Password:** admin1234
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/saadel123/AboutMe.git
-   ```
-2. Install dependencies:
-   ```bash
-   composer install
-   ```
-3. Set up the database:
-   - Configure your `.env` file with your database credentials.
+### 5. Start Development Servers
 
-4. Run this command to migrate the database:
-   ```bash
-   php artisan migrate
-   ```
+**Termina**
 
-5. Run the application:
-   ```bash
-   php artisan serve
-   ```
-
----
-
-## 🌐 **Contributing**
-
-Contributions are welcome! If you find a bug or have a suggestion for improvement, feel free to open an issue or submit a pull request.
-
----
-
-## 📞 **Contact**
-
-If you have questions or need assistance, feel free to reach out:
-- **Email**: elghanemysaad@gmail.com
-- **LinkedIn**: [Saad Elghanemy](https://www.linkedin.com/in/saad-elghanemy)
+```bash
+php artisan serve
+```
